@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide de l'Appartement - Katikias 33</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            animation: fadeInScale 0.8s ease-out;
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .header {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #2196F3;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section h2::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: #2196F3;
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .equipment-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #2196F3;
+        }
+        .equipment-card h3 {
+            color: #2196F3;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        .equipment-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+        }
+        .rules {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .rules h3 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+        .rules ul {
+            list-style: none;
+            padding: 0;
+        }
+        .rules li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ffeaa7;
+            color: #856404;
+        }
+        .rules li:last-child {
+            border-bottom: none;
+        }
+        .rules li::before {
+            content: '⚠️';
+            margin-right: 10px;
+        }
+        .amenities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .amenity {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #4CAF50;
+        }
+        .amenity h4 {
+            color: #4CAF50;
+            margin-bottom: 5px;
+        }
+        .nearby {
+            background: #f0f8ff;
+            border: 2px solid #2196F3;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .nearby h3 {
+            color: #2196F3;
+            margin-bottom: 15px;
+        }
+        .nearby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        .nearby-item {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+            border-top: 1px solid #eee;
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #333;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        @media (max-width: 480px) {
+            .equipment-grid, .amenities, .nearby-grid { 
+                grid-template-columns: 1fr; 
+            }
+            .header h1 { font-size: 1.6rem; }
+            .content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← Retour</a>
+    
+    <div class="container">
+        <div class="header">
+            <h1>🏠 Guide de l'Appartement</h1>
+            <p>Tout ce que vous devez savoir sur Katikias 33</p>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>🔧 Équipements</h2>
+                <div class="equipment-grid">
+                    <div class="equipment-card">
+                        <h3>❄️ Climatisation</h3>
+                        <p>Télécommande sur la table basse. Température recommandée : 22-24°C</p>
+                    </div>
+                    <div class="equipment-card">
+                        <h3>📺 Télévision</h3>
+                        <p>Smart TV avec Netflix, YouTube. Télécommande universelle fournie</p>
+                    </div>
+                    <div class="equipment-card">
+                        <h3>🍳 Cuisine</h3>
+                        <p>Lave-vaisselle, micro-ondes, réfrigérateur, plaques induction</p>
+                    </div>
+                    <div class="equipment-card">
+                        <h3>🧺 Lave-linge</h3>
+                        <p>Dans la salle de bain. Détergent fourni</p>
+                    </div>
+                    <div class="equipment-card">
+                        <h3>🚿 Douche</h3>
+                        <p>Douche italienne avec porte coulissante</p>
+                    </div>
+                    <div class="equipment-card">
+                        <h3>🌐 Internet</h3>
+                        <p>Fibre optique. Wi-Fi : Katikias33 / Welcome2024!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rules">
+                <h3>📋 Règles de la Maison</h3>
+                <ul>
+                    <li>Interdiction de fumer à l'intérieur</li>
+                    <li>Pas d'animaux sans autorisation</li>
+                    <li>Respect des voisins (pas de bruit après 22h)</li>
+                    <li>Utilisation raisonnable de la climatisation</li>
+                    <li>Ranger les serviettes de piscine après usage</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>🏊‍♀️ Piscine & Espaces Communs</h2>
+                <div class="amenities">
+                    <div class="amenity">
+                        <h4>🏊‍♀️ Piscine</h4>
+                        <p>Ouverte de 8h à 20h</p>
+                    </div>
+                    <div class="amenity">
+                        <h4>🅿️ Parking</h4>
+                        <p>Place réservée #33</p>
+                    </div>
+                    <div class="amenity">
+                        <h4>🏃‍♀️ Terrain de Sport</h4>
+                        <p>Accès libre</p>
+                    </div>
+                    <div class="amenity">
+                        <h4>🌳 Jardin</h4>
+                        <p>Espace détente</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🛠️ Fonctionnement des Appareils</h2>
+                <div class="equipment-grid">
+                    <div class="equipment-card">
+                        <h3>🌡️ Climatisation</h3>
+                        <p>1. Appuyer sur ON/OFF<br/>2. Sélectionner mode AUTO<br/>3. Régler température</p>
+                    </div>
+                    <div class="equipment-card">
+                        <h3>📺 TV</h3>
+                        <p>1. Allumer avec la télécommande<br/>2. Appuyer sur HOME<br/>3. Sélectionner l'application</p>
+                    </div>
+                    <div class="equipment-card">
+                        <h3>🍳 Plaques Induction</h3>
+                        <p>1. Appuyer sur le +<br/>2. Sélectionner puissance<br/>3. Poser la casserole</p>
+                    </div>
+                    <div class="equipment-card">
+                        <h3>🧺 Lave-linge</h3>
+                        <p>1. Ouvrir le capot<br/>2. Ajouter lessive<br/>3. Programme Coton 40°</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nearby">
+                <h3>📍 À Proximité</h3>
+                <div class="nearby-grid">
+                    <div class="nearby-item">
+                        <h4>🛒 Supermarché</h4>
+                        <p>5 min à pied</p>
+                    </div>
+                    <div class="nearby-item">
+                        <h4>🍕 Restaurants</h4>
+                        <p>2 min à pied</p>
+                    </div>
+                    <div class="nearby-item">
+                        <h4>🏖️ Plage</h4>
+                        <p>10 min en voiture</p>
+                    </div>
+                    <div class="nearby-item">
+                        <h4>🚌 Transport</h4>
+                        <p>Arrêt 200m</p>
+                    </div>
+                    <div class="nearby-item">
+                        <h4>🏥 Pharmacie</h4>
+                        <p>3 min à pied</p>
+                    </div>
+                    <div class="nearby-item">
+                        <h4>⛽ Station Service</h4>
+                        <p>1 km</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📱 Contacts & Liens</h2>
+                <ul class="checklist" style="list-style: none; padding: 0;">
+                    <li style="background: #f8f9fa; margin-bottom: 10px; padding: 15px; border-radius: 8px; border-left: 4px solid #2196F3;">
+                        <a href="arrival_guide.html" style="color: #2196F3; text-decoration: none;">📥 Guide d'arrivée</a>
+                    </li>
+                    <li style="background: #f8f9fa; margin-bottom: 10px; padding: 15px; border-radius: 8px; border-left: 4px solid #2196F3;">
+                        <a href="departure_procedure.html" style="color: #2196F3; text-decoration: none;">👋 Procédure de départ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Besoin d'aide ? Contactez-nous ! Bon séjour à Katikias 33 🌟</p>
+        </div>
+    </div>
+</body>
+</html>
