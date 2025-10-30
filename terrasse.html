@@ -74,6 +74,13 @@
         });
     })();
     </script>
+    <script>
+      (function() {
+        var version = 'v=20251030T'+(new Date().getTime());
+        function bust(u){ if(!u || u.startsWith('data:')) return u; return u + (u.indexOf('?')>=0?'&':'?') + version; }
+        document.querySelectorAll('img[src]').forEach(function(img){ if(!img.src.includes('/images/')) return; img.src = bust(img.getAttribute('src')); });
+      })();
+    </script>
 </body>
 </html>
 
