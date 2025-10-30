@@ -83,14 +83,20 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
             border-color: #667eea;
         }
-        .guide-card.arrival {
-            border-left: 5px solid #4CAF50;
-        }
         .guide-card.apartment {
             border-left: 5px solid #2196F3;
         }
         .guide-card.departure {
             border-left: 5px solid #FF9800;
+        }
+        .guide-card.tips {
+            border-left: 5px solid #9C27B0;
+        }
+        .guide-card.residence {
+            border-left: 5px solid #4CAF50;
+        }
+        .guide-card.nearby {
+            border-left: 5px solid #00BCD4;
         }
         .guide-card h3 {
             font-size: 1.4rem;
@@ -102,14 +108,20 @@
             font-size: 1.8rem;
             margin-right: 10px;
         }
-        .guide-card.arrival h3::before {
-            content: '🎉';
-        }
         .guide-card.apartment h3::before {
             content: '🏠';
         }
         .guide-card.departure h3::before {
             content: '👋';
+        }
+        .guide-card.tips h3::before {
+            content: '✨';
+        }
+        .guide-card.residence h3::before {
+            content: '🏘️';
+        }
+        .guide-card.nearby h3::before {
+            content: '📍';
         }
         .guide-card p {
             font-size: 1rem;
@@ -170,18 +182,28 @@
         
         <div class="content">
             <div class="guide-grid">
-                <a href="arrival_guide.html" class="guide-card arrival">
-                    <h3>Guide d'Arrivée</h3>
-                    <p>Codes d'accès, plan de l'appartement, procédures d'arrivée et informations essentielles pour bien commencer votre séjour.</p>
+                <a href="tips_and_tricks.html" class="guide-card tips">
+                    <h3>✨ Bienvenue à la maison !</h3>
+                    <p>Tout ce que vous devez savoir pour profiter de votre séjour : codes d'accès, instructions détaillées, astuces et informations essentielles.</p>
                 </a>
                 
                 <a href="apartment_guide.html" class="guide-card apartment">
-                    <h3>Guide de l'Appartement</h3>
-                    <p>Fonctionnement des équipements, règles de la maison, commodités et tout ce que vous devez savoir sur l'appartement.</p>
+                    <h3>🏠 Appartement et équipements</h3>
+                    <p>Chambre, Salle d'eau, WC, Salon, Placard Bleu, Cuisine, Terrasse.</p>
+                </a>
+                
+                <a href="residence.html" class="guide-card residence">
+                    <h3>🏘️ La Résidence</h3>
+                    <p>Informations sur la résidence des Katikias, gardiens, piscine, parc et services de la copropriété.</p>
+                </a>
+                
+                <a href="proximity.html" class="guide-card nearby">
+                    <h3>📍 À Proximité</h3>
+                    <p>Commerces, activités, plages et accès rapides autour de Katikias 33.</p>
                 </a>
                 
                 <a href="departure_procedure.html" class="guide-card departure">
-                    <h3>Procédure de Départ</h3>
+                    <h3>👋 Départ</h3>
                     <p>Checklist de départ, procédures de nettoyage et toutes les étapes pour bien terminer votre séjour.</p>
                 </a>
             </div>
@@ -190,20 +212,27 @@
                 <h3>🔑 Accès Rapide</h3>
                 <div class="quick-info">
                     <div class="quick-item">
-                        <strong>🏠 Porte</strong>
-                        1234
+                        <strong>🏠 Portail</strong>
+                        🚶‍♂️ Piéton : <strong style="font-size:1.2rem;">1398</strong><br/>
+                        🚗 Voiture : <strong style="font-size:1.2rem;">1359</strong>
                     </div>
                     <div class="quick-item">
                         <strong>📶 Wi-Fi</strong>
                         Katikias33
+                        <div style="margin-top:8px;">
+                            <img src="images/qrcodewifi.jpg" alt="QR code Wi‑Fi" style="max-width:100%; height:auto; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" onerror="this.style.display='none'">
+                        </div>
                     </div>
                     <div class="quick-item">
                         <strong>🏊‍♀️ Piscine</strong>
-                        5678
+                        Bracelet rouge obligatoire
+                        <div style="margin-top:8px;">
+                            <img src="images/bracelet_rouge.jpg" alt="Bracelet rouge piscine" style="max-width:100%; height:auto; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" onerror="this.style.display='none'">
+                        </div>
                     </div>
                     <div class="quick-item">
                         <strong>🚨 Urgences</strong>
-                        112
+                        <strong style="font-size:1.2rem;">112</strong>
                     </div>
                 </div>
             </div>

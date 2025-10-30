@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Proximité - Katikias 33</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00BCD4 0%, #26C6DA 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            animation: fadeInScale 0.8s ease-out;
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .header {
+            background: linear-gradient(135deg, #00BCD4 0%, #26C6DA 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        .content { padding: 30px; }
+        .section { margin-bottom: 30px; }
+        .section h2 {
+            color: #00BCD4;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .section h2::before {
+            content: '';
+            width: 4px;
+            height: 25px;
+            background: #00BCD4;
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        .tip-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #00BCD4;
+            transition: transform 0.2s ease;
+        }
+        .tip-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .tip-card h3 {
+            color: #00BCD4;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .tip-card h3::before { content: '📍'; margin-right: 8px; font-size: 1.2rem; }
+        .tip-card p { color: #555; line-height: 1.6; margin-left: 28px; }
+        .tip-card ul { margin-left: 28px; margin-top: 10px; color: #555; }
+        .tip-card li { margin-bottom: 5px; line-height: 1.5; }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #333;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .footer { text-align: center; padding: 20px; font-size: 0.9rem; color: #aaa; border-top: 1px solid #eee; }
+        @media (max-width: 480px) { .header h1 { font-size: 1.6rem; } .content { padding: 20px; } .tip-card { padding: 15px; } }
+    </style>
+    </head>
+<body>
+    <a href="index.html" class="back-button">← Retour</a>
+    <div class="container">
+        <div class="header">
+            <h1>📍 À Proximité</h1>
+            <p>Commerces, activités, plages et accès autour de Katikias 33</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>🛒 Commerces & Services</h2>
+                <div class="tip-card">
+                    <h3>🛒 Commerces & Services</h3>
+                    <p>Nombreux commerces : fruits, pressings, pharmacies, boucheries, boulangeries artisanales, producteurs locaux.</p>
+                    <ul>
+                        <li><strong>Intermarché et Carrefour :</strong> 15-20 min à pied, 5 min en voiture</li>
+                        <li><strong>Gare :</strong> 5 minutes</li>
+                        <li><strong>Autoroute A50 (Sortie 12 Bandol) :</strong> 1 km</li>
+                        <li><strong>Toulon :</strong> 15 minutes, <strong>Marseille :</strong> 1 heure</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🏌️ Activités</h2>
+                <div class="tip-card">
+                    <h3>🏌️ Activités</h3>
+                    <ul>
+                        <li><strong>Golf de Frégate :</strong> 6-7 minutes</li>
+                        <li><strong>Aqualand Saint-Cyr :</strong> Activités nautiques</li>
+                        <li><strong>Domaines viticoles de Bandol</strong></li>
+                        <li><strong>Zoo parc de Sanary-sur-Mer</strong></li>
+                        <li><strong>Circuit Paul Ricard du Castellet</strong></li>
+                        <li><strong>Marchés Provençaux</strong></li>
+                        <li><strong>Villages typiques :</strong> La Cadière d'Azur, Le Castellet</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🏖️ Plages</h2>
+                <div class="tip-card">
+                    <h3>🏖️ Plages</h3>
+                    <p>À Bandol, Sanary-sur-Mer et Saint-Cyr-sur-Mer : nombreuses plages, activités nautiques, restaurants et commerces de bouche.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Profitez bien de votre séjour à Katikias 33 ! 🌟</p>
+        </div>
+    </div>
+</body>
+</html>
+
+

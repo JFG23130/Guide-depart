@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Katikias 33 - Accueil</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .lang-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .lang-selector select {
+            padding: 8px 12px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            background: white;
+            color: #333;
+        }
+        .lang-selector select:focus {
+            outline: none;
+            border-color: #764ba2;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            animation: fadeInScale 0.8s ease-out;
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 40px 30px;
+        }
+        .guide-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .guide-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .guide-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .guide-card:hover::before {
+            transform: scaleX(1);
+        }
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+        .guide-card.arrival {
+            border-left: 5px solid #4CAF50;
+        }
+        .guide-card.apartment {
+            border-left: 5px solid #2196F3;
+        }
+        .guide-card.departure {
+            border-left: 5px solid #FF9800;
+        }
+        .guide-card.tips {
+            border-left: 5px solid #9C27B0;
+        }
+        .guide-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .guide-card h3::before {
+            font-size: 1.8rem;
+            margin-right: 10px;
+        }
+        .guide-card.arrival h3::before {
+            content: '🎉';
+        }
+        .guide-card.apartment h3::before {
+            content: '🏠';
+        }
+        .guide-card.departure h3::before {
+            content: '👋';
+        }
+        .guide-card.tips h3::before {
+            content: '✨';
+        }
+        .guide-card p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        .quick-access {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .quick-access h3 {
+            color: #856404;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .quick-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        .quick-item {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #856404;
+        }
+        .quick-item strong {
+            display: block;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+            border-top: 1px solid #eee;
+        }
+        @media (max-width: 480px) {
+            .header h1 { font-size: 2rem; }
+            .header p { font-size: 1rem; }
+            .content { padding: 30px 20px; }
+            .guide-card { padding: 20px; }
+            .lang-selector {
+                top: 10px;
+                right: 10px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sélecteur de langue -->
+    <div class="lang-selector">
+        <select id="langSelector" onchange="changeLanguage(this.value)">
+            <option value="fr">🇫🇷 Français</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="es">🇪🇸 Español</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1 data-lang-key="title">🏡 Katikias 33</h1>
+            <p data-lang-key="subtitle">Votre guide digital complet</p>
+        </div>
+        
+        <div class="content">
+            <div class="guide-grid">
+                <a href="#" class="guide-card arrival" data-lang-link="arrival">
+                    <h3 data-lang-key="arrival.title">Guide d'Arrivée</h3>
+                    <p data-lang-key="arrival.desc">Codes d'accès, plan de l'appartement, procédures d'arrivée et informations essentielles pour bien commencer votre séjour.</p>
+                </a>
+                
+                <a href="#" class="guide-card apartment" data-lang-link="apartment">
+                    <h3 data-lang-key="apartment.title">Guide de l'Appartement</h3>
+                    <p data-lang-key="apartment.desc">Fonctionnement des équipements, règles de la maison, commodités et tout ce que vous devez savoir sur l'appartement.</p>
+                </a>
+                
+                <a href="#" class="guide-card departure" data-lang-link="departure">
+                    <h3 data-lang-key="departure.title">Procédure de Départ</h3>
+                    <p data-lang-key="departure.desc">Checklist de départ, procédures de nettoyage et toutes les étapes pour bien terminer votre séjour.</p>
+                </a>
+                
+                <a href="#" class="guide-card tips" data-lang-link="tips">
+                    <h3 data-lang-key="tips.title">✨ Astuces & Conseils</h3>
+                    <p data-lang-key="tips.desc">Conseils pratiques, astuces pour votre séjour et informations utiles pour profiter au maximum de votre location.</p>
+                </a>
+            </div>
+
+            <div class="quick-access">
+                <h3 data-lang-key="quickAccess.title">🔑 Accès Rapide</h3>
+                <div class="quick-info">
+                    <div class="quick-item">
+                        <strong data-lang-key="quickAccess.door.label">🏠 Porte</strong>
+                        <span data-lang-key="quickAccess.door.value">1234</span>
+                    </div>
+                    <div class="quick-item">
+                        <strong data-lang-key="quickAccess.wifi.label">📶 Wi-Fi</strong>
+                        <span data-lang-key="quickAccess.wifi.value">Katikias33</span>
+                    </div>
+                    <div class="quick-item">
+                        <strong data-lang-key="quickAccess.pool.label">🏊‍♀️ Piscine</strong>
+                        <span data-lang-key="quickAccess.pool.value">5678</span>
+                    </div>
+                    <div class="quick-item">
+                        <strong data-lang-key="quickAccess.emergency.label">🚨 Urgences</strong>
+                        <span data-lang-key="quickAccess.emergency.value">112</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p data-lang-key="footer">Merci de votre confiance ! Bon séjour à Katikias 33 🌟</p>
+        </div>
+    </div>
+
+    <script>
+        // Traductions
+        const translations = {
+            fr: {
+                title: "🏡 Katikias 33",
+                subtitle: "Votre guide digital complet",
+                "arrival.title": "Guide d'Arrivée",
+                "arrival.desc": "Codes d'accès, plan de l'appartement, procédures d'arrivée et informations essentielles pour bien commencer votre séjour.",
+                "apartment.title": "Guide de l'Appartement",
+                "apartment.desc": "Fonctionnement des équipements, règles de la maison, commodités et tout ce que vous devez savoir sur l'appartement.",
+                "departure.title": "Procédure de Départ",
+                "departure.desc": "Checklist de départ, procédures de nettoyage et toutes les étapes pour bien terminer votre séjour.",
+                "tips.title": "✨ Astuces & Conseils",
+                "tips.desc": "Conseils pratiques, astuces pour votre séjour et informations utiles pour profiter au maximum de votre location.",
+                "quickAccess.title": "🔑 Accès Rapide",
+                "quickAccess.door.label": "🏠 Porte",
+                "quickAccess.door.value": "1234",
+                "quickAccess.wifi.label": "📶 Wi-Fi",
+                "quickAccess.wifi.value": "Katikias33",
+                "quickAccess.pool.label": "🏊‍♀️ Piscine",
+                "quickAccess.pool.value": "5678",
+                "quickAccess.emergency.label": "🚨 Urgences",
+                "quickAccess.emergency.value": "112",
+                footer: "Merci de votre confiance ! Bon séjour à Katikias 33 🌟"
+            },
+            en: {
+                title: "🏡 Katikias 33",
+                subtitle: "Your complete digital guide",
+                "arrival.title": "Arrival Guide",
+                "arrival.desc": "Access codes, apartment layout, arrival procedures and essential information to start your stay.",
+                "apartment.title": "Apartment Guide",
+                "apartment.desc": "Equipment operation, house rules, amenities and everything you need to know about the apartment.",
+                "departure.title": "Departure Procedure",
+                "departure.desc": "Departure checklist, cleaning procedures and all steps to properly end your stay.",
+                "tips.title": "✨ Tips & Tricks",
+                "tips.desc": "Practical advice, tips for your stay and useful information to make the most of your rental.",
+                "quickAccess.title": "🔑 Quick Access",
+                "quickAccess.door.label": "🏠 Door",
+                "quickAccess.door.value": "1234",
+                "quickAccess.wifi.label": "📶 Wi-Fi",
+                "quickAccess.wifi.value": "Katikias33",
+                "quickAccess.pool.label": "🏊‍♀️ Pool",
+                "quickAccess.pool.value": "5678",
+                "quickAccess.emergency.label": "🚨 Emergency",
+                "quickAccess.emergency.value": "112",
+                footer: "Thank you for your trust! Enjoy your stay at Katikias 33 🌟"
+            },
+            de: {
+                title: "🏡 Katikias 33",
+                subtitle: "Ihr kompletter digitaler Führer",
+                "arrival.title": "Ankunftsguide",
+                "arrival.desc": "Zugangscodes, Wohnungsplan, Ankunftsverfahren und wichtige Informationen für Ihren Aufenthalt.",
+                "apartment.title": "Wohnungsführer",
+                "apartment.desc": "Bedienung der Geräte, Hausregeln, Annehmlichkeiten und alles, was Sie über die Wohnung wissen müssen.",
+                "departure.title": "Abreiseverfahren",
+                "departure.desc": "Abreise-Checkliste, Reinigungsverfahren und alle Schritte, um Ihren Aufenthalt richtig zu beenden.",
+                "tips.title": "✨ Tipps & Tricks",
+                "tips.desc": "Praktische Ratschläge, Tipps für Ihren Aufenthalt und nützliche Informationen, um das Beste aus Ihrer Unterkunft herauszuholen.",
+                "quickAccess.title": "🔑 Schnellzugriff",
+                "quickAccess.door.label": "🏠 Tür",
+                "quickAccess.door.value": "1234",
+                "quickAccess.wifi.label": "📶 Wi-Fi",
+                "quickAccess.wifi.value": "Katikias33",
+                "quickAccess.pool.label": "🏊‍♀️ Pool",
+                "quickAccess.pool.value": "5678",
+                "quickAccess.emergency.label": "🚨 Notfall",
+                "quickAccess.emergency.value": "112",
+                footer: "Vielen Dank für Ihr Vertrauen! Guten Aufenthalt in Katikias 33 🌟"
+            },
+            es: {
+                title: "🏡 Katikias 33",
+                subtitle: "Su guía digital completa",
+                "arrival.title": "Guía de Llegada",
+                "arrival.desc": "Códigos de acceso, plano del apartamento, procedimientos de llegada e información esencial para comenzar bien su estancia.",
+                "apartment.title": "Guía del Apartamento",
+                "apartment.desc": "Funcionamiento de los equipos, reglas de la casa, comodidades y todo lo que necesita saber sobre el apartamento.",
+                "departure.title": "Procedimiento de Salida",
+                "departure.desc": "Lista de verificación de salida, procedimientos de limpieza y todos los pasos para terminar bien su estancia.",
+                "tips.title": "✨ Consejos y Trucos",
+                "tips.desc": "Consejos prácticos, trucos para su estancia e información útil para aprovechar al máximo su alquiler.",
+                "quickAccess.title": "🔑 Acceso Rápido",
+                "quickAccess.door.label": "🏠 Puerta",
+                "quickAccess.door.value": "1234",
+                "quickAccess.wifi.label": "📶 Wi-Fi",
+                "quickAccess.wifi.value": "Katikias33",
+                "quickAccess.pool.label": "🏊‍♀️ Piscina",
+                "quickAccess.pool.value": "5678",
+                "quickAccess.emergency.label": "🚨 Emergencias",
+                "quickAccess.emergency.value": "112",
+                footer: "¡Gracias por su confianza! ¡Disfrute de su estancia en Katikias 33 🌟"
+            }
+        };
+
+        // Fonction pour changer la langue
+        function changeLanguage(lang) {
+            // Sauvegarder la préférence
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Mettre à jour le sélecteur
+            document.getElementById('langSelector').value = lang;
+            
+            // Changer l'attribut lang de la page
+            document.documentElement.lang = lang;
+            
+            // Traduire tous les éléments
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Mettre à jour les liens
+            const langMap = {
+                arrival: 'arrival_guide',
+                apartment: 'apartment_guide',
+                departure: 'departure_procedure',
+                tips: 'tips_and_tricks'
+            };
+            
+            document.querySelectorAll('[data-lang-link]').forEach(element => {
+                const page = langMap[element.getAttribute('data-lang-link')];
+                if (page) {
+                    element.href = `${page}_${lang}.html`;
+                }
+            });
+        }
+
+        // Initialiser la langue au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupérer la langue sauvegardée ou détecter
+            const savedLang = localStorage.getItem('preferredLanguage');
+            const browserLang = navigator.language.split('-')[0];
+            const supportedLangs = ['fr', 'en', 'de', 'es'];
+            
+            let initialLang = 'fr'; // Par défaut français
+            
+            if (savedLang && supportedLangs.includes(savedLang)) {
+                initialLang = savedLang;
+            } else if (supportedLangs.includes(browserLang)) {
+                initialLang = browserLang;
+            }
+            
+            changeLanguage(initialLang);
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+

@@ -13,6 +13,7 @@ Guide-depart/
 ├── arrival_guide.html           # Guide d'arrivée (codes, procédures)
 ├── apartment_guide.html         # Guide de l'appartement (équipements, règles)
 ├── departure_procedure.html     # Procédure de départ (checklist)
+├── tips_and_tricks.html         # Astuces & Conseils pratiques
 └── README.md                    # Ce fichier
 ```
 
@@ -79,6 +80,7 @@ Les QR codes sont générés automatiquement par l'application **KatikiasDeploye
 - **Arrivée** : `https://jfg23130.github.io/Guide-depart/arrival_guide.html`
 - **Appartement** : `https://jfg23130.github.io/Guide-depart/apartment_guide.html`
 - **Départ** : `https://jfg23130.github.io/Guide-depart/departure_procedure.html`
+- **Astuces** : `https://jfg23130.github.io/Guide-depart/tips_and_tricks.html`
 - **Accueil** : `https://jfg23130.github.io/Guide-depart/`
 
 ---

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Pratique - Katikias 33</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            animation: fadeInScale 0.8s ease-out;
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .header {
+            background: linear-gradient(135deg, #9C27B0 0%, #7B1FA2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            color: #9C27B0;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .section h2::before {
+            content: '';
+            width: 4px;
+            height: 25px;
+            background: #9C27B0;
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        .tip-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #9C27B0;
+            transition: transform 0.2s ease;
+        }
+        .tip-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .tip-card h3 {
+            color: #9C27B0;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .tip-card h3::before {
+            content: '💡';
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        .tip-card p {
+            color: #555;
+            line-height: 1.6;
+            margin-left: 28px;
+        }
+        .tip-card ul {
+            margin-left: 28px;
+            margin-top: 10px;
+            color: #555;
+        }
+        .tip-card li {
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+        .highlight {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .highlight h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        .highlight p {
+            color: #856404;
+            margin-bottom: 5px;
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #333;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+            border-top: 1px solid #eee;
+        }
+        @media (max-width: 480px) {
+            .header h1 { font-size: 1.6rem; }
+            .content { padding: 20px; }
+            .tip-card { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← Retour</a>
+    
+    <div class="container">
+        <div class="header">
+            <h1>✨ Guide Pratique</h1>
+            <p>Codes d'accès, instructions détaillées et informations essentielles</p>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>🏠 Vie Quotidienne</h2>
+                
+                <div class="tip-card">
+                    <h3>🔄 Volets roulants (Télécommande Somfy)</h3>
+                    <p><strong>⚠️ Important sécurité :</strong> Les volets roulants n'ont pas de dispositif de sécurité. Veuillez vérifier qu'il n'y ait pas d'obstacle avant de les fermer.</p>
+                    
+                    <div style="margin: 20px 0; text-align: center; background: #f8f9fa; padding: 20px; border-radius: 10px;" id="somfy-image">
+                        <img src="telecommande_somfy.png" 
+                             alt="Télécommande volets roulants Somfy" 
+                             style="max-width: 300px; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" 
+                             loading="lazy"
+                             onerror="this.parentElement.innerHTML='<div style=\'background:#e3f2fd;padding:40px;border-radius:10px;border:2px solid #2196F3;\'><p style=\'color:#1976d2;font-size:1.2rem;margin-bottom:10px;\'>🔄 Télécommande Somfy</p><p style=\'color:#666;\'>📷 L\'image sera ajoutée prochainement</p><p style=\'font-size:0.9rem;color:#999;margin-top:10px;\'>Ajoutez <code>telecommande_somfy.png</code> dans le dossier Guide-depart</p></div>'">
+                        </img>
+                    </div>
+                    
+                    <div style="margin-top: 15px;">
+                        <h4 style="color: #9C27B0; font-size: 1rem; margin-bottom: 10px;">📍 Fonctionnement :</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid #e0e0e0;">
+                                <strong>↑ Bouton haut :</strong> Monte le store (arrêt auto)
+                            </li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid #e0e0e0;">
+                                <strong>⏸️ Bouton "my" :</strong> Arrête le mouvement
+                            </li>
+                            <li style="padding: 8px 0;">
+                                <strong>↓ Bouton bas :</strong> Descend le store (arrêt auto)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <h3>❄️ Climatisation</h3>
+                    <p>La climatisation s'allume avec le bouton situé en bas à droite de la console, et/ou se pilote avec la télécommande.</p>
+                    
+                    <div style="margin: 20px 0; text-align: center; background: #f8f9fa; padding: 20px; border-radius: 10px;" id="clim-image">
+                        <img src="images/telecommande_clim.png" 
+                             alt="Télécommande climatisation" 
+                             style="max-width: 300px; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" 
+                             loading="lazy"
+                             onerror="this.parentElement.innerHTML='<div style=\'background:#fff3cd;padding:30px;border-radius:10px;border:2px solid #ffc107;\'><p style=\'color:#856404;\'>❄️ Télécommande Climatisation</p><p style=\'font-size:0.9rem;color:#999;margin-top:5px;\'>Image à ajouter</p></div>'">
+                        </img>
+                    </div>
+                    
+                    <ul>
+                        <li><strong>Symbole soleil ☀️ :</strong> Active le mode chauffage</li>
+                        <li><strong>Symbole neige ❄️ :</strong> Active le froid avec la climatisation</li>
+                    </ul>
+                    <p style="margin-top: 10px;">📱 Réglez entre 22-24°C pour un confort optimal. Fermez les portes et fenêtres lors de l'utilisation.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>📶 Wi-Fi</h3>
+                    <p><strong>Nom du réseau :</strong> Livebox-6A50</p>
+                    <p><strong>Mot de passe :</strong> CMXPLqYdfcu7qCyL3n</p>
+                    <p>Le Wi-Fi est disponible dans tout l'appartement.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>📺 Télévision</h3>
+                    <p><strong>Salon :</strong> La TV propose les programmes Samsung au démarrage. Dès la mise en route du décodeur Canal+ (boîtier à droite dans le meuble sous la TV), vous aurez accès aux chaînes :</p>
+                    <ul>
+                        <li><strong>Disney+ (21)</strong> - Code PIN : 2383</li>
+                        <li><strong>Netflix (22)</strong> - Compte : Katikias 33</li>
+                    </ul>
+                    <p><strong>Chambre :</strong> En choisissant HDMI1 comme source, accès à l'ensemble des chaînes du bouquet Orange.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🍳 Plaques vitrocéramiques</h3>
+                    <p>Laissez le doigt appuyé légèrement sur la touche M/A pour allumer.</p>
+                    <ul style="margin-top: 10px;">
+                        <li><strong>1.</strong> Choisir la plaque par défilement</li>
+                        <li><strong>2.</strong> Le "+" augmente la puissance de 1 à 9</li>
+                        <li><strong>3.</strong> Si la sécurité s'active (témoin clé allumé), appuyez 5 secondes sur la clé pour déverrouiller</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🧺 Lave-linge</h3>
+                    <p>Mise en route avec le bouton en haut à droite. Choisir le programme avec le bouton rond en tournant. Lancer le lavage avec le bouton en bas à droite. Une petite musique vous informera de la fin.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🧺 Lave-vaisselle</h3>
+                    <p>Le tiroir à couverts est situé tout à fait en haut du lave-vaisselle.</p>
+                    <p><strong>⚠️ Eau calcaire :</strong> L'eau de la région est très calcaire. Utilisez un produit anticalcaire pour éviter les traces sur la vaisselle.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>☕ Machine à café</h3>
+                    <p><strong>Senséo :</strong> N'utilisez que des capsules Senséo ou adaptables. Vous trouverez deux modèles de porte-dosette à utiliser selon leur taille.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🍖 Barbecue</h3>
+                    <p><strong>⚠️ Attention aux éléments très chauds.</strong> Pensez à nettoyer avant de ranger. Merci !</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🔥 Plancha de table</h3>
+                    <p><strong>⚠️ Attention aux éléments très chauds.</strong> Pensez à nettoyer avant de ranger ! Merci.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🔊 Enceinte Bluetooth UB+</h3>
+                    <p>Allumer avec le bouton M/A. Pour l'appairage : presser le bouton Marche 2 secondes, puis sur votre appareil (téléphone) activer Bluetooth et sélectionner <strong>"UB+ Eupho E2"</strong>.</p>
+                    <p><strong>💡 Pensez à recharger régulièrement l'enceinte avec USB.</strong></p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🤖 Assistant Alexa</h3>
+                    <p>Alexa est reliée au Wifi et à internet. Commandes disponibles : <em>"Alexa quelle heure est-il ?"</em>, <em>"Alexa quelle sera la météo demain à Bandol ?"</em>, etc.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🛋️ Canapé convertible "Rapido"</h3>
+                    <p>Largeur 140. En tirant sur le lien en haut au milieu des deux dossiers, transformer le canapé en lit.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🧊 Congélateur & Mini réfrigérateur</h3>
+                    <p>Si le mini réfrigérateur n'est pas en route à votre arrivée, il se met en marche en tournant le bouton de réglage.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🛏️ Lit de 160</h3>
+                    <p>Matelas Epeda sur sommier Simon's.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>👶 Pour bébé</h3>
+                    <p>Table à langer fixable sur le lit bébé. Chaise haute pliante dans le grand placard. Lit parapluie dans le dressing de la chambre ou le grand placard bleu.</p>
+                    <p><strong>⚠️ Attention au dépliage :</strong> Vérifier que les 4 montants sont bien verrouillés.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🔒 Porte de chambre</h3>
+                    <p>Ferme à clé de l'intérieur et de l'extérieur. La petite fenêtre donne sur l'escalier extérieur.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🌡️ Radiateur chambre</h3>
+                    <p>Chauffage électrique d'appoint. Bouton on/off, V et ^ pour monter/descendre la température.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>📖 Modes d'emploi</h3>
+                    <p>Les modes d'emploi détaillés de l'ensemble des appareils de l'appartement se trouvent dans le tiroir de droite du meuble, sous la climatisation.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🚿 Douche - Double système</h3>
+                    <p>La douche comporte un double système : tête de douche + pommeau.</p>
+                    <ul>
+                        <li><strong>Robinet gauche :</strong> Rotation vers soi = pommeau, vers le mur = tête</li>
+                        <li><strong>Pommeau :</strong> 3 types de jets par appuis successifs sur le sélecteur</li>
+                        <li><strong>Robinet droit :</strong> Commande la température</li>
+                    </ul>
+                    <p><strong>⚠️ Danger :</strong> En appuyant sur le bouton d'arrêt pour poursuivre la rotation, vous risquez d'augmenter fortement la température et de provoquer des brûlures !</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🌡️ Radiateur salle de bain</h3>
+                    <p>Brancher la prise électrique murale derrière le radiateur, puis appuyer sur le petit interrupteur rouge sur le côté droit.</p>
+                    <p>Boutons tactiles identiques à ceux de la télécommande. Bouton 1 sur radiateur et 3 sur télécommande pour allumer/éteindre.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>⚡ Électricité - Disjoncteur</h3>
+                    <p>En cas de panne ou après un orage, vérifier le disjoncteur général dans le petit placard à gauche du WC. Ne jamais insister si ça ne tient pas.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>💧 Eau - Robinet rouge terrasse</h3>
+                    <p>Merci de ne pas fermer le robinet rouge sur la terrasse. Il alimente la jardinière grâce au programmateur.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🏊‍♀️ Piscine & Extérieurs</h2>
+                
+                <div class="tip-card">
+                    <h3>⏰ Heures d'ouverture piscine</h3>
+                    <p>La piscine est accessible de 8h à 20h. Respectez ces horaires pour le confort de tous.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>⛅ Store banne - Attention au vent</h3>
+                    <p><strong>⚠️ Important :</strong> En cas de risque de vent fort ou lorsque vous sortez (le vent arrive soudainement ici), pensez à bien replier le store banne de la terrasse et fermer les baies vitrées.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🌸 Jardinière et aromates</h3>
+                    <p>Au fil des saisons, vous trouverez dans la jardinière quelques aromates et parfois quelques fraises… Bonne dégustation ! 🍓</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>👥 Bonnes Pratiques</h2>
+                
+                <div class="tip-card">
+                    <h3>🤫 Respect des voisins</h3>
+                    <p>Vous allez vivre dans un espace où l'on croise peu ses voisins. Nous vous souhaitons de profiter agréablement de votre séjour, mais aussi de respecter au mieux la tranquillité des résidents.</p>
+                    <p style="margin-top: 10px;"><strong>⚠️ Règlement de la copropriété :</strong> Les nuisances sonores sont interdites, et l'accès à la partie gravillonnée devant la terrasse est interdit pour des raisons de sécurité.</p>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🆘 Numéros d'urgence</h3>
+                    <ul>
+                        <li><strong>Urgences générales :</strong> 112</li>
+                        <li><strong>Pompiers :</strong> 18</li>
+                        <li><strong>Police :</strong> 17</li>
+                        <li><strong>SAMU :</strong> 15</li>
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="section">
+                <h2>🍽️ Dépannage & Stock</h2>
+                
+                <div class="tip-card">
+                    <h3>🛒 Denrées de base</h3>
+                    <p>Nous sommes heureux de mettre à votre disposition un petit stock de denrées de base que vous trouverez en dépannage dans le placard.</p>
+                    <p><strong>🤝 Solidarité :</strong> Merci de penser à renouveler ce petit stock, que beaucoup auront le plaisir de trouver après des heures de voyage avant de pouvoir aller faire les premières courses.</p>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <h3>🌍 Engagement écologique</h3>
+                <p>Le respect de la terre, celle que nous laisserons à nos enfants, pour nous agriculteurs, est dans nos gènes. Nous vous invitons à effectuer quelques petits gestes pour la planète :</p>
+                <ul style="margin-top: 10px; text-align: left;">
+                    <li>Fermer les vitres de la baie, lors de l'utilisation de la climatisation</li>
+                    <li>Fermer les robinets et éteindre les lampes lorsque vous n'êtes plus dans une pièce</li>
+                    <li>Utiliser le tri sélectif</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>📱 Liens utiles</h2>
+                <div class="tip-card">
+                    <h3>🏘️ La Résidence des Katikias</h3>
+                    <p style="color: #666; margin-bottom: 10px;">Pour plus d'informations sur la résidence, les gardiens, la piscine et les services :</p>
+                    <p><a href="residence.html" style="color: #4CAF50; font-weight: bold; text-decoration: none;">👉 Consulter la page résidence</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Profitez bien de votre séjour à Katikias 33 ! 🌟</p>
+        </div>
+    </div>
+</body>
+</html>
+
