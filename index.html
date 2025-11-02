@@ -123,6 +123,23 @@
         .guide-card.nearby h3::before {
             content: '📍';
         }
+        .collapsible-card h4 .toggle-icon {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+        .collapsible-content {
+            animation: slideDown 0.3s ease;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 1000px;
+            }
+        }
         .guide-card p {
             font-size: 1rem;
             color: #666;
@@ -158,6 +175,14 @@
             color: #333;
             margin-bottom: 5px;
         }
+        a.quick-item {
+            transition: all 0.3s ease;
+        }
+        a.quick-item:hover {
+            background: #fff3cd;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
         .footer {
             text-align: center;
             padding: 20px;
@@ -182,9 +207,26 @@
         
         <div class="content">
             <div class="guide-grid">
-                <a href="tips_and_tricks.html" class="guide-card tips">
+                <div class="guide-card tips" style="display: block;">
                     <h3>✨ Bienvenue à la maison !</h3>
-                    <p>Tout ce que vous devez savoir pour profiter de votre séjour : codes d'accès, instructions détaillées, astuces et informations essentielles.</p>
+                    <p style="margin-left: 0;">Tout ce que vous devez savoir pour profiter de votre séjour : codes d'accès, instructions détaillées, astuces et informations essentielles.</p>
+                    <div style="margin-top: 20px; cursor: pointer;" onclick="toggleCollapsible(this)" class="collapsible-card">
+                        <h4 style="color: #9C27B0; font-size: 1rem; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between;">
+                            💌 Mot d'accueil <span class="toggle-icon">▼</span>
+                        </h4>
+                        <div class="collapsible-content" style="display: none; color: #555; line-height: 1.6; font-size: 0.95rem; padding-top: 10px;">
+                            <p>Nous sommes heureux de vous accueillir chez nous. Nous passons fréquemment de très agréables moments dans cet appartement et nous espérons qu'il en sera de même pour vous.</p>
+                            <p style="margin-top: 10px;">Nous avons mis tout notre cœur et beaucoup de soin pour meubler ce petit cocon et nous ne doutons pas, que vous saurez vous aussi en profiter et le préserver au mieux pour ceux qui vous succéderont.</p>
+                            <p style="margin-top: 10px;">Nous vous invitons avant tout, à profiter de l'appartement et de la vue magnifique qu'il offre sur la baie de Bandol l'île de Bendor et sur la mer. Nous avons réalisé ce guide pour rendre votre séjour plus agréable et pour essayer de répondre au mieux aux questions que vous pourriez vous poser.</p>
+                            <p style="margin-top: 15px; font-weight: bold; color: #9C27B0;">Bon séjour…</p>
+                            <p style="margin-top: 10px; font-style: italic; color: #666;">Béatrix et Jean-François.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="tips_and_tricks.html" class="guide-card tips">
+                    <h3>✨ Les essentiels à l'arrivée</h3>
+                    <p>Petites astuces sur les principaux équipements.</p>
                 </a>
                 
                 <a href="apartment_guide.html" class="guide-card apartment">
@@ -204,7 +246,7 @@
                 
                 <a href="departure_procedure.html" class="guide-card departure">
                     <h3>👋 Départ</h3>
-                    <p>Un dernier coup d’œil sur la baie et c’est l’heure du départ. Checklist de départ, procédures de nettoyage et toutes les étapes pour bien terminer votre séjour.</p>
+                    <p>Un dernier coup d'œil sur la baie et c'est l'heure du départ. Checklist de départ et toutes les étapes pour bien terminer votre séjour.</p>
                 </a>
             </div>
 
@@ -212,7 +254,7 @@
                 <h3>🔑 Accès Rapide</h3>
                 <div class="quick-info">
                     <div class="quick-item">
-                        <strong>🏠 Portail</strong>
+                        <strong>🚪 Portail</strong>
                         🚶‍♂️ Piéton : <strong style="font-size:1.2rem;">1398</strong><br/>
                         🚗 Voiture : <strong style="font-size:1.2rem;">1359</strong>
                     </div>
@@ -227,13 +269,14 @@
                         <strong>🏊‍♀️ Piscine</strong>
                         Bracelet rouge obligatoire
                         <div style="margin-top:8px;">
-                            <img src="images/bracelet_rouge.jpg" alt="Bracelet rouge piscine" style="max-width:100%; height:auto; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" onerror="this.style.display='none'">
+                            <img src="images/bracelet_rouge.png" alt="Bracelet rouge piscine" style="max-width:100%; height:auto; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" onerror="this.style.display='none'">
                         </div>
                     </div>
-                    <div class="quick-item">
+                    <a href="emergencies.html" class="quick-item" style="text-decoration: none; display: block;">
                         <strong>🚨 Urgences</strong>
-                        <strong style="font-size:1.2rem;">112</strong>
-                    </div>
+                        <strong style="font-size:1.2rem; color: #d32f2f;">112</strong>
+                        <div style="font-size:0.8rem; color:#666; margin-top:5px;">Voir tous les contacts</div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -242,12 +285,27 @@
             <p>Merci de votre confiance ! Bon séjour à Katikias 33 🌟</p>
         </div>
     </div>
+
+    <script>
+        // Toggle collapsible sections
+        function toggleCollapsible(element) {
+            const content = element.querySelector('.collapsible-content');
+            const icon = element.querySelector('.toggle-icon');
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                icon.textContent = '▲';
+            } else {
+                content.style.display = 'none';
+                icon.textContent = '▼';
+            }
+        }
+
+        // Cache busting for images
+        (function() {
+            var version = 'v=20251030T'+(new Date().getTime());
+            function bust(u){ if(!u || u.startsWith('data:')) return u; return u + (u.indexOf('?')>=0?'&':'?') + version; }
+            document.querySelectorAll('img[src]').forEach(function(img){ img.src = bust(img.getAttribute('src')); });
+        })();
+    </script>
 </body>
 </html>
-<script>
-  (function() {
-    var version = 'v=20251030T'+(new Date().getTime());
-    function bust(u){ if(!u || u.startsWith('data:')) return u; return u + (u.indexOf('?')>=0?'&':'?') + version; }
-    document.querySelectorAll('img[src]').forEach(function(img){ img.src = bust(img.getAttribute('src')); });
-  })();
-</script>

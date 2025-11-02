@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guide Pratique - Katikias 33</title>
+    <title>Les essentiels à l'arrivée - Katikias 33</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -76,17 +76,43 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
+        .tip-card.collapsible {
+            cursor: pointer;
+        }
         .tip-card h3 {
             color: #9C27B0;
             font-size: 1.1rem;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            width: 100%;
         }
         .tip-card h3::before {
             content: '💡';
             margin-right: 8px;
             font-size: 1.2rem;
+        }
+        .tip-card h3 .toggle-icon {
+            margin-left: auto;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+        .tip-card.collapsible.active h3 .toggle-icon {
+            transform: rotate(180deg);
+        }
+        .collapsible-content {
+            animation: slideDown 0.3s ease;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 1000px;
+            }
         }
         .tip-card p {
             color: #555;
@@ -151,22 +177,11 @@
     
     <div class="container">
         <div class="header">
-            <h1>✨ Guide Pratique</h1>
+            <h1>✨ Les essentiels à l'arrivée</h1>
             <p>Codes d'accès, instructions détaillées et informations essentielles</p>
         </div>
         
         <div class="content">
-            <div class="section">
-                <h2>👋 Bienvenue</h2>
-                <div class="tip-card">
-                    <h3>Bienvenue</h3>
-                    <p>Nous sommes heureux de vous accueillir chez nous. Nous passons fréquemment de très agréables moments dans cet appartement et nous espérons qu’il en sera de même pour vous.</p>
-                    <p>Nous avons mis tout notre cœur et beaucoup de soin pour meubler ce petit cocon et nous ne doutons pas, que vous saurez vous aussi en profiter et le préserver au mieux pour ceux qui vous succéderont.</p>
-                    <p>Nous vous invitons avant tout, à profiter de l’appartement et de la vue magnifique qu’il offre sur la baie de Bandol l’île de Bendor et sur la mer. Nous avons réalisé ce guide pour rendre votre séjour plus agréable et pour essayer de répondre au mieux aux questions que vous pourriez vous poser.</p>
-                    <p>Bon séjour…</p>
-                    <p>Béatrix et Jean-François.</p>
-                </div>
-            </div>
             <div class="section">
                 <h2>🏠 Vie Quotidienne</h2>
                 
@@ -422,13 +437,25 @@
             <p>Profitez bien de votre séjour à Katikias 33 ! 🌟</p>
         </div>
     </div>
+
+    <script>
+        // Toggle collapsible sections
+        function toggleCollapsible(element) {
+            element.classList.toggle('active');
+            const content = element.querySelector('.collapsible-content');
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+            } else {
+                content.style.display = 'none';
+            }
+        }
+
+        // Cache busting for images
+        (function() {
+            var version = 'v=20251030T'+(new Date().getTime());
+            function bust(u){ if(!u || u.startsWith('data:')) return u; return u + (u.indexOf('?')>=0?'&':'?') + version; }
+            document.querySelectorAll('img[src]').forEach(function(img){ img.src = bust(img.getAttribute('src')); });
+        })();
+    </script>
 </body>
 </html>
-<script>
-  (function() {
-    var version = 'v=20251030T'+(new Date().getTime());
-    function bust(u){ if(!u || u.startsWith('data:')) return u; return u + (u.indexOf('?')>=0?'&':'?') + version; }
-    document.querySelectorAll('img[src]').forEach(function(img){ img.src = bust(img.getAttribute('src')); });
-  })();
-</script>
-

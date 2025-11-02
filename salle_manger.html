@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salle à Manger - Katikias 33</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f6f8ff; color: #333; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden; }
+        .header { background: linear-gradient(135deg,#2196F3,#1976D2); color:#fff; padding: 28px; text-align:center; }
+        .header h1 { font-size: 1.9rem; }
+        .content { padding: 24px 24px 10px; }
+        ul { margin-left: 18px; line-height: 1.7; }
+        li { margin-bottom: 4px; }
+        .back-button { position: fixed; top: 16px; left: 16px; background:#fff; border:none; padding:10px 14px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-decoration:none; color:#333; }
+        .footer { text-align:center; padding: 18px; color:#999; border-top:1px solid #eee; }
+        .item-photo { margin: 8px 0 16px 18px; }
+        .item-photo img { max-width: 320px; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
+    </style>
+</head>
+<body>
+    <a href="apartment_guide.html" class="back-button">← Retour</a>
+    <div class="container">
+        <div class="header">
+            <h1>🍽️ Salle à Manger</h1>
+        </div>
+        <div class="content">
+            <ul>
+                <li>Climatisation</li>
+            </ul>
+        </div>
+        <div class="footer">Katikias 33</div>
+    </div>
+    <script>
+    (function(){
+        const pageKey = 'salle_manger';
+        const exts = ['jpg','png','webp','jpeg'];
+        function slugify(text){
+            return text.toLowerCase()
+                .normalize('NFD').replace(/\p{Diacritic}/gu,'')
+                .replace(/[^a-z0-9]+/g,'_')
+                .replace(/^_+|_+$/g,'')
+                .replace(/_{2,}/g,'_');
+        }
+        function trySetImage(img, bases){
+            let i = 0, j = 0;
+            function next(){
+                if(i >= bases.length) { img.style.display='none'; return; }
+                const src = 'images/' + bases[i] + '.' + exts[j];
+                const probe = new Image();
+                probe.onload = function(){ img.src = src; img.style.display='block'; };
+                probe.onerror = function(){ j++; if(j>=exts.length){ j=0; i++; } next(); };
+                probe.src = src;
+            }
+            next();
+        }
+        document.querySelectorAll('ul li').forEach(li =>{
+            const label = li.textContent.trim();
+            const slug = slugify(label);
+            const bases = [pageKey + '_' + slug, slug];
+            const wrap = document.createElement('div');
+            wrap.className = 'item-photo';
+            const img = document.createElement('img');
+            img.alt = label;
+            img.style.display = 'none';
+            wrap.appendChild(img);
+            li.parentElement.insertBefore(wrap, li.nextSibling);
+            trySetImage(img, bases);
+        });
+    })();
+    </script>
+    <script>
+      (function() {
+        var version = 'v=20251030T'+(new Date().getTime());
+        function bust(u){ if(!u || u.startsWith('data:')) return u; return u + (u.indexOf('?')>=0?'&':'?') + version; }
+        document.querySelectorAll('img[src]').forEach(function(img){ if(!img.src.includes('/images/')) return; img.src = bust(img.getAttribute('src')); });
+      })();
+    </script>
+</body>
+</html>
+
+
