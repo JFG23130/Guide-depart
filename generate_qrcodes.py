@@ -7,11 +7,9 @@ Script pour générer les QR codes pour le guide Katikias 33
 import qrcode
 from qrcode.image.pil import PilImage
 
-# URLs - Utiliser l'URL GitHub Pages qui fonctionne
-# Pour utiliser le domaine personnalisé guide.katikias33.fr, remplacez par :
-# BASE_URL = "https://guide.katikias33.fr"
-# Note: Si le domaine personnalisé est configuré, utilisez "/" au lieu de "/index.html"
-BASE_URL = "https://jfg23130.github.io/Guide-depart"
+# URLs - Utiliser le domaine personnalisé guide.katikias33.fr
+# Le domaine est configuré et vérifié dans GitHub Pages ✅
+BASE_URL = "https://guide.katikias33.fr"
 
 # Définition des 3 QR codes
 qr_codes = [
