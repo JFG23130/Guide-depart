@@ -17,6 +17,8 @@
         .footer { text-align:center; padding: 18px; color:#999; border-top:1px solid #eee; }
         .item-photo { margin: 8px 0 16px 18px; }
         .item-photo img { max-width: 320px; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
+        .item-photo a { display: block; }
+        .caption { font-size: 0.85rem; color: #666; margin-top: 5px; font-style: italic; }
     </style>
 </head>
 <body>
@@ -55,18 +57,84 @@
             }
             next();
         }
+        function findAdditionalImages(baseName, parentWrap, captions){
+            // Chercher images supplémentaires: nom_2, nom_3, etc.
+            for(let num = 2; num <= 10; num++){
+                let found = false;
+                const bases = [pageKey + '_' + baseName + '_' + num, baseName + '_' + num];
+                for(let baseIdx = 0; baseIdx < bases.length && !found; baseIdx++){
+                    for(let extIdx = 0; extIdx < exts.length && !found; extIdx++){
+                        const src = 'images/' + bases[baseIdx] + '.' + exts[extIdx];
+                        const probe = new Image();
+                        probe.onerror = function(){};
+                        probe.onload = function(){
+                            found = true;
+                            const img = document.createElement('img');
+                            img.src = src;
+                            img.alt = 'Image ' + num;
+                            img.style.maxWidth = '320px';
+                            img.style.width = '100%';
+                            img.style.height = 'auto';
+                            img.style.borderRadius = '10px';
+                            img.style.boxShadow = '0 4px 10px rgba(0,0,0,0.12)';
+                            img.style.marginTop = '10px';
+                            parentWrap.appendChild(img);
+                            // Ajouter légende si disponible (légende pour image_2 = index 1, image_3 = index 2, etc.)
+                            if(captions && captions[num]){
+                                const cap = document.createElement('div');
+                                cap.className = 'caption';
+                                cap.textContent = captions[num];
+                                parentWrap.appendChild(cap);
+                            }
+                        };
+                        probe.src = src;
+                    }
+                }
+            }
+        }
         document.querySelectorAll('ul li').forEach(li =>{
             const label = li.textContent.trim();
             const slug = slugify(label);
             const bases = [pageKey + '_' + slug, slug];
             const wrap = document.createElement('div');
             wrap.className = 'item-photo';
+            
+            // Vérifier si un PDF est associé
+            const pdfPath = li.getAttribute('data-pdf');
+            let imgParent = wrap;
+            if(pdfPath){
+                const link = document.createElement('a');
+                link.href = pdfPath;
+                link.target = '_blank';
+                link.style.cursor = 'pointer';
+                wrap.appendChild(link);
+                imgParent = link;
+            }
+            
             const img = document.createElement('img');
             img.alt = label;
             img.style.display = 'none';
-            wrap.appendChild(img);
+            if(pdfPath){
+                img.style.cursor = 'pointer';
+            }
+            imgParent.appendChild(img);
             li.parentElement.insertBefore(wrap, li.nextSibling);
             trySetImage(img, bases);
+            // Récupérer les légendes depuis data-captions
+            const captionsData = li.getAttribute('data-captions');
+            let captions = null;
+            if(captionsData){
+                captions = captionsData.split('|').map(c => c.trim());
+            }
+            // Chercher images supplémentaires avec légendes
+            findAdditionalImages(slug, wrap, captions);
+            // Ajouter légende pour l'image principale si disponible
+            if(captions && captions[0]){
+                const cap = document.createElement('div');
+                cap.className = 'caption';
+                cap.textContent = captions[0];
+                wrap.appendChild(cap);
+            }
         });
     })();
     </script>
