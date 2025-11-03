@@ -15,7 +15,7 @@ def compress_image(input_path, output_path, quality=85, max_size_kb=300):
         img = Image.open(input_path)
         
         # Si l'image est trop grande, redimensionner
-        max_dimension = 1920  # Largeur/hauteur max
+        max_dimension = 1200  # Largeur/hauteur max réduit à 1200px pour le web
         
         if img.width > max_dimension or img.height > max_dimension:
             img.thumbnail((max_dimension, max_dimension), Image.Resampling.LANCZOS)
@@ -44,7 +44,7 @@ def main():
     print("")
     
     image_dir = Path("images")
-    target_size_kb = 300
+    target_size_kb = 150  # Réduit à 150KB pour de meilleures performances web
     compressed_count = 0
     total_saved = 0
     
@@ -63,12 +63,18 @@ def main():
             # Déterminer le format de sortie et la qualité
             if img_file.suffix.lower() in ['.jpg', '.jpeg']:
                 output_path = output_path.with_suffix('.jpg')
-                quality = 80
-            elif size_kb > 500:  # PNG très gros → convertir en JPG
+                # Qualité adaptative pour JPG selon taille
+                if size_kb > 200:
+                    quality = 50
+                elif size_kb > 150:
+                    quality = 55
+                else:
+                    quality = 60
+            elif size_kb > 300:  # PNG > 300KB → convertir en JPG
                 output_path = output_path.with_suffix('.jpg')
-                quality = 85
+                quality = 55
             else:
-                quality = 90
+                quality = 80  # PNG < 300KB conservé mais compressé
             
             new_size_kb = compress_image(img_file, output_path, quality)
             
