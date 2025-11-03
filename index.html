@@ -188,6 +188,12 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+        /* Hover pour la section Essentiels */
+        .essentiels-link:hover {
+            background: #bbdefb !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
+        }
         .footer {
             text-align: center;
             padding: 20px;
@@ -226,13 +232,13 @@
                             <p style="margin-top: 10px; font-style: italic; color: #666;">Béatrix et Jean-François.</p>
                         </div>
                     </div>
-                    <div style="margin-top: 20px; padding: 15px; background: #e3f2fd; border-radius: 10px; border: 2px solid #2196F3;">
-                        <a href="tips_and_tricks.html" style="color: #1976D2; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: space-between;">
+                    <a href="tips_and_tricks.html" class="essentiels-link" style="display: block; margin-top: 20px; padding: 15px; background: #e3f2fd; border-radius: 10px; border: 2px solid #2196F3; text-decoration: none; transition: all 0.3s ease; cursor: pointer;">
+                        <div style="color: #1976D2; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: space-between; pointer-events: none;">
                             <span>✨ Essentiels à l'arrivée</span>
                             <span style="font-size: 0.9rem;">→</span>
-                        </a>
-                        <p style="color: #555; font-size: 0.9rem; margin-top: 5px;">Petites astuces pour faciliter votre installation et votre séjour.</p>
-                    </div>
+                        </div>
+                        <p style="color: #555; font-size: 0.9rem; margin-top: 5px; pointer-events: none;">Petites astuces pour faciliter votre installation et votre séjour.</p>
+                    </a>
                 </div>
                 
                 <a href="apartment_guide.html" class="guide-card apartment">
