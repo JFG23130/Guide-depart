@@ -6,7 +6,7 @@ Certaines images font plus de 300KB ou même 1000KB+, ce qui ralentit le chargem
 
 ## Solution Automatique
 
-Un script Python compresse automatiquement toutes les images de plus de 300KB.
+Un script Python compresse automatiquement toutes les images de plus de 150KB.
 
 ### Utilisation
 
@@ -18,10 +18,11 @@ python compress_images.py
 ### Résultats
 
 Le script :
-- ✅ Compresse automatiquement les images > 300KB
+- ✅ Compresse automatiquement les images > 150KB
 - ✅ Réduit jusqu'à 90% la taille (de 1400KB à 60KB par exemple)
-- ✅ Redimensionne si nécessaire (max 1920px)
+- ✅ Redimensionne si nécessaire (max 1200px pour le web)
 - ✅ Convertit les PNG très lourds en JPG
+- ✅ Qualité adaptative selon la taille de l'image
 - ✅ Ne remplace que si la compression est efficace
 - ✅ Conserve les originaux si la compression n'améliore pas
 
@@ -43,7 +44,8 @@ Four_micro_onde.png : 173,06 KB (-87,9%)
 
 ### Économies Typiques
 
-- **~25MB économisés** sur un guide complet
+- **~20MB économisés** sur un guide complet (de ~30MB à ~7.5MB)
+- **Taille moyenne** : ~100KB par image
 - **Chargement 5-10x plus rapide** sur mobile
 - **Meilleure expérience utilisateur** sur connexions lentes
 
@@ -64,10 +66,10 @@ Si vous préférez compresser manuellement :
 
 ### Paramètres Recommandés
 
-- **JPG** : Qualité 80-85
-- **PNG** : Si > 500KB, convertir en JPG
-- **Résolution** : Max 1920px de large/haute
-- **Poids cible** : < 300KB par image
+- **JPG** : Qualité 50-75 selon la taille
+- **PNG** : Si > 300KB, convertir en JPG
+- **Résolution** : Max 1200px de large/haute
+- **Poids cible** : < 150KB par image
 
 ## Règles Importantes
 
@@ -79,7 +81,7 @@ Si vous préférez compresser manuellement :
 ❌ **À éviter** :
 - Compresser plusieurs fois (perte de qualité)
 - Compresser les QR codes (ils doivent rester nets)
-- Compresser les petits fichiers déjà optimisés
+- Compresser les petits fichiers déjà optimisés (< 150KB)
 
 ## Quand Exécuter le Script
 
@@ -100,5 +102,5 @@ Le script utilise Python + Pillow (PIL) pour :
 
 Les fichiers suivants sont **intentionnellement non compressés** :
 - QR codes (.png)
-- Fichiers < 300KB déjà optimisés
+- Fichiers < 150KB déjà optimisés
 
