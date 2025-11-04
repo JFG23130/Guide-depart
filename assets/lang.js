@@ -14,6 +14,10 @@ const translations = {
         "apartment.title": "Plan de l'appartement",
 
         // apartment_guide
+        "apartment_guide.a.essentiels_à_larrivée": "✨ Essentiels à l'arrivée",
+        "apartment_guide.a.la_résidence": "🏘️ La Résidence",
+        "apartment_guide.a.mon_départ": "👋 Mon départ",
+        "apartment_guide.a.à_proximité": "📍 À Proximité",
         "apartment_guide.h2.liens_utiles": "📱 Liens Utiles",
         "apartment_guide.h2.plan_de_lappartement": "📚 Plan de l'appartement",
         "apartment_guide.li.essentiels_à_larrivée": "✨ Essentiels à l'arrivée",
@@ -25,6 +29,15 @@ const translations = {
         "apartment_guide.p.image_du_plan_non_trouvée": "Image du plan non trouvée",
         "apartment_guide.p.placez_plan_appartement_cliquablepng_dan": "Placez plan_appartement_cliquable.png",
         "apartment_guide.p.plan_de_l39appartement": "📐 Plan de l&#39;Appartement",
+        "apartment_guide.title": "🏠 Appartement et équipements",
+        "apartment_guide.zone.chambre": "🛏️ Chambre",
+        "apartment_guide.zone.cuisine": "🍽️ Cuisine",
+        "apartment_guide.zone.placard_bleu": "🗄️ Placard Bleu",
+        "apartment_guide.zone.salle_deau": "🛁 Salle d'eau",
+        "apartment_guide.zone.salle_manger": "🍽️ Salle à manger",
+        "apartment_guide.zone.salon": "🛋️ Salon",
+        "apartment_guide.zone.terrasse": "🌤️ Terrasse",
+        "apartment_guide.zone.wc": "🚻 WC",
 
         // arrival_guide
         "arrival_guide.h2.codes_daccès": "🔑 Codes d'Accès",
@@ -103,11 +116,17 @@ const translations = {
         "departure_procedure.li.couper_le_radiateur_de_la_chambre_de_la": "Couper le radiateur de la chambre, de la salle d'eau et du salon",
         "departure_procedure.li.débrancher_les_appareils_non_essentiels": "Débrancher les appareils non essentiels",
         "departure_procedure.li.fermer_toutes_les_baies_vitrées": "Fermer toutes les baies vitrées",
+        "departure_procedure.li.la_télécommandes_de_la_télévision_et_de_la_box_tv": "la télécommandes de la Télévision et de la box TV",
         "departure_procedure.li.les_4_télécommandes_des_volets_et_celle": "les 4 télécommandes des volets et celle du store",
         "departure_procedure.li.les_bracelets_piscine": "les bracelets piscine",
         "departure_procedure.li.les_clés_de_la_maison": "les clés de la maison",
+        "departure_procedure.li.merci_de_laisser_lappartement_comme_vous_lavez_trouvé": "🧼 Merci de laisser l'appartement comme vous l'avez trouvé\n                            L'électroménager, la vaisselle propre et rangée.",
+        "departure_procedure.li.merci_de_penser_à_renouveler_ce_petit_stock": "Merci de penser à renouveler ce petit stock, que beaucoup auront le plaisir de trouver après des heures de voyage avant de pouvoir aller faire les premières courses.",
+        "departure_procedure.li.poubelle_générale_noir": "Poubelle générale (noir)",
         "departure_procedure.li.poubelle_recyclage_jaune": "Poubelle recyclage (jaune)",
+        "departure_procedure.li.replier_le_store": "Replier le store",
         "departure_procedure.li.éteindre_la_télévision_de_la_chambre_et": "Éteindre la télévision de la chambre et du salon",
+        "departure_procedure.li.éteindre_toutes_les_lumières_intérieures_et_extérieures": "Éteindre toutes les lumières intérieures et extérieures",
         "departure_procedure.p.appelez_immédiatement": "Appelez immédiatement :",
         "departure_procedure.p.avant_11_heures": "avant 11 heures.",
         "departure_procedure.p.ceux_qui_vous_ont_précédé_ont_laissé_à_v": "Ceux qui vous ont précédé, ont laissé à votre disposition un petit stock de denrées de base en dépannage dans le placard.",
@@ -296,6 +315,8 @@ const translations = {
         "tips.title": "Les Essentiels à l'arrivée",
 
         // tips_and_tricks
+        "tips_and_tricks.a.consulter_la_page_résidence": "👉 Consulter la page résidence",
+        "tips_and_tricks.a.consulter_le_guide_des_équipements_par_pièce": "👉 Consulter le guide des équipements par pièce",
         "tips_and_tricks.h2.accès_connexions": "📶 Accès & Connexions",
         "tips_and_tricks.h2.cuisine": "🍳 Cuisine",
         "tips_and_tricks.h2.extérieurs_vent": "⛅ Extérieurs & Vent",
@@ -362,17 +383,30 @@ const translations = {
         "apartment.title": "Apartment plan",
 
         // apartment_guide
+        "apartment_guide.a.essentiels_à_larrivée": "✨ Essentials upon arrival",
+        "apartment_guide.a.la_résidence": "🏘️ The Residence",
+        "apartment_guide.a.mon_départ": "👋 My departure",
+        "apartment_guide.a.à_proximité": "📍 Nearby",
         "apartment_guide.h2.liens_utiles": "📱 Useful Links",
         "apartment_guide.h2.plan_de_lappartement": "📚 Apartment plan",
         "apartment_guide.li.essentiels_à_larrivée": "✨ Essentials upon arrival",
         "apartment_guide.li.la_résidence": "🏘️ The Residence",
         "apartment_guide.li.mon_départ": "👋 My departure",
         "apartment_guide.li.à_proximité": "📍 Nearby",
-        "apartment_guide.p.besoin_daide_contacteznous_bon_séjour_à": "Need help? Contact us! Enjoy your stay at Katikias 33 🌟",
+        "apartment_guide.p.besoin_daide_contacteznous_bon_séjour_à": "Need help? Contact us! Enjoy your stay in Katikias 33 🌟",
         "apartment_guide.p.cliquez_sur_une_pièce_pour_plus_dinforma": "Click on a part for more information",
         "apartment_guide.p.image_du_plan_non_trouvée": "Plan image not found",
         "apartment_guide.p.placez_plan_appartement_cliquablepng_dan": "Place plan_apartment_cliquable.png",
         "apartment_guide.p.plan_de_l39appartement": "📐 Apartment Plan",
+        "apartment_guide.title": "🏠 Apartment and equipment",
+        "apartment_guide.zone.chambre": "🛏️ Bedroom",
+        "apartment_guide.zone.cuisine": "🍽️ Cooking",
+        "apartment_guide.zone.placard_bleu": "🗄️ Blue Closet",
+        "apartment_guide.zone.salle_deau": "🛁 Powder room",
+        "apartment_guide.zone.salle_manger": "🍽️ Dining room",
+        "apartment_guide.zone.salon": "🛋️ Living room",
+        "apartment_guide.zone.terrasse": "🌤️ Terrace",
+        "apartment_guide.zone.wc": "🚻 WC",
 
         // arrival_guide
         "arrival_guide.h2.codes_daccès": "🔑 Access Codes",
@@ -451,11 +485,17 @@ const translations = {
         "departure_procedure.li.couper_le_radiateur_de_la_chambre_de_la": "Turn off the radiator in the bedroom, bathroom and living room",
         "departure_procedure.li.débrancher_les_appareils_non_essentiels": "Unplug non-essential devices",
         "departure_procedure.li.fermer_toutes_les_baies_vitrées": "Close all windows",
+        "departure_procedure.li.la_télécommandes_de_la_télévision_et_de_la_box_tv": "TV and TV box remote controls",
         "departure_procedure.li.les_4_télécommandes_des_volets_et_celle": "the 4 remote controls for the shutters and the one for the blind",
         "departure_procedure.li.les_bracelets_piscine": "swimming pool bracelets",
         "departure_procedure.li.les_clés_de_la_maison": "house keys",
+        "departure_procedure.li.merci_de_laisser_lappartement_comme_vous_lavez_trouvé": "🧼 Please leave the apartment as you found it\n                            Household appliances, dishes clean and tidy.",
+        "departure_procedure.li.merci_de_penser_à_renouveler_ce_petit_stock": "Thank you for thinking about renewing this small stock, which many will have the pleasure of finding after hours of traveling before being able to go shopping.",
+        "departure_procedure.li.poubelle_générale_noir": "General trash can (black)",
         "departure_procedure.li.poubelle_recyclage_jaune": "Recycling bin (yellow)",
+        "departure_procedure.li.replier_le_store": "Fold the blind",
         "departure_procedure.li.éteindre_la_télévision_de_la_chambre_et": "Turn off the television in the bedroom and living room",
+        "departure_procedure.li.éteindre_toutes_les_lumières_intérieures_et_extérieures": "Turn off all interior and exterior lights",
         "departure_procedure.p.appelez_immédiatement": "Call immediately:",
         "departure_procedure.p.avant_11_heures": "before 11 a.m.",
         "departure_procedure.p.ceux_qui_vous_ont_précédé_ont_laissé_à_v": "Those who have gone before you have left a small stock of basic foodstuffs at your disposal in the cupboard.",
@@ -488,11 +528,11 @@ const translations = {
         "index.equipements.desc": "Air conditioning, Television, Oven, induction hobs, roller shutters... for each room in the apartment: Living room, Terrace, Kitchen...",
         "index.equipements.title": "Equipment",
         "index.essentiels.desc": "Little tips to make your arrival and stay easier.",
-        "index.essentiels.title": "✨ Essentials on arrival",
+        "index.essentiels.title": "✨ Essentials upon arrival",
         "index.footer": "Thank you for your trust! Enjoy your stay in Katikias 33 🌟",
         "index.p.bon_séjour": "Enjoy your stay…",
         "index.p.béatrix_et_jeanfrançois": "Béatrix and Jean-François.",
-        "index.p.climatisation_télévision_four_plaques_à": "Air conditioning, Television, Oven, induction hob, roller shutters... in each room of the apartments: Living room, Terrace, Kitchen...",
+        "index.p.climatisation_télévision_four_plaques_à": "Air conditioning, Television, Oven, induction hob, roller shutters... in each room of the apartment: Living room, Terrace, Kitchen...",
         "index.p.commerces_activités_plages_et_accès_rapi": "Shops, activities, beaches and quick access around the Katikias.",
         "index.p.informations_sur_la_résidence_des_katiki": "Information on the Katikias residence, caretakers, swimming pool, park and co-ownership services.",
         "index.p.nous_avons_mis_tout_notre_cœur_et_beauco": "We have put all our heart and a lot of care into furnishing this little cocoon and we have no doubt that you too will be able to enjoy it and preserve it as best as possible for those who come after you.",
@@ -520,7 +560,7 @@ const translations = {
         "index.strong.wifi": "📶 WiFi",
         "index.subtitle": "Your complete digital guide",
         "index.title": "🏡 Katikias 33",
-        "index.welcome.greeting": "💌 Welcome message",
+        "index.welcome.greeting": "💌 Welcome word",
         "index.welcome.text1": "We are happy to welcome you to our home. We often spend very pleasant moments in this apartment and we hope it will be the same for you.",
         "index.welcome.text2": "We have put all our heart and a lot of care into furnishing this little haven and we have no doubt that you will also be able to enjoy it and preserve it as best as possible for those who will follow you.",
         "index.welcome.text3": "We invite you, above all, to enjoy the apartment and the magnificent view it offers of Bandol Bay, Bendor Island and the sea. We created this guide to make your stay more pleasant and to try to answer as best as possible the questions you might have.",
@@ -644,6 +684,8 @@ const translations = {
         "tips.title": "Essentials on arrival",
 
         // tips_and_tricks
+        "tips_and_tricks.a.consulter_la_page_résidence": "👉 Consult the residence page",
+        "tips_and_tricks.a.consulter_le_guide_des_équipements_par_pièce": "👉 Consult the equipment guide by room",
         "tips_and_tricks.h2.accès_connexions": "📶 Access & Connections",
         "tips_and_tricks.h2.cuisine": "🍳 Cooking",
         "tips_and_tricks.h2.extérieurs_vent": "⛅ Exteriors & Wind",
@@ -710,17 +752,30 @@ const translations = {
         "apartment.title": "Wohnungsplan",
 
         // apartment_guide
+        "apartment_guide.a.essentiels_à_larrivée": "✨ Das Nötigste bei der Ankunft",
+        "apartment_guide.a.la_résidence": "🏘️ Die Residenz",
+        "apartment_guide.a.mon_départ": "👋Mein Abschied",
+        "apartment_guide.a.à_proximité": "📍In der Nähe",
         "apartment_guide.h2.liens_utiles": "📱 Nützliche Links",
         "apartment_guide.h2.plan_de_lappartement": "📚 Wohnungsplan",
         "apartment_guide.li.essentiels_à_larrivée": "✨ Das Nötigste bei der Ankunft",
         "apartment_guide.li.la_résidence": "🏘️ Die Residenz",
         "apartment_guide.li.mon_départ": "👋Mein Abschied",
         "apartment_guide.li.à_proximité": "📍In der Nähe",
-        "apartment_guide.p.besoin_daide_contacteznous_bon_séjour_à": "Brauchen Sie Hilfe? Kontaktieren Sie uns! Genießen Sie Ihren Aufenthalt im Katikias 33 🌟",
+        "apartment_guide.p.besoin_daide_contacteznous_bon_séjour_à": "Brauchen Sie Hilfe? Kontaktieren Sie uns! Genießen Sie Ihren Aufenthalt in Katikias 33 🌟",
         "apartment_guide.p.cliquez_sur_une_pièce_pour_plus_dinforma": "Klicken Sie auf ein Teil, um weitere Informationen zu erhalten",
         "apartment_guide.p.image_du_plan_non_trouvée": "Planbild nicht gefunden",
         "apartment_guide.p.placez_plan_appartement_cliquablepng_dan": "Platzieren Sie plan_apartment_cliquable.png",
         "apartment_guide.p.plan_de_l39appartement": "📐 Wohnungsplan",
+        "apartment_guide.title": "🏠 Wohnung und Ausstattung",
+        "apartment_guide.zone.chambre": "🛏️ Schlafzimmer",
+        "apartment_guide.zone.cuisine": "🍽️ Kochen",
+        "apartment_guide.zone.placard_bleu": "🗄️ Blauer Schrank",
+        "apartment_guide.zone.salle_deau": "🛁 Gästetoilette",
+        "apartment_guide.zone.salle_manger": "🍽️ Esszimmer",
+        "apartment_guide.zone.salon": "🛋️ Wohnzimmer",
+        "apartment_guide.zone.terrasse": "🌤️ Terrasse",
+        "apartment_guide.zone.wc": "🚻 WC",
 
         // arrival_guide
         "arrival_guide.h2.codes_daccès": "🔑 Zugangscodes",
@@ -799,11 +854,17 @@ const translations = {
         "departure_procedure.li.couper_le_radiateur_de_la_chambre_de_la": "Schalten Sie den Heizkörper im Schlafzimmer, Bad und Wohnzimmer aus",
         "departure_procedure.li.débrancher_les_appareils_non_essentiels": "Trennen Sie nicht unbedingt benötigte Geräte vom Stromnetz",
         "departure_procedure.li.fermer_toutes_les_baies_vitrées": "Schließen Sie alle Fenster",
+        "departure_procedure.li.la_télécommandes_de_la_télévision_et_de_la_box_tv": "Fernbedienungen für Fernseher und TV-Boxen",
         "departure_procedure.li.les_4_télécommandes_des_volets_et_celle": "die 4 Fernbedienungen für die Rollläden und die für die Jalousie",
         "departure_procedure.li.les_bracelets_piscine": "Schwimmbecken-Armbänder",
         "departure_procedure.li.les_clés_de_la_maison": "Hausschlüssel",
+        "departure_procedure.li.merci_de_laisser_lappartement_comme_vous_lavez_trouvé": "🧼 Bitte verlassen Sie die Wohnung so, wie Sie sie vorgefunden haben\n                            Haushaltsgeräte, Geschirr sauber und ordentlich.",
+        "departure_procedure.li.merci_de_penser_à_renouveler_ce_petit_stock": "Vielen Dank, dass Sie darüber nachgedacht haben, diesen kleinen Vorrat zu erneuern, den viele nach stundenlanger Reise finden werden, bevor sie einkaufen gehen können.",
+        "departure_procedure.li.poubelle_générale_noir": "Allgemeiner Mülleimer (schwarz)",
         "departure_procedure.li.poubelle_recyclage_jaune": "Recyclingbehälter (gelb)",
+        "departure_procedure.li.replier_le_store": "Falten Sie die Jalousie",
         "departure_procedure.li.éteindre_la_télévision_de_la_chambre_et": "Schalten Sie den Fernseher im Schlafzimmer und im Wohnzimmer aus",
+        "departure_procedure.li.éteindre_toutes_les_lumières_intérieures_et_extérieures": "Schalten Sie alle Innen- und Außenlichter aus",
         "departure_procedure.p.appelez_immédiatement": "Rufen Sie sofort an:",
         "departure_procedure.p.avant_11_heures": "vor 11 Uhr",
         "departure_procedure.p.ceux_qui_vous_ont_précédé_ont_laissé_à_v": "Diejenigen, die vor Ihnen gegangen sind, haben einen kleinen Vorrat an Grundnahrungsmitteln im Schrank gelassen.",
@@ -836,8 +897,8 @@ const translations = {
         "index.equipements.desc": "Klimaanlage, Fernseher, Ofen, Induktionskochfelder, Rollläden... für jeden Raum der Wohnung: Wohnzimmer, Terrasse, Küche...",
         "index.equipements.title": "Ausrüstung",
         "index.essentiels.desc": "Kleine Tipps, um Ihre Ankunft und Ihren Aufenthalt zu erleichtern.",
-        "index.essentiels.title": "✨ Wichtiges bei Ankunft",
-        "index.footer": "Vielen Dank für Ihr Vertrauen! Genießen Sie Ihren Aufenthalt im Katikias 33 🌟",
+        "index.essentiels.title": "✨ Das Nötigste bei der Ankunft",
+        "index.footer": "Vielen Dank für Ihr Vertrauen! Genießen Sie Ihren Aufenthalt in Katikias 33 🌟",
         "index.p.bon_séjour": "Genießen Sie Ihren Aufenthalt…",
         "index.p.béatrix_et_jeanfrançois": "Béatrix und Jean-François.",
         "index.p.climatisation_télévision_four_plaques_à": "Klimaanlage, Fernseher, Backofen, Induktionskochfeld, Rollläden... in jedem Zimmer der Wohnungen: Wohnzimmer, Terrasse, Küche...",
@@ -868,7 +929,7 @@ const translations = {
         "index.strong.wifi": "📶 WLAN",
         "index.subtitle": "Ihr vollständiger digitaler Leitfaden",
         "index.title": "🏡 Katikias 33",
-        "index.welcome.greeting": "💌 Willkommensnachricht",
+        "index.welcome.greeting": "💌 Willkommenswort",
         "index.welcome.text1": "Wir freuen uns, Sie in unserem Zuhause begrüßen zu dürfen. Wir verbringen oft sehr angenehme Momente in dieser Wohnung und hoffen, dass es für Sie genauso sein wird.",
         "index.welcome.text2": "Wir haben unser ganzes Herz und viel Sorgfalt in die Einrichtung dieses kleinen Zufluchtsorts gesteckt und zweifeln nicht daran, dass Sie es auch genießen und bestmöglich für diejenigen bewahren können, die Ihnen folgen werden.",
         "index.welcome.text3": "Wir laden Sie vor allem ein, die Wohnung und die herrliche Aussicht auf die Bucht von Bandol, die Insel Bendor und das Meer zu genießen. Wir haben diesen Führer erstellt, um Ihren Aufenthalt angenehmer zu gestalten und Ihre Fragen bestmöglich zu beantworten.",
@@ -992,6 +1053,8 @@ const translations = {
         "tips.title": "Wichtiges bei Ankunft",
 
         // tips_and_tricks
+        "tips_and_tricks.a.consulter_la_page_résidence": "👉 Konsultieren Sie die Residenzseite",
+        "tips_and_tricks.a.consulter_le_guide_des_équipements_par_pièce": "👉 Konsultieren Sie die Ausrüstungsanleitung für jeden Raum",
         "tips_and_tricks.h2.accès_connexions": "📶 Zugang und Verbindungen",
         "tips_and_tricks.h2.cuisine": "🍳 Kochen",
         "tips_and_tricks.h2.extérieurs_vent": "⛅ Außenbereiche und Wind",
@@ -1058,6 +1121,10 @@ const translations = {
         "apartment.title": "Plan del apartamento",
 
         // apartment_guide
+        "apartment_guide.a.essentiels_à_larrivée": "✨ Imprescindibles a la llegada",
+        "apartment_guide.a.la_résidence": "🏘️ La Residencia",
+        "apartment_guide.a.mon_départ": "👋 Mi partida",
+        "apartment_guide.a.à_proximité": "📍 Cerca",
         "apartment_guide.h2.liens_utiles": "📱 Enlaces útiles",
         "apartment_guide.h2.plan_de_lappartement": "📚 Plano de apartamento",
         "apartment_guide.li.essentiels_à_larrivée": "✨ Imprescindibles a la llegada",
@@ -1069,6 +1136,15 @@ const translations = {
         "apartment_guide.p.image_du_plan_non_trouvée": "Imagen del plano no encontrada",
         "apartment_guide.p.placez_plan_appartement_cliquablepng_dan": "Lugar plan_apartment_cliquable.png",
         "apartment_guide.p.plan_de_l39appartement": "📐 Plano de apartamento",
+        "apartment_guide.title": "🏠 Apartamento y equipamiento.",
+        "apartment_guide.zone.chambre": "🛏️ Dormitorio",
+        "apartment_guide.zone.cuisine": "🍽️ Cocinar",
+        "apartment_guide.zone.placard_bleu": "🗄️ Armario Azul",
+        "apartment_guide.zone.salle_deau": "🛁 Tocador",
+        "apartment_guide.zone.salle_manger": "🍽️ Comedor",
+        "apartment_guide.zone.salon": "🛋️ Sala de estar",
+        "apartment_guide.zone.terrasse": "🌤️ Terraza",
+        "apartment_guide.zone.wc": "🚻 WC",
 
         // arrival_guide
         "arrival_guide.h2.codes_daccès": "🔑 Códigos de acceso",
@@ -1147,11 +1223,17 @@ const translations = {
         "departure_procedure.li.couper_le_radiateur_de_la_chambre_de_la": "Apagar el radiador del dormitorio, baño y salón.",
         "departure_procedure.li.débrancher_les_appareils_non_essentiels": "Desenchufe los dispositivos no esenciales",
         "departure_procedure.li.fermer_toutes_les_baies_vitrées": "cerrar todas las ventanas",
+        "departure_procedure.li.la_télécommandes_de_la_télévision_et_de_la_box_tv": "Controles remotos de TV y TV Box",
         "departure_procedure.li.les_4_télécommandes_des_volets_et_celle": "los 4 mandos a distancia para las persianas y el de las persianas",
         "departure_procedure.li.les_bracelets_piscine": "pulseras de piscina",
         "departure_procedure.li.les_clés_de_la_maison": "llaves de casa",
+        "departure_procedure.li.merci_de_laisser_lappartement_comme_vous_lavez_trouvé": "🧼 Por favor, deja el apartamento como lo encontraste.\n                            Electrodomésticos, vajilla limpia y ordenada.",
+        "departure_procedure.li.merci_de_penser_à_renouveler_ce_petit_stock": "Gracias por pensar en renovar este pequeño stock, que muchos tendrán el placer de encontrar después de horas de viaje antes de poder ir de compras.",
+        "departure_procedure.li.poubelle_générale_noir": "Bote de basura general (negro)",
         "departure_procedure.li.poubelle_recyclage_jaune": "Papelera de reciclaje (amarilla)",
+        "departure_procedure.li.replier_le_store": "doblar la persiana",
         "departure_procedure.li.éteindre_la_télévision_de_la_chambre_et": "Apagar la televisión del dormitorio y del salón.",
+        "departure_procedure.li.éteindre_toutes_les_lumières_intérieures_et_extérieures": "Apague todas las luces interiores y exteriores.",
         "departure_procedure.p.appelez_immédiatement": "Llame inmediatamente:",
         "departure_procedure.p.avant_11_heures": "antes de las 11 a.m.",
         "departure_procedure.p.ceux_qui_vous_ont_précédé_ont_laissé_à_v": "Los que os han precedido os han dejado una pequeña reserva de alimentos básicos a vuestra disposición en el armario.",
@@ -1184,11 +1266,11 @@ const translations = {
         "index.equipements.desc": "Aire acondicionado, Televisión, Horno, placas de inducción, persianas enrollables... de cada habitación del apartamento: Salón, Terraza, Cocina...",
         "index.equipements.title": "Equipo",
         "index.essentiels.desc": "Pequeños consejos para facilitar su llegada y estancia.",
-        "index.essentiels.title": "✨ Esenciales a la llegada",
+        "index.essentiels.title": "✨ Imprescindibles a la llegada",
         "index.footer": "¡Gracias por tu confianza! Disfruta de tu estancia en Katikias 33 🌟",
         "index.p.bon_séjour": "Disfrute de su estancia…",
         "index.p.béatrix_et_jeanfrançois": "Beatrix y Jean-François.",
-        "index.p.climatisation_télévision_four_plaques_à": "Aire acondicionado, Televisión, Horno, Placa de inducción, persianas enrollables... en cada estancia de los apartamentos: Salón, Terraza, Cocina...",
+        "index.p.climatisation_télévision_four_plaques_à": "Aire acondicionado, Televisión, Horno, Placa de inducción, persianas enrollables... en cada estancia del apartamento: Salón, Terraza, Cocina...",
         "index.p.commerces_activités_plages_et_accès_rapi": "Comercios, actividades, playas y rápido acceso a los alrededores de las Katikias.",
         "index.p.informations_sur_la_résidence_des_katiki": "Información sobre la residencia Katikias, conserjes, piscina, parque y servicios de copropiedad.",
         "index.p.nous_avons_mis_tout_notre_cœur_et_beauco": "Hemos puesto todo nuestro corazón y mucho cuidado en amueblar este pequeño capullo y no tenemos ninguna duda de que tú también podrás disfrutarlo y conservarlo lo mejor posible para quienes vengan después de ti.",
@@ -1216,7 +1298,7 @@ const translations = {
         "index.strong.wifi": "📶 Wi-Fi",
         "index.subtitle": "Tu guía digital completa",
         "index.title": "🏡 Katikias 33",
-        "index.welcome.greeting": "💌 Mensaje de bienvenida",
+        "index.welcome.greeting": "💌 Palabra de bienvenida",
         "index.welcome.text1": "Estamos encantados de darle la bienvenida a nuestro hogar. Pasamos momentos muy agradables con frecuencia en este apartamento y esperamos que sea lo mismo para usted.",
         "index.welcome.text2": "Hemos puesto todo nuestro corazón y mucho cuidado en amueblar este pequeño refugio y no dudamos de que usted también sabrá disfrutarlo y preservarlo lo mejor posible para quienes le sucedan.",
         "index.welcome.text3": "Le invitamos, ante todo, a disfrutar del apartamento y de la magnífica vista que ofrece de la bahía de Bandol, la isla de Bendor y el mar. Hemos creado esta guía para hacer su estancia más agradable y para tratar de responder de la mejor manera a las preguntas que pueda tener.",
@@ -1228,7 +1310,7 @@ const translations = {
         "placard.title": "🗄️ Armario Azul",
 
         // placard_bleu
-        "placard_bleu.li.box_fibre_orange_wifi": "Caja de fibra Wi-Fi naranja",
+        "placard_bleu.li.box_fibre_orange_wifi": "Caja Wi‑Fi fibra naranja",
         "placard_bleu.li.chaise_haute": "silla alta",
         "placard_bleu.li.lit_parapluie_bébé": "Cuna de viaje para bebe",
         "placard_bleu.li.plancha": "plancha",
@@ -1340,6 +1422,8 @@ const translations = {
         "tips.title": "Esenciales a la llegada",
 
         // tips_and_tricks
+        "tips_and_tricks.a.consulter_la_page_résidence": "👉 Consultar la página de residencia",
+        "tips_and_tricks.a.consulter_le_guide_des_équipements_par_pièce": "👉 Consulta la guía de equipamiento por habitación",
         "tips_and_tricks.h2.accès_connexions": "📶 Acceso y conexiones",
         "tips_and_tricks.h2.cuisine": "🍳 Cocinar",
         "tips_and_tricks.h2.extérieurs_vent": "⛅ Exteriores y Viento",
@@ -1416,15 +1500,11 @@ function changeLanguage(lang) {
     document.querySelectorAll('[data-lang-key]').forEach(element => {
         const key = element.getAttribute('data-lang-key');
         if (translations[lang] && translations[lang][key]) {
-            // Vérifier si l'élément contient des liens HTML (<a>)
-            const links = element.querySelectorAll('a');
-            
-            if (links.length > 0) {
-                // NE PAS traduire les éléments qui contiennent des liens pour éviter de casser les URLs
-                // Les liens doivent rester fonctionnels
-                return; // Skip cet élément
+            // Préserver le HTML interne si nécessaire
+            if (element.innerHTML && element.innerHTML !== element.textContent) {
+                // Si c'est du HTML, on le remplace complètement
+                element.textContent = translations[lang][key];
             } else {
-                // Pas de liens, utilisation normale de textContent
                 element.textContent = translations[lang][key];
             }
         }
