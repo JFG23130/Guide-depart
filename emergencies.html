@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Urgences - Katikias 33</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -252,9 +255,12 @@
 </html>
 <script>
   (function() {
-    var version = 'v=20251030T'+(new Date().getTime());
+    var version = 'v='+(new Date().getTime());
     function bust(u){ if(!u || u.startsWith('data:')) return u; return u + (u.indexOf('?')>=0?'&':'?') + version; }
-    document.querySelectorAll('img[src]').forEach(function(img){ img.src = bust(img.getAttribute('src')); });
+    document.querySelectorAll('img[src]').forEach(function(img){ 
+                var originalSrc = img.getAttribute('src');
+                img.src = bust(originalSrc);
+            });
   })();
 </script>
 
