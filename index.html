@@ -210,19 +210,59 @@
             .content { padding: 30px 20px; }
             .guide-card { padding: 20px; }
         }
+            .lang-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .lang-selector select {
+            padding: 8px 12px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            background: white;
+            color: #333;
+        }
+        .lang-selector select:focus {
+            outline: none;
+            border-color: #764ba2;
+        }
+        @media (max-width: 480px) {
+            .lang-selector {
+                top: 10px;
+                right: 10px;
+                padding: 8px;
+            }
+        }
+
     </style>
 </head>
 <body>
+    <div class="lang-selector">
+        <select id="langSelector" onchange="changeLanguage(this.value)">
+            <option value="fr">🇫🇷 Français</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="es">🇪🇸 Español</option>
+        </select>
+    </div>
+
     <div class="container">
         <div class="header">
-            <h1>🏡 Katikias 33</h1>
-            <p>Votre guide digital complet</p>
+            <h1 data-lang-key="index.title">🏡 Katikias 33</h1>
+            <p data-lang-key="index.subtitle">Votre guide digital complet</p>
         </div>
         
         <div class="content">
             <div class="guide-grid">
                 <div class="guide-card tips" style="display: block;">
-                    <h3>Bienvenue à la maison !</h3>
+                    <h3 data-lang-key="index.welcome.title">Bienvenue à la maison !</h3>
                     <div style="margin-top: 20px; cursor: pointer;" onclick="toggleCollapsible(this)" class="collapsible-card">
                         <h4 style="color: #9C27B0; font-size: 1rem; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between;">
                             💌 Mot d'accueil <span class="toggle-icon">▼</span>
@@ -245,28 +285,28 @@
                 </div>
                 
                 <a href="apartment_guide.html" class="guide-card apartment">
-                    <h3>Les Equipements</h3>
+                    <h3 data-lang-key="index.equipements.title">Les Equipements</h3>
                     <p>Climatisation, Télévision, Four, plaques à induction, volets roulant... de chaque pièce de l'appartements: Salon, Terrasse, Cuisine...</p>
                 </a>
                 
                 <a href="residence.html" class="guide-card residence">
-                    <h3>La Résidence</h3>
+                    <h3 data-lang-key="index.residence.title">La Résidence</h3>
                     <p>Informations sur la résidence des Katikias, gardiens, piscine, parc et services de la copropriété.</p>
                 </a>
                 
                 <a href="proximity.html" class="guide-card nearby">
-                    <h3>À Proximité</h3>
+                    <h3 data-lang-key="index.proximity.title">À Proximité</h3>
                     <p>Commerces, activités, plages et accès rapides autour des Katikias.</p>
                 </a>
                 
                 <a href="departure_procedure.html" class="guide-card departure">
-                    <h3>Votre Départ</h3>
+                    <h3 data-lang-key="index.departure.title">Votre Départ</h3>
                     <p>Un dernier coup d'œil sur la baie et c'est l'heure du départ. Checklist de départ et toutes les étapes pour bien terminer votre séjour.</p>
                 </a>
             </div>
 
             <div class="quick-access">
-                <h3>🔑 Accès Rapide</h3>
+                <h3 data-lang-key="index.quick.title">🔑 Accès Rapide</h3>
                 <div class="quick-info">
                     <div class="quick-item">
                         <strong>🚪 Portail</strong>
@@ -297,7 +337,7 @@
         </div>
         
         <div class="footer">
-            <p>Merci de votre confiance ! Bon séjour à Katikias 33 🌟</p>
+            <p><p data-lang-key="index.footer">Merci de votre confiance ! Bon séjour à Katikias 33 🌟</p></p>
         </div>
     </div>
 
@@ -325,5 +365,6 @@
             });
         })();
     </script>
+    <script src="assets/lang.js"></script>
 </body>
 </html>

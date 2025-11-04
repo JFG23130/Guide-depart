@@ -22,13 +22,53 @@
         .item-photo img { max-width: 320px; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
         .item-photo a { display: block; }
         .caption { font-size: 0.85rem; color: #666; margin-top: 5px; font-style: italic; }
+            .lang-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .lang-selector select {
+            padding: 8px 12px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            background: white;
+            color: #333;
+        }
+        .lang-selector select:focus {
+            outline: none;
+            border-color: #764ba2;
+        }
+        @media (max-width: 480px) {
+            .lang-selector {
+                top: 10px;
+                right: 10px;
+                padding: 8px;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <a href="apartment_guide.html" class="back-button">← Retour</a>
+    <div class="lang-selector">
+        <select id="langSelector" onchange="changeLanguage(this.value)">
+            <option value="fr">🇫🇷 Français</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="es">🇪🇸 Español</option>
+        </select>
+    </div>
+
+    <a href="apartment_guide.html" class="back-button"><span data-lang-key="nav.back">← Retour</span></a>
     <div class="container">
         <div class="header">
-            <h1>🍽️ Cuisine</h1>
+            <h1 data-lang-key="cuisine.title">🍽️ Cuisine</h1>
         </div>
         <div class="content">
             <ul>
@@ -157,6 +197,7 @@
         document.querySelectorAll('img[src]').forEach(function(img){ if(!img.src.includes('/images/')) return; img.src = bust(img.getAttribute('src')); });
       })();
     </script>
+    <script src="assets/lang.js"></script>
 </body>
 </html>
 
