@@ -245,3 +245,4 @@ document.querySelectorAll('ul li').forEach(li => {
 
 **Les images s'affichent automatiquement !** 🚀
 
+

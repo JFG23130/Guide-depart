@@ -94,3 +94,4 @@ Si les zones ne correspondent pas exactement à vos pièces, ajuster dans `apart
 
 **Astuce** : Utilisez un outil comme **GIMP** ou **Photoshop** pour aligner parfaitement les zones avec votre plan en mode superposition !
 
+

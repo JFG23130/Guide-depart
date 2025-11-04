@@ -62,3 +62,4 @@ Get-ChildItem -Path $imageDir -File | Where-Object {
 Write-Host ""
 Write-Host "✅ Compression terminée !" -ForegroundColor Green
 
+
