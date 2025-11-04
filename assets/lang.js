@@ -1416,11 +1416,15 @@ function changeLanguage(lang) {
     document.querySelectorAll('[data-lang-key]').forEach(element => {
         const key = element.getAttribute('data-lang-key');
         if (translations[lang] && translations[lang][key]) {
-            // Préserver le HTML interne si nécessaire
-            if (element.innerHTML && element.innerHTML !== element.textContent) {
-                // Si c'est du HTML, on le remplace complètement
-                element.textContent = translations[lang][key];
+            // Vérifier si l'élément contient des liens HTML (<a>)
+            const links = element.querySelectorAll('a');
+            
+            if (links.length > 0) {
+                // NE PAS traduire les éléments qui contiennent des liens pour éviter de casser les URLs
+                // Les liens doivent rester fonctionnels
+                return; // Skip cet élément
             } else {
+                // Pas de liens, utilisation normale de textContent
                 element.textContent = translations[lang][key];
             }
         }

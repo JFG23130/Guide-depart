@@ -114,6 +114,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border-radius: 5px;
+            z-index: 10;
         }
         .clickable-zone:hover {
             background: rgba(33, 150, 243, 0.3);
@@ -247,7 +248,7 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 1000;
+            z-index: 100;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 10px;
             padding: 10px;
@@ -303,7 +304,7 @@
                              alt="Plan de l'appartement" 
                              class="floor-plan-image"
                              id="plan-image"
-                             onerror="this.parentElement.innerHTML='<div style=\'background:#fff3cd;padding:40px;border-radius:10px;border:2px dashed #ffc107;\'><p style=\'color:#856404;font-size:1.2rem;margin-bottom:10px;\' data-lang-key="apartment_guide.p.plan_de_l39appartement">📐 Plan de l&#39;Appartement</p><p style=\'color:#856404;margin-bottom:10px;\' data-lang-key="apartment_guide.p.image_du_plan_non_trouvée">Image du plan non trouvée</p><p style=\'font-size:0.9rem;color:#999;margin-top:10px;\' data-lang-key="apartment_guide.p.placez_plan_appartement_cliquablepng_dan">Placez <code>plan_appartement_cliquable.png</code> dans le dossier images</p><div id=\'fallback-list\'></div></div>'">
+                             onerror="this.parentElement.innerHTML='<div style=&quot;background:#fff3cd;padding:40px;border-radius:10px;border:2px dashed #ffc107;&quot;><p style=&quot;color:#856404;font-size:1.2rem;margin-bottom:10px;&quot; data-lang-key=&quot;apartment_guide.p.plan_de_l39appartement&quot;>📐 Plan de l&#39;Appartement</p><p style=&quot;color:#856404;margin-bottom:10px;&quot; data-lang-key=&quot;apartment_guide.p.image_du_plan_non_trouvée&quot;>Image du plan non trouvée</p><p style=&quot;font-size:0.9rem;color:#999;margin-top:10px;&quot; data-lang-key=&quot;apartment_guide.p.placez_plan_appartement_cliquablepng_dan&quot;>Placez <code>plan_appartement_cliquable.png</code> dans le dossier images</p><div id=&quot;fallback-list&quot;></div></div>'">
                         </img>
                         
                         <!-- Zones cliquables par superposition (méthode moderne) -->
