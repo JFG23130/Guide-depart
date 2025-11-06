@@ -174,3 +174,5 @@ Get-ChildItem "images\*.*" | Where-Object { $_.Extension -in @('.png','.jpg','.j
 **Astuce** : Utilisez le script PowerShell ci-dessus pour standardiser automatiquement tous vos noms de fichiers ! 🚀
 
 
+
+

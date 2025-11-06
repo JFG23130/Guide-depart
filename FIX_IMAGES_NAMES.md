@@ -75,3 +75,5 @@ Le script ignore :
 ## Résultat
 
 Après exécution, tous les fichiers images correspondent aux slugs générés par le script JavaScript, garantissant que toutes les images s'affichent correctement sur la version en ligne.
+
+

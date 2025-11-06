@@ -44,3 +44,5 @@ Après avoir vidé le cache :
 1. Visitez : https://jfg23130.github.io/Guide-depart/
 2. Les images devraient se charger avec un timestamp dans l'URL (visible dans l'inspecteur)
 3. Si vous voyez `?v=1234567890` dans l'URL des images, le cache busting fonctionne
+
+
