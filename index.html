@@ -177,6 +177,27 @@
             flex-direction: column;
             justify-content: center;
         }
+        .quick-item .access-code {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #333;
+            display: inline-block;
+            margin-left: 6px;
+        }
+        .quick-item .portal-codes {
+            font-size: 0.95rem;
+            color: #765c0b;
+            line-height: 1.4;
+        }
+        .quick-item .quick-item-image {
+            margin-top: 8px;
+        }
+        .quick-item .quick-item-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
         .quick-item strong {
             display: block;
             color: #333;
@@ -310,8 +331,13 @@
                 <div class="quick-info">
                     <div class="quick-item">
                         <strong data-lang-key="index.strong.portail">🚪 Portail</strong>
-                        🚶‍♂️ Piéton : <strong style="font-size:1.8rem;" data-lang-key="index.strong.1398">1398</strong><br/>
-                        🚗 Voiture : <strong style="font-size:1.8rem;" data-lang-key="index.strong.1359">1359</strong>
+                        <div class="portal-codes">
+                            <div>🚶‍♂️ Piéton : <span class="access-code" data-lang-key="index.strong.1398">1398</span></div>
+                            <div>🚗 Voiture : <span class="access-code" data-lang-key="index.strong.1359">1359</span></div>
+                        </div>
+                        <div class="quick-item-image">
+                            <img src="images/telecomande_portail.png" alt="Télécommande du portail" onerror="this.style.display='none'">
+                        </div>
                     </div>
                     <div class="quick-item">
                         <strong data-lang-key="index.strong.wifi">📶 Wi-Fi</strong>
