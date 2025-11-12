@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katikias 33 • Accès invité sécurisé</title>
+    <script src="access_codes.js" defer></script>
+    <style>
+        :root {
+            color-scheme: light dark;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f4c75, #3282b8);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 18px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 45px rgba(15, 76, 117, 0.35);
+            max-width: 420px;
+            width: 90%;
+            padding: 40px 32px;
+        }
+        h1 {
+            font-size: 1.9rem;
+            margin-top: 0;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        p.subtitle {
+            margin-top: 0;
+            margin-bottom: 26px;
+            text-align: center;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 12px;
+        }
+        label {
+            font-weight: 600;
+            letter-spacing: 0.01em;
+        }
+        input[type="password"],
+        input[type="text"] {
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+            background: rgba(255, 255, 255, 0.92);
+            color: #102a43;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        input:focus {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(16, 42, 67, 0.25);
+        }
+        button {
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, #1b998b, #1f6f8b);
+            color: white;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 22px rgba(27, 153, 139, 0.35);
+        }
+        .error {
+            display: none;
+            color: #ffe066;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+        .helper {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.78);
+            text-align: center;
+            margin-top: 20px;
+        }
+        .helper strong {
+            color: #ffd166;
+        }
+        @media (max-width: 480px) {
+            .card {
+                padding: 32px 24px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="card" role="main">
+        <h1>Bienvenue à Katikias 33</h1>
+        <p class="subtitle">
+            Merci de renseigner le <strong>code d'accès invité</strong> fourni dans votre e-mail ou dans le livret d’accueil.
+        </p>
+        <form id="access-form" autocomplete="off" novalidate>
+            <div>
+                <label for="access-code">Code d'accès</label>
+                <input type="password" id="access-code" inputmode="text" autocomplete="one-time-code" placeholder="Entrez votre code (ex. KATIxxxx)">
+            </div>
+            <button type="submit">Accéder au guide</button>
+        </form>
+        <p class="error" id="error-message">❌ Code incorrect. Vérifiez votre livret d’accueil ou contactez votre hôte.</p>
+        <p class="helper">
+            Besoin d’aide&nbsp;? Contactez <strong>Katikias 33</strong> via l’application Airbnb.
+        </p>
+    </main>
+
+    <script>
+        const CODES_ENDPOINT = "access_codes.json";
+        const STORAGE_STATE_KEY = "katikiasGuideAccessGranted";
+        const STORAGE_CODE_KEY = "katikiasGuideAccessCode";
+        const DESTINATION_URL = "index.html";
+
+        const form = document.getElementById("access-form");
+        const codeInput = document.getElementById("access-code");
+        const errorMessage = document.getElementById("error-message");
+
+        let codesReady = false;
+        const accessCodes = new Map();
+        let pendingAutoCode = null;
+
+        function normalizeCode(raw) {
+            return raw?.toString().trim().toUpperCase() ?? "";
+        }
+
+        function recordAccess(code) {
+            sessionStorage.setItem(STORAGE_STATE_KEY, "1");
+            sessionStorage.setItem(STORAGE_CODE_KEY, code);
+            localStorage.setItem(STORAGE_CODE_KEY, code);
+        }
+
+        function grantAccess(code) {
+            recordAccess(code);
+            window.location.href = DESTINATION_URL;
+        }
+
+        function attemptAutoAccess() {
+            if (!codesReady) return;
+
+            const storedCode = normalizeCode(localStorage.getItem(STORAGE_CODE_KEY) || sessionStorage.getItem(STORAGE_CODE_KEY));
+            const candidate = pendingAutoCode || storedCode;
+            if (candidate && accessCodes.has(candidate)) {
+                grantAccess(candidate);
+            }
+        }
+
+        function populateFromArray(dataArray) {
+            if (!Array.isArray(dataArray)) {
+                return;
+            }
+            accessCodes.clear();
+            dataArray.forEach(entry => {
+                const code = normalizeCode(entry && entry.code);
+                if (code) {
+                    accessCodes.set(code, entry);
+                }
+            });
+            if (accessCodes.size > 0) {
+                codesReady = true;
+                attemptAutoAccess();
+            }
+        }
+
+        function loadFallbackCodes() {
+            if (codesReady || typeof window.__ACCESS_CODES__ === "undefined") {
+                return;
+            }
+            populateFromArray(window.__ACCESS_CODES__);
+        }
+
+        async function loadCodes() {
+            try {
+                const response = await fetch(`${CODES_ENDPOINT}?t=${Date.now()}`, { cache: "no-store" });
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                const data = await response.json();
+                populateFromArray(data);
+            } catch (error) {
+                loadFallbackCodes();
+                if (!codesReady) {
+                    errorMessage.textContent = "⚠️ Impossible de charger la liste des codes. Contactez votre hôte.";
+                    errorMessage.style.display = "block";
+                }
+            }
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const queryCode = normalizeCode(urlParams.get("code"));
+        if (queryCode) {
+            pendingAutoCode = queryCode;
+            codeInput.value = urlParams.get("code");
+        }
+
+        if (sessionStorage.getItem(STORAGE_STATE_KEY) === "1") {
+            pendingAutoCode = pendingAutoCode || normalizeCode(localStorage.getItem(STORAGE_CODE_KEY) || sessionStorage.getItem(STORAGE_CODE_KEY));
+        }
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const userCode = normalizeCode(codeInput.value);
+            if (!userCode) {
+                errorMessage.textContent = "⚠️ Merci de renseigner un code.";
+                errorMessage.style.display = "block";
+                codeInput.focus();
+                return;
+            }
+
+            if (!codesReady) {
+                pendingAutoCode = userCode;
+                errorMessage.textContent = "⏳ Chargement des codes en cours, merci de patienter quelques secondes...";
+                errorMessage.style.display = "block";
+                return;
+            }
+
+            if (accessCodes.has(userCode)) {
+                errorMessage.style.display = "none";
+                grantAccess(userCode);
+            } else {
+                errorMessage.textContent = "❌ Code incorrect. Vérifiez votre livret d’accueil ou contactez votre hôte.";
+                errorMessage.style.display = "block";
+                codeInput.value = "";
+                codeInput.focus();
+            }
+        });
+
+        // Pré-charger les codes via le fichier JS si disponible (utile en mode fichier local)
+        loadFallbackCodes();
+        loadCodes();
+    </script>
+</body>
+</html>
+
