@@ -135,6 +135,7 @@
         const form = document.getElementById("access-form");
         const codeInput = document.getElementById("access-code");
         const errorMessage = document.getElementById("error-message");
+        errorMessage.style.display = "none";
 
         let codesReady = false;
         const accessCodes = new Map();
@@ -178,6 +179,7 @@
             });
             if (accessCodes.size > 0) {
                 codesReady = true;
+                errorMessage.style.display = "none";
                 attemptAutoAccess();
             }
         }
