@@ -1,8 +1,9 @@
 # Codes invités générés automatiquement
-_Dernière mise à jour : 17/11/2025 18:35_
+_Dernière mise à jour : 17/11/2025 19:03_
 
 | Invité | Arrivée | Départ | Code | Lien direct |
 | --- | --- | --- | --- | --- |
+| Béatrix Giraud | 18/11/2025 | 26/11/2025 | `KATI-MU2OP5Q` | https://guide.katikias33.fr/access.html?code=KATI-MU2OP5Q |
 | Sylvain Bourgine | 05/12/2025 | 08/12/2025 | `KATI-VVFWU6A` | https://guide.katikias33.fr/access.html?code=KATI-VVFWU6A |
 | Szabóné Hladics Viktória | 23/12/2025 | 28/12/2025 | `KATI-MECM5KA` | https://guide.katikias33.fr/access.html?code=KATI-MECM5KA |
 | Chloë Rollet | 31/12/2025 | 02/01/2026 | `KATI-ZC6IVOA` | https://guide.katikias33.fr/access.html?code=KATI-ZC6IVOA |
