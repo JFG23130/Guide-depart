@@ -1,0 +1,2 @@
+// Fichier genere automatiquement - ne pas modifier a la main
+window.__ACCESS_CODES__ = [{"code": "KATI-MU2OP5Q", "guest": "Béatrix Giraud"}, {"code": "KATI-VVFWU6A", "guest": "Sylvain Bourgine"}, {"code": "KATI-MECM5KA", "guest": "Szabóné Hladics Viktória"}, {"code": "KATI-ZC6IVOA", "guest": "Chloë Rollet"}, {"code": "KATI-GOB4J4Q", "guest": "Michael Dr Frings"}, {"code": "KATI-CN47SBA", "guest": "Paul Daniel"}, {"code": "KATI-MO7U2QA", "guest": "Jennifer Ruhnau"}];

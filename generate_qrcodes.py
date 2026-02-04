@@ -15,8 +15,8 @@ BASE_URL = "https://guide.katikias33.fr"
 qr_codes = [
     {
         "name": "qrcode_menu",
-        "url": f"{BASE_URL}/",  # Pas de index.html, la racine suffit
-        "label": "Menu Global"
+        "url": f"{BASE_URL}/access.html",  # Page sécurisée (requiert un code)
+        "label": "Accès sécurisé"
     },
     {
         "name": "qrcode_depart",

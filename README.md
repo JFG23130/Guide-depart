@@ -10,6 +10,10 @@
 ```
 Guide-depart/
 ├── index.html                   # Page d'accueil avec navigation
+├── access.html                  # Page d'accès sécurisé (demande un code invité)
+├── access_codes.json            # Codes valides générés automatiquement (consommé par access.html)
+├── access_codes.js              # Fallback JavaScript avec les codes (utile en test local)
+├── codes_invites.md             # Tableau récapitulatif des codes invités générés
 ├── arrival_guide.html           # Guide d'arrivée (codes, procédures)
 ├── apartment_guide.html         # Guide de l'appartement (équipements, règles)
 ├── departure_procedure.html     # Procédure de départ (checklist)
@@ -41,6 +45,11 @@ Modifier dans chaque fichier HTML :
 - **Porte** : `Code: 1234`
 - **Wi-Fi** : `Katikias33 / Welcome2024!`
 - **Piscine** : `Code: 5678`
+
+Pour le **code d'accès invité (version papier)** :
+1. Ouvrir `access.html`.
+2. Modifier la constante `ACCESS_CODES` (plusieurs codes possibles).
+3. Déployer à nouveau (voir section suivante).
 
 ### Numéros de Téléphone
 Rechercher et remplacer dans les fichiers :
@@ -81,7 +90,8 @@ Les QR codes sont générés automatiquement par l'application **KatikiasDeploye
 - **Appartement** : `https://jfg23130.github.io/Guide-depart/apartment_guide.html`
 - **Départ** : `https://jfg23130.github.io/Guide-depart/departure_procedure.html`
 - **Astuces** : `https://jfg23130.github.io/Guide-depart/tips_and_tricks.html`
-- **Accueil** : `https://jfg23130.github.io/Guide-depart/`
+- **Accueil sécurisé** : `https://jfg23130.github.io/Guide-depart/access.html` (demande un code invité)
+- **Accueil direct (TV)** : `https://jfg23130.github.io/Guide-depart/`
 
 ---
 
