@@ -281,7 +281,30 @@
             <p data-lang-key="arrival_guide.p.merci_de_votre_confiance_bon_séjour_à_ka">Merci de votre confiance ! Bon séjour à Katikias 33 🌟</p>
         </div>
     </div>
-    <script src="assets/lang.js"></script>
+    <script src="assets/lang-fr.js"></script>
+    <script src="assets/lang-en.js"></script>
+    <script src="assets/lang-de.js"></script>
+    <script src="assets/lang-es.js"></script>
+    <script src="assets/init-translations.js"></script>
+    <script>
+        // Fonction pour changer la langue
+        function changeLanguage(lang) {
+            if (typeof LanguageSystemHTML !== 'undefined') {
+                LanguageSystemHTML.setLanguage(lang);
+                // Mettre à jour le sélecteur
+                document.getElementById('langSelector').value = lang;
+            } else {
+                console.error('❌ LanguageSystemHTML non disponible');
+            }
+        }
+        
+        // Au chargement, définir la langue du sélecteur
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof LanguageSystemHTML !== 'undefined') {
+                document.getElementById('langSelector').value = LanguageSystemHTML.currentLanguage;
+            }
+        });
+    </script>
 </body>
 </html>
 <script>

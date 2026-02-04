@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparateur de Traductions - Katikias 33</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .controls-panel {
+            padding: 25px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            align-items: end;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        .control-group select,
+        .control-group input {
+            padding: 10px 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.95em;
+            transition: border-color 0.3s;
+        }
+
+        .control-group select:focus,
+        .control-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .button-group button {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+
+        .button-group button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .button-group button.secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .button-group button.secondary:hover {
+            background: #d0d0d0;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #667eea;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .key-cell {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #667eea;
+            font-weight: 600;
+            max-width: 250px;
+            word-break: break-word;
+        }
+
+        .translation-cell {
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .translation-cell.editable {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .translation-cell input {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #667eea;
+            border-radius: 3px;
+            font-size: 0.9em;
+            font-family: inherit;
+        }
+
+        .translation-cell input:focus {
+            outline: none;
+            border-color: #764ba2;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
+        .edit-button {
+            display: inline-block;
+            margin-left: 8px;
+            padding: 3px 8px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: background 0.2s;
+        }
+
+        .edit-button:hover {
+            background: #764ba2;
+        }
+
+        .save-button {
+            background: #4caf50;
+            margin-right: 5px;
+        }
+
+        .save-button:hover {
+            background: #45a049;
+        }
+
+        .cancel-button {
+            background: #f44336;
+        }
+
+        .cancel-button:hover {
+            background: #da190b;
+        }
+
+        .missing {
+            background: #ffebee;
+            color: #c62828;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .search-highlight {
+            background: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .message.info {
+            background: #e3f2fd;
+            color: #1565c0;
+            border-left: 4px solid #1565c0;
+        }
+
+        .message.warning {
+            background: #ffebee;
+            color: #c62828;
+            border-left: 4px solid #c62828;
+        }
+
+        .message.success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-left: 4px solid #2e7d32;
+        }
+
+        footer {
+            padding: 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            color: #666;
+        }
+
+        .no-results {
+            padding: 40px;
+            text-align: center;
+            color: #999;
+            font-size: 1.1em;
+        }
+
+        tbody tr:first-child td {
+            padding-top: 20px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            padding: 8px 12px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .pagination button:hover,
+        .pagination button.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏡 Katikias 33</h1>
+            <p>Comparateur de Traductions</p>
+        </header>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <label>🔍 Rechercher une clé:</label>
+                <input type="text" id="searchInput" placeholder="Ex: index, apartment, emergency..." />
+            </div>
+
+            <div class="control-group">
+                <label>📊 Sélectionner la 1ère langue:</label>
+                <select id="lang1Select">
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="en">🇬🇧 English</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="es">🇪🇸 Español</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label>📋 Sélectionner la 2ème langue:</label>
+                <select id="lang2Select">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="es">🇪🇸 Español</option>
+                </select>
+            </div>
+
+            <div class="control-group" style="flex-direction: row; align-items: center; justify-content: flex-start;">
+                <input type="checkbox" id="showMissingOnly" />
+                <label style="margin: 0; margin-left: 8px;">Afficher seulement les manquantes</label>
+            </div>
+
+            <div class="button-group">
+                <button onclick="updateTable()">🔄 Actualiser</button>
+                <button class="secondary" onclick="clearSearch()">✖️ Réinitialiser</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div id="statsContainer" class="stats-bar"></div>
+            <div id="messageContainer"></div>
+            <div class="table-container">
+                <table id="translationsTable">
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">🔑 Clé de traduction</th>
+                            <th id="lang1Header" style="width: 35%;">🇫🇷 Français</th>
+                            <th id="lang2Header" style="width: 35%;">🇬🇧 English</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <td colspan="3" class="no-results">Chargement des données...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination" id="pagination"></div>
+        </div>
+
+        <footer>
+            <p>🌐 Système multilingue Katikias 33</p>
+            <p>Dernière mise à jour: 4 février 2026</p>
+        </footer>
+    </div>
+
+    <!-- Charger les fichiers de langues -->
+    <script>
+        console.log('1️⃣ Script principal en cours de chargement...');
+        window.translationsFR = null;
+        window.translationsEN = null;
+        window.translationsDE = null;
+        window.translationsES = null;
+    </script>
+    <script src="assets/lang-fr.js" onerror="console.error('❌ Erreur: lang-fr.js')"></script>
+    <script src="assets/lang-en.js" onerror="console.error('❌ Erreur: lang-en.js')"></script>
+    <script src="assets/lang-de.js" onerror="console.error('❌ Erreur: lang-de.js')"></script>
+    <script src="assets/lang-es.js" onerror="console.error('❌ Erreur: lang-es.js')"></script>
+    <script>
+        console.log('2️⃣ Vérification du chargement des fichiers:');
+        console.log('FR:', typeof translationsFR, Object.keys(translationsFR || {}).length);
+        console.log('EN:', typeof translationsEN, Object.keys(translationsEN || {}).length);
+        console.log('DE:', typeof translationsDE, Object.keys(translationsDE || {}).length);
+        console.log('ES:', typeof translationsES, Object.keys(translationsES || {}).length);
+    </script>
+    <script src="assets/lang-manager.js" onerror="console.error('❌ Erreur: lang-manager.js')"></script>
+    <script>
+        console.log('3️⃣ Vérification du LanguageManager:', typeof LanguageManager);
+    </script>
+
+    <script>
+        // Configuration de pagination
+        let currentPage = 1;
+        const itemsPerPage = 25;
+        let allKeys = [];
+        let filteredKeys = [];
+        let editingCell = null;
+        let isLoading = true;
+
+        // Initialiser rapidement
+        function quickInit() {
+            console.log('🚀 QuickInit appelé');
+            
+            const tableBody = document.getElementById('tableBody');
+            
+            try {
+                if (typeof LanguageManager === 'undefined') {
+                    throw new Error('LanguageManager non défini');
+                }
+                
+                console.log('✅ LanguageManager trouvé');
+                LanguageManager.loadLanguages();
+                console.log('✅ Langues chargées');
+                
+                const stats = LanguageManager.getStats();
+                console.log('✅ Stats:', stats.total, 'clés');
+                
+                if (stats.total === 0) {
+                    tableBody.innerHTML = '<tr><td colspan="3" class="no-results">❌ Aucune traduction chargée</td></tr>';
+                    return;
+                }
+                
+                updateTable();
+                isLoading = false;
+                console.log('✅ Prêt!');
+                
+            } catch (error) {
+                console.error('❌ Erreur:', error.message);
+                tableBody.innerHTML = `<tr><td colspan="3" class="no-results">❌ ${error.message}</td></tr>`;
+                isLoading = false;
+            }
+        }
+
+        // Récupérer toutes les clés uniques
+        function getAllKeys() {
+            const keys = new Set();
+            const langs = LanguageManager.allLanguages;
+            
+            for (const lang in langs) {
+                const translations = langs[lang];
+                if (translations && typeof translations === 'object') {
+                    for (const key in translations) {
+                        keys.add(key);
+                    }
+                }
+            }
+            
+            return Array.from(keys).sort();
+        }
+
+        // Éditer une cellule
+        function startEdit(cell) {
+            if (editingCell || isLoading) return;
+            
+            const key = cell.getAttribute('data-key');
+            const lang = cell.getAttribute('data-lang');
+            
+            if (!key || !lang) return;
+            
+            editingCell = { key, lang, cell };
+            const currentValue = LanguageManager.getTranslation(lang, key);
+            
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = currentValue;
+            input.id = 'editInput';
+            
+            cell.innerHTML = '';
+            cell.appendChild(input);
+            input.focus();
+            input.select();
+            
+            // Gestionnaire de clavier pour l'input
+            function handleKeypress(e) {
+                if (e.key === 'Enter') {
+                    saveEdit(input.value);
+                }
+                if (e.key === 'Escape') {
+                    cancelEdit();
+                }
+            }
+            
+            input.addEventListener('keypress', handleKeypress);
+            
+            const saveBtn = document.createElement('button');
+            saveBtn.className = 'edit-button save-button';
+            saveBtn.innerHTML = '✅';
+            saveBtn.type = 'button';
+            
+            const cancelBtn = document.createElement('button');
+            cancelBtn.className = 'edit-button cancel-button';
+            cancelBtn.innerHTML = '✖️';
+            cancelBtn.type = 'button';
+            
+            // Utiliser addEventListener pour éviter les problèmes de onclick
+            saveBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                saveEdit(input.value);
+            });
+            
+            cancelBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                cancelEdit();
+            });
+            
+            cell.appendChild(document.createElement('br'));
+            cell.appendChild(saveBtn);
+            cell.appendChild(cancelBtn);
+        }
+
+        // Sauvegarder l'édition
+        function saveEdit(newValue) {
+            if (!editingCell) return;
+            
+            const { key, lang } = editingCell;
+            LanguageManager.updateTranslation(lang, key, newValue);
+            editingCell = null;
+            updateTable();
+            
+            // Réattacher les event listeners aux nouvelles cellules
+            attachEditListeners();
+        }
+
+        // Annuler l'édition
+        function cancelEdit() {
+            editingCell = null;
+            updateTable();
+            
+            // Réattacher les event listeners aux nouvelles cellules
+            attachEditListeners();
+        }
+
+        // Attacher les event listeners à toutes les cellules éditables
+        function attachEditListeners() {
+            document.querySelectorAll('.translation-cell.editable').forEach(cell => {
+                // Retirer les anciens listeners en clonant le nœud
+                const newCell = cell.cloneNode(true);
+                cell.parentNode.replaceChild(newCell, cell);
+                
+                // Ajouter le nouvel événement
+                newCell.addEventListener('click', function(e) {
+                    if (!editingCell) {
+                        startEdit(this);
+                    }
+                });
+            });
+        }
+
+        // Mettre à jour le tableau
+        function updateTable() {
+            if (isLoading) return;
+            
+            const lang1 = document.getElementById('lang1Select').value;
+            const lang2 = document.getElementById('lang2Select').value;
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const showMissingOnly = document.getElementById('showMissingOnly').checked;
+
+            const flags = {'fr': '🇫🇷', 'en': '🇬🇧', 'de': '🇩🇪', 'es': '🇪🇸'};
+            const names = {'fr': 'Français', 'en': 'English', 'de': 'Deutsch', 'es': 'Español'};
+            
+            document.getElementById('lang1Header').textContent = `${flags[lang1]} ${names[lang1]}`;
+            document.getElementById('lang2Header').textContent = `${flags[lang2]} ${names[lang2]}`;
+
+            allKeys = getAllKeys();
+            
+            // Appliquer les filtres: recherche et manquantes
+            const langs1Data = LanguageManager.allLanguages[lang1] || {};
+            const langs2Data = LanguageManager.allLanguages[lang2] || {};
+            
+            filteredKeys = allKeys.filter(key => {
+                // Filtre de recherche
+                if (!key.toLowerCase().includes(searchTerm)) {
+                    return false;
+                }
+                
+                // Filtre des manquantes
+                if (showMissingOnly) {
+                    const isMissing1 = !langs1Data[key];
+                    const isMissing2 = !langs2Data[key];
+                    return isMissing1 || isMissing2;
+                }
+                
+                return true;
+            });
+
+            currentPage = 1;
+            updateStats(lang1, lang2);
+            renderTable(lang1, lang2);
+            renderPagination();
+        }
+
+        // Afficher les statistiques
+        function updateStats(lang1, lang2) {
+            const stats = LanguageManager.getStats();
+            const langs1Data = LanguageManager.allLanguages[lang1] || {};
+            const langs2Data = LanguageManager.allLanguages[lang2] || {};
+
+            let missingCount = 0;
+            for (const key of allKeys) {
+                if (!langs1Data[key] || !langs2Data[key]) {
+                    missingCount++;
+                }
+            }
+
+            const flags = {'fr': '🇫🇷', 'en': '🇬🇧', 'de': '🇩🇪', 'es': '🇪🇸'};
+            const names = {'fr': 'Français', 'en': 'English', 'de': 'Deutsch', 'es': 'Español'};
+
+            let statsHtml = `
+                <div class="stat-item">
+                    <div class="stat-value">${allKeys.length}</div>
+                    <div class="stat-label">Clés</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${Object.keys(langs1Data).length}</div>
+                    <div class="stat-label">${flags[lang1]}</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${Object.keys(langs2Data).length}</div>
+                    <div class="stat-label">${flags[lang2]}</div>
+                </div>
+            `;
+
+            if (missingCount > 0) {
+                statsHtml += `
+                    <div class="stat-item" style="border-left-color: #f44336;">
+                        <div class="stat-value" style="color: #f44336;">${missingCount}</div>
+                        <div class="stat-label">Manquantes</div>
+                    </div>
+                `;
+            }
+
+            document.getElementById('statsContainer').innerHTML = statsHtml;
+
+            const messageContainer = document.getElementById('messageContainer');
+            if (missingCount > 0) {
+                messageContainer.innerHTML = `<div class="message warning">⚠️ ${missingCount} manquante(s)</div>`;
+            } else {
+                messageContainer.innerHTML = `<div class="message success">✅ Complet!</div>`;
+            }
+        }
+
+        // Générer le tableau
+        function renderTable(lang1, lang2) {
+            const tableBody = document.getElementById('tableBody');
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedKeys = filteredKeys.slice(start, end);
+
+            if (paginatedKeys.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="3" class="no-results">Aucun résultat</td></tr>';
+                return;
+            }
+
+            const langs1Data = LanguageManager.allLanguages[lang1] || {};
+            const langs2Data = LanguageManager.allLanguages[lang2] || {};
+
+            let html = '';
+            paginatedKeys.forEach(key => {
+                const trans1 = langs1Data[key] || '';
+                const trans2 = langs2Data[key] || '';
+                
+                const isMissing1 = !trans1;
+                const isMissing2 = !trans2;
+
+                html += `
+                    <tr>
+                        <td class="key-cell">${key}</td>
+                        <td class="translation-cell editable ${isMissing1 ? 'missing' : ''}" 
+                            data-key="${key}" data-lang="${lang1}">
+                            ${isMissing1 ? '❌' : trans1}
+                        </td>
+                        <td class="translation-cell editable ${isMissing2 ? 'missing' : ''}" 
+                            data-key="${key}" data-lang="${lang2}">
+                            ${isMissing2 ? '❌' : trans2}
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tableBody.innerHTML = html;
+            
+            // Réattacher les event listeners après rendu
+            attachEditListeners();
+        }
+
+        // Générer la pagination
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredKeys.length / itemsPerPage);
+            const paginationDiv = document.getElementById('pagination');
+
+            if (totalPages <= 1) {
+                paginationDiv.innerHTML = '';
+                return;
+            }
+
+            let html = `<button ${currentPage === 1 ? 'disabled' : ''} onclick="changePage(${currentPage - 1})">←</button>`;
+
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+                    html += `<button ${i === currentPage ? 'class="active"' : ''} onclick="changePage(${i})">${i}</button>`;
+                } else if (i === 2 || i === totalPages - 1) {
+                    html += `<button disabled>...</button>`;
+                }
+            }
+
+            html += `<button ${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(${currentPage + 1})">→</button>`;
+            paginationDiv.innerHTML = html;
+        }
+
+        // Changer de page
+        function changePage(page) {
+            const totalPages = Math.ceil(filteredKeys.length / itemsPerPage);
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                renderTable(document.getElementById('lang1Select').value, document.getElementById('lang2Select').value);
+                renderPagination();
+            }
+        }
+
+        // Effacer la recherche
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            updateTable();
+        }
+
+        // Gestionnaires d'événements
+        document.getElementById('searchInput').addEventListener('keyup', updateTable);
+        document.getElementById('lang1Select').addEventListener('change', updateTable);
+        document.getElementById('lang2Select').addEventListener('change', updateTable);
+        document.getElementById('showMissingOnly').addEventListener('change', updateTable);
+
+        // Initialiser immédiatement après le chargement du DOM
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', quickInit);
+        } else {
+            quickInit();
+        }
+        
+        // Forcer l'initialisation après 1 seconde max
+        setTimeout(() => {
+            if (isLoading) {
+                console.warn('⚠️ Timeout forcé');
+                quickInit();
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
