@@ -289,20 +289,46 @@
     <script>
         // Fonction pour changer la langue
         function changeLanguage(lang) {
-            if (typeof LanguageSystemHTML !== 'undefined') {
-                LanguageSystemHTML.setLanguage(lang);
-                // Mettre à jour le sélecteur
-                document.getElementById('langSelector').value = lang;
-            } else {
-                console.error('❌ LanguageSystemHTML non disponible');
+            console.log('📢 changeLanguage appelé avec:', lang);
+            
+            if (typeof LanguageSystemHTML === 'undefined') {
+                console.error('❌ LanguageSystemHTML non défini, attente...');
+                // Réessayer après 500ms
+                setTimeout(() => changeLanguage(lang), 500);
+                return;
+            }
+            
+            console.log('✅ LanguageSystemHTML trouvé');
+            LanguageSystemHTML.setLanguage(lang);
+            
+            // Mettre à jour le sélecteur
+            const selector = document.getElementById('langSelector');
+            if (selector) {
+                selector.value = lang;
+                console.log('✅ Sélecteur mis à jour');
             }
         }
         
         // Au chargement, définir la langue du sélecteur
         document.addEventListener('DOMContentLoaded', () => {
-            if (typeof LanguageSystemHTML !== 'undefined') {
-                document.getElementById('langSelector').value = LanguageSystemHTML.currentLanguage;
-            }
+            console.log('📋 DOMContentLoaded triggered');
+            
+            // Attendre que LanguageSystemHTML soit disponible
+            let waits = 0;
+            const checkReady = setInterval(() => {
+                waits++;
+                if (typeof LanguageSystemHTML !== 'undefined') {
+                    clearInterval(checkReady);
+                    const selector = document.getElementById('langSelector');
+                    if (selector) {
+                        selector.value = LanguageSystemHTML.currentLanguage;
+                        console.log('✅ Sélecteur initialisé avec:', LanguageSystemHTML.currentLanguage);
+                    }
+                } else if (waits > 50) {
+                    clearInterval(checkReady);
+                    console.warn('⚠️ LanguageSystemHTML non disponible après 5s');
+                }
+            }, 100);
         });
     </script>
 </body>

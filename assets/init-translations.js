@@ -16,6 +16,10 @@ function waitForTranslations() {
         typeof translationsES !== 'undefined') {
         
         console.log('✅ Tous les fichiers de langue chargés');
+        console.log('FR:', Object.keys(translationsFR).length, 'clés');
+        console.log('EN:', Object.keys(translationsEN).length, 'clés');
+        console.log('DE:', Object.keys(translationsDE).length, 'clés');
+        console.log('ES:', Object.keys(translationsES).length, 'clés');
         
         // Initialiser le système
         initLanguageSystem();
@@ -24,25 +28,37 @@ function waitForTranslations() {
         setTimeout(waitForTranslations, 100);
     } else {
         console.error('❌ Timeout: impossible de charger les fichiers de langue');
+        console.log('FR:', typeof translationsFR);
+        console.log('EN:', typeof translationsEN);
+        console.log('DE:', typeof translationsDE);
+        console.log('ES:', typeof translationsES);
     }
 }
 
 // Système de gestion des langues
 const LanguageSystemHTML = {
-    currentLanguage: localStorage.getItem('katikias_language') || 'fr',
+    currentLanguage: (() => {
+        try {
+            return localStorage.getItem('katikias_language') || 'fr';
+        } catch (e) {
+            console.warn('⚠️ localStorage non disponible:', e.message);
+            return 'fr';
+        }
+    })(),
     
     // Récupérer une traduction
     get(key) {
         const lang = this.currentLanguage;
         const allTranslations = {
-            'fr': translationsFR,
-            'en': translationsEN,
-            'de': translationsDE,
-            'es': translationsES
+            'fr': typeof translationsFR !== 'undefined' ? translationsFR : {},
+            'en': typeof translationsEN !== 'undefined' ? translationsEN : {},
+            'de': typeof translationsDE !== 'undefined' ? translationsDE : {},
+            'es': typeof translationsES !== 'undefined' ? translationsES : {}
         };
         
         const translations = allTranslations[lang] || allTranslations['fr'];
-        return translations[key] || translations[key] || key;
+        const result = translations[key] || key;
+        return result;
     },
     
     // Définir la langue
@@ -53,7 +69,14 @@ const LanguageSystemHTML = {
         }
         
         this.currentLanguage = lang;
-        localStorage.setItem('katikias_language', lang);
+        
+        // Sauvegarder dans localStorage si disponible
+        try {
+            localStorage.setItem('katikias_language', lang);
+        } catch (e) {
+            console.warn('⚠️ Impossible de sauvegarder dans localStorage:', e.message);
+        }
+        
         console.log(`✅ Langue changée en: ${lang}`);
         
         // Traduire toute la page
@@ -106,10 +129,8 @@ if (document.readyState === 'loading') {
 
 // Forcer après 5 secondes
 setTimeout(() => {
-    if (typeof translationsFR === 'undefined') {
-        console.warn('⚠️ Timeout: initialisation forcée même sans tous les fichiers');
-        if (typeof LanguageSystemHTML !== 'undefined') {
-            initLanguageSystem();
-        }
+    if (typeof window.LanguageSystemHTML === 'undefined') {
+        console.warn('⚠️ Timeout: initialisation forcée');
+        initLanguageSystem();
     }
 }, 5000);

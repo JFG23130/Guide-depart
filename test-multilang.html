@@ -196,6 +196,31 @@
             line-height: 1.5;
         }
 
+        .source-cell {
+            text-align: center;
+            font-size: 0.9em;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .source-cell a {
+            display: inline-block;
+            padding: 6px 10px;
+            background: #f0f4ff;
+            border-radius: 4px;
+            border: 1px solid #667eea;
+            text-decoration: none;
+            color: #667eea;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .source-cell a:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.1);
+        }
+
         .translation-cell.editable {
             cursor: pointer;
             position: relative;
@@ -390,13 +415,14 @@
                     <thead>
                         <tr>
                             <th style="width: 30%;">🔑 Clé de traduction</th>
-                            <th id="lang1Header" style="width: 35%;">🇫🇷 Français</th>
-                            <th id="lang2Header" style="width: 35%;">🇬🇧 English</th>
+                            <th style="width: 12%;">📍 Source</th>
+                            <th id="lang1Header" style="width: 29%;">🇫🇷 Français</th>
+                            <th id="lang2Header" style="width: 29%;">🇬🇧 English</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
                         <tr>
-                            <td colspan="3" class="no-results">Chargement des données...</td>
+                            <td colspan="4" class="no-results">Chargement des données...</td>
                         </tr>
                     </tbody>
                 </table>
@@ -413,23 +439,21 @@
     <!-- Charger les fichiers de langues -->
     <script>
         console.log('1️⃣ Script principal en cours de chargement...');
-        window.translationsFR = null;
-        window.translationsEN = null;
-        window.translationsDE = null;
-        window.translationsES = null;
     </script>
-    <script src="assets/lang-fr.js" onerror="console.error('❌ Erreur: lang-fr.js')"></script>
-    <script src="assets/lang-en.js" onerror="console.error('❌ Erreur: lang-en.js')"></script>
-    <script src="assets/lang-de.js" onerror="console.error('❌ Erreur: lang-de.js')"></script>
-    <script src="assets/lang-es.js" onerror="console.error('❌ Erreur: lang-es.js')"></script>
+    <script src="assets/lang-fr.js?v=2" onerror="console.error('❌ Erreur: lang-fr.js')"></script>
+    <script src="assets/lang-en.js?v=2" onerror="console.error('❌ Erreur: lang-en.js')"></script>
+    <script src="assets/lang-de.js?v=2" onerror="console.error('❌ Erreur: lang-de.js')"></script>
+    <script src="assets/lang-es.js?v=2" onerror="console.error('❌ Erreur: lang-es.js')"></script>
+    <script src="assets/key-metadata.js?v=2" onerror="console.error('❌ Erreur: key-metadata.js')"></script>
+    <script src="assets/html-usage.js?v=2" onerror="console.error('❌ Erreur: html-usage.js')"></script>
     <script>
         console.log('2️⃣ Vérification du chargement des fichiers:');
-        console.log('FR:', typeof translationsFR, Object.keys(translationsFR || {}).length);
-        console.log('EN:', typeof translationsEN, Object.keys(translationsEN || {}).length);
-        console.log('DE:', typeof translationsDE, Object.keys(translationsDE || {}).length);
-        console.log('ES:', typeof translationsES, Object.keys(translationsES || {}).length);
+        console.log('FR:', typeof window.translationsFR, Object.keys(window.translationsFR || {}).length);
+        console.log('EN:', typeof window.translationsEN, Object.keys(window.translationsEN || {}).length);
+        console.log('DE:', typeof window.translationsDE, Object.keys(window.translationsDE || {}).length);
+        console.log('ES:', typeof window.translationsES, Object.keys(window.translationsES || {}).length);
     </script>
-    <script src="assets/lang-manager.js" onerror="console.error('❌ Erreur: lang-manager.js')"></script>
+    <script src="assets/lang-manager.js?v=2" onerror="console.error('❌ Erreur: lang-manager.js')"></script>
     <script>
         console.log('3️⃣ Vérification du LanguageManager:', typeof LanguageManager);
     </script>
@@ -578,6 +602,17 @@
             attachEditListeners();
         }
 
+        // Ouvrir le fichier HTML dans l'éditeur VS Code
+        function openInEditor(filename, lineNum) {
+            // Construire l'URL vscode://
+            const vscodeUrl = `vscode://file/${window.location.origin}/${filename}:${lineNum}`;
+            console.log(`📂 Tentative d'ouverture: ${filename} ligne ${lineNum}`);
+            
+            // Alternative: ouvrir simplement le fichier dans un nouvel onglet
+            // (VS Code n'accepte pas les liens vscode:// depuis le navigateur)
+            window.open(filename, '_blank');
+        }
+
         // Attacher les event listeners à toutes les cellules éditables
         function attachEditListeners() {
             document.querySelectorAll('.translation-cell.editable').forEach(cell => {
@@ -695,7 +730,7 @@
             const paginatedKeys = filteredKeys.slice(start, end);
 
             if (paginatedKeys.length === 0) {
-                tableBody.innerHTML = '<tr><td colspan="3" class="no-results">Aucun résultat</td></tr>';
+                tableBody.innerHTML = '<tr><td colspan="4" class="no-results">Aucun résultat</td></tr>';
                 return;
             }
 
@@ -709,10 +744,18 @@
                 
                 const isMissing1 = !trans1;
                 const isMissing2 = !trans2;
+                
+                // Récupérer les métadonnées HTML
+                let sourceHtml = '❓';
+                if (typeof htmlUsage !== 'undefined' && htmlUsage[key]) {
+                    const usage = htmlUsage[key];
+                    sourceHtml = `<a href="${usage.file}" target="_blank" title="Fichier: ${usage.file}, Ligne: ${usage.line}" style="text-decoration: none; color: #667eea; cursor: pointer; font-weight: bold;" onclick="openInEditor('${usage.file}', ${usage.line})">📄 L${usage.line}</a>`;
+                }
 
                 html += `
                     <tr>
                         <td class="key-cell">${key}</td>
+                        <td class="source-cell">${sourceHtml}</td>
                         <td class="translation-cell editable ${isMissing1 ? 'missing' : ''}" 
                             data-key="${key}" data-lang="${lang1}">
                             ${isMissing1 ? '❌' : trans1}

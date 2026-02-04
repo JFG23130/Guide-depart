@@ -296,6 +296,29 @@
     <script src="assets/lang-de.js"></script>
     <script src="assets/lang-es.js"></script>
     <script src="assets/init-translations.js"></script>
+    <script>
+        function changeLanguage(lang) {
+            console.log('📢 changeLanguage appelé avec:', lang);
+            if (typeof LanguageSystemHTML === 'undefined') {
+                console.error('❌ LanguageSystemHTML non défini');
+                setTimeout(() => changeLanguage(lang), 500);
+                return;
+            }
+            LanguageSystemHTML.setLanguage(lang);
+            const sel = document.getElementById('langSelector');
+            if (sel) sel.value = lang;
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            let w = 0;
+            const c = setInterval(() => {
+                if (typeof LanguageSystemHTML !== 'undefined') {
+                    clearInterval(c);
+                    const sel = document.getElementById('langSelector');
+                    if (sel) sel.value = LanguageSystemHTML.currentLanguage;
+                } else if (++w > 50) clearInterval(c);
+            }, 100);
+        });
+    </script>
 </body>
 </html>
 <script>

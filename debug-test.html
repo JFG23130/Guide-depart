@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Test</title>
+</head>
+<body>
+    <h1>Debug Console</h1>
+    <pre id="logs" style="border: 1px solid #ccc; padding: 10px; height: 400px; overflow: auto; background: #f0f0f0;">
+Chargement...
+    </pre>
+
+    <script>
+        function log(msg) {
+            const pre = document.getElementById('logs');
+            pre.textContent += '\n' + msg;
+            pre.scrollTop = pre.scrollHeight;
+            console.log(msg);
+        }
+
+        log('1️⃣ Initialisation');
+    </script>
+
+    <script src="assets/lang-fr.js?v=2" onerror="log('❌ ERREUR: lang-fr.js')"></script>
+    <script src="assets/lang-en.js?v=2" onerror="log('❌ ERREUR: lang-en.js')"></script>
+    <script src="assets/lang-de.js?v=2" onerror="log('❌ ERREUR: lang-de.js')"></script>
+    <script src="assets/lang-es.js?v=2" onerror="log('❌ ERREUR: lang-es.js')"></script>
+    <script src="assets/lang-manager.js?v=2" onerror="log('❌ ERREUR: lang-manager.js')"></script>
+
+    <script>
+        log('2️⃣ Vérification');
+        log('window.translationsFR: ' + (typeof window.translationsFR));
+        log('Keys in FR: ' + (window.translationsFR ? Object.keys(window.translationsFR).length : 0));
+        log('LanguageManager: ' + (typeof LanguageManager));
+        
+        try {
+            log('3️⃣ Chargement...');
+            LanguageManager.loadLanguages();
+            log('✅ Chargé');
+            
+            const stats = LanguageManager.getStats();
+            log('Stats: ' + JSON.stringify(stats));
+        } catch (e) {
+            log('❌ Erreur: ' + e.message);
+        }
+    </script>
+</body>
+</html>

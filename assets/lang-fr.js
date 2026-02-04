@@ -1,27 +1,13 @@
-// Fichier de traductions français
+// Fichier de traductions fr
 // Katikias 33 - Guide multilingue
 
-const translationsFR = {
-    // Navigation commune
-    "nav.back": "← Retour",
-
-    // apartment
-    "apartment.guide.link": "Les essentiels à l'arrivée",
-    "apartment.guide.title": "Guide Pratique",
-    "apartment.subtitle": "Cliquez sur une pièce pour voir ses équipements",
-    "apartment.title": "Plan de l'appartement",
-
-    // apartment_guide
+window.translationsFR = {
     "apartment_guide.a.essentiels_à_larrivée": "✨ Essentiels à l'arrivée",
     "apartment_guide.a.la_résidence": "🏘️ La Résidence",
     "apartment_guide.a.mon_départ": "👋 Mon départ",
     "apartment_guide.a.à_proximité": "📍 À Proximité",
     "apartment_guide.h2.liens_utiles": "📱 Liens Utiles",
     "apartment_guide.h2.plan_de_lappartement": "📚 Plan de l'appartement",
-    "apartment_guide.li.essentiels_à_larrivée": "✨ Essentiels à l'arrivée",
-    "apartment_guide.li.la_résidence": "🏘️ La Résidence",
-    "apartment_guide.li.mon_départ": "👋 Mon départ",
-    "apartment_guide.li.à_proximité": "📍 À Proximité",
     "apartment_guide.p.besoin_daide_contacteznous_bon_séjour_à": "Besoin d'aide ? Contactez-nous ! Bon séjour à Katikias 33 🌟",
     "apartment_guide.p.cliquez_sur_une_pièce_pour_plus_dinforma": "Cliquez sur une pièce pour plus d'informations",
     "apartment_guide.p.image_du_plan_non_trouvée": "Image du plan non trouvée",
@@ -36,45 +22,6 @@ const translationsFR = {
     "apartment_guide.zone.salon": "🛋️ Salon",
     "apartment_guide.zone.terrasse": "🌤️ Terrasse",
     "apartment_guide.zone.wc": "🚻 WC",
-
-    // arrival_guide
-    "arrival_guide.h2.codes_daccès": "🔑 Codes d'Accès",
-    "arrival_guide.h2.liens_utiles": "📱 Liens Utiles",
-    "arrival_guide.h2.plan_de_lappartement": "🏠 Plan de l'Appartement",
-    "arrival_guide.h2.à_votre_arrivée": "📋 À votre arrivée",
-    "arrival_guide.h3.balcon": "🪟 Balcon",
-    "arrival_guide.h3.chambres": "🛏️ Chambres",
-    "arrival_guide.h3.cuisine": "🍳 Cuisine",
-    "arrival_guide.h3.en_cas_durgence": "🚨 En cas d'urgence",
-    "arrival_guide.h3.parking": "🚗 Parking",
-    "arrival_guide.h3.piscine": "🏊‍♀️ Piscine",
-    "arrival_guide.h3.porte_dentrée": "🏠 Porte d'entrée",
-    "arrival_guide.h3.salle_de_bain": "🛁 Salle de bain",
-    "arrival_guide.h3.wifi": "📶 Wi-Fi",
-    "arrival_guide.li.astuces_conseils_pratiques": "✨ Astuces & Conseils pratiques",
-    "arrival_guide.li.configurer_le_wifi_sur_vos_appareils": "Configurer le Wi-Fi sur vos appareils",
-    "arrival_guide.li.consulter_le_guide_de_lappartement": "Consulter le guide de l'appartement",
-    "arrival_guide.li.guide_complet_de_lappartement": "Guide complet de l'appartement",
-    "arrival_guide.li.noter_les_numéros_durgence": "Noter les numéros d'urgence",
-    "arrival_guide.li.procédure_de_départ": "Procédure de départ",
-    "arrival_guide.li.récupérer_les_clés_dans_la_boîte_à_clés": "Récupérer les clés dans la boîte à clés",
-    "arrival_guide.li.vérifier_le_fonctionnement_des_équipemen": "Vérifier le fonctionnement des équipements",
-    "arrival_guide.p.2_chambres_avec_lits_doubles": "2 chambres avec lits doubles",
-    "arrival_guide.p.code_1234": "Code: 1234",
-    "arrival_guide.p.code_5678": "Code: 5678",
-    "arrival_guide.p.douche_wc_séparés": "Douche + WC séparés",
-    "arrival_guide.p.gestionnaire_33_5_xx_xx_xx_xx": "Gestionnaire :",
-    "arrival_guide.p.katikias33welcome2024": "Katikias33Welcome2024!",
-    "arrival_guide.p.merci_de_votre_confiance_bon_séjour_à_ka": "Merci de votre confiance ! Bon séjour à Katikias 33 🌟",
-    "arrival_guide.p.place_réservée": "Place réservée",
-    "arrival_guide.p.police_17": "Police :",
-    "arrival_guide.p.pompierssamu_112": "Pompiers/SAMU :",
-    "arrival_guide.p.propriétaire_33_6_xx_xx_xx_xx": "Propriétaire :",
-    "arrival_guide.p.votre_guide_darrivée_complet": "Votre guide d'arrivée complet",
-    "arrival_guide.p.vue_sur_la_piscine": "Vue sur la piscine",
-    "arrival_guide.p.équipée_complète": "Équipée complète",
-
-    // chambre
     "chambre.li.box_tv_orange": "Box TV Orange",
     "chambre.li.lit_160": "Lit 160",
     "chambre.li.programmes_tv_orange": "Programmes TV Orange",
@@ -82,8 +29,6 @@ const translationsFR = {
     "chambre.li.table_à_repasser": "Table à repasser",
     "chambre.li.tv_chambre": "TV_chambre",
     "chambre.title": "🛏️ Chambre",
-
-    // cuisine
     "cuisine.li.bouilloire": "Bouilloire",
     "cuisine.li.cafetière": "Cafetière",
     "cuisine.li.congélateur": "Congélateur",
@@ -95,12 +40,6 @@ const translationsFR = {
     "cuisine.li.mini_réfrigérateur": "Mini réfrigérateur",
     "cuisine.li.plaque_cuisson_vitro_céramique": "Plaque cuisson vitro céramique",
     "cuisine.title": "🍽️ Cuisine",
-
-    // departure
-    "departure.subtitle": "Checklist et procédures de départ",
-    "departure.title": "Votre Départ",
-
-    // departure_procedure
     "departure_procedure.h3.contact_de_votre_hôte": "📞 Contact de votre hôte",
     "departure_procedure.h3.en_cas_durgence": "🚨 En cas d'urgence",
     "departure_procedure.h3.jeter_les_ordures": "🗑️ Jeter les ordures",
@@ -138,8 +77,6 @@ const translationsFR = {
     "departure_procedure.p.nous_espérons_que_vous_avez_passé_un_exc": "Nous espérons que vous avez passé un excellent séjour.",
     "departure_procedure.p.nous_vous_souhaitons_bon_retour_et_bonne": "Nous vous souhaitons bon retour et bonne continuation !",
     "departure_procedure.p.ou_envoyez_un_message_via_la_messagerie": "Ou envoyez un message via la messagerie Airbnb",
-
-    // emergencies
     "emergencies.h3.contact_de_votre_hôte": "📞 Contact de votre hôte",
     "emergencies.h3.ℹ_informations_importantes": "ℹ️ Informations importantes",
     "emergencies.p.112_est_le_numéro_durgence_unique_europé": "112",
@@ -148,15 +85,8 @@ const translationsFR = {
     "emergencies.p.numéros_durgence_et_contacts_importants": "Numéros d'urgence et contacts importants",
     "emergencies.p.ou_envoyez_un_message_via_la_messagerie": "Ou envoyez un message via la messagerie Airbnb",
     "emergencies.p.pour_toute_question_non_urgente": "Pour toute question non urgente :",
-    "emergencies.subtitle": "Numéros d'urgence et contacts importants",
-    "emergencies.title": "Urgences",
-
-    // index
-    "index.departure.desc": "Un dernier coup d'œil sur la baie et c'est l'heure du départ. Checklist de départ et toutes les étapes pour bien terminer votre séjour.",
     "index.departure.title": "Votre Départ",
-    "index.equipements.desc": "Climatisation, Télévision, Four, plaques à induction, volets roulant... de chaque pièce de l'appartements: Salon, Terrasse, Cuisine...",
     "index.equipements.title": "Les Equipements",
-    "index.essentiels.desc": "Petites astuces pour faciliter votre installation et votre séjour.",
     "index.essentiels.title": "✨ Essentiels à l'arrivée",
     "index.footer": "Merci de votre confiance ! Bon séjour à Katikias 33 🌟",
     "index.p.bon_séjour": "Bon séjour…",
@@ -169,16 +99,8 @@ const translationsFR = {
     "index.p.nous_vous_invitons_avant_tout_à_profiter": "Nous vous invitons, avant tout, à profiter de l'appartement et de la vue magnifique qu'il offre sur la baie de Bandol, l'île de Bendor et sur la mer. Nous avons réalisé ce guide pour rendre votre séjour plus agréable et pour essayer de répondre au mieux aux questions que vous pourriez vous poser.",
     "index.p.petites_astuces_pour_faciliter_votre_ins": "Petites astuces pour faciliter votre installation et votre séjour.",
     "index.p.un_dernier_coup_dœil_sur_la_baie_et_cest": "Un dernier coup d'œil sur la baie et c'est l'heure du départ. Checklist de départ et toutes les étapes pour bien terminer votre séjour.",
-    "index.proximity.desc": "Commerces, activités, plages et accès rapides autour des Katikias.",
     "index.proximity.title": "À Proximité",
-    "index.quick.piscine": "🏊‍♀️ Piscine",
-    "index.quick.piscine.bracelet": "Bracelet rouge obligatoire",
-    "index.quick.portail.car": "🚗 Voiture",
-    "index.quick.portail.ped": "🚶‍♂️ Piéton",
     "index.quick.title": "🔑 Accès Rapide",
-    "index.quick.urgences": "🚨 Urgences",
-    "index.quick.wifi": "📶 Wi-Fi",
-    "index.residence.desc": "Informations sur la résidence des Katikias, gardiens, piscine, parc et services de la copropriété.",
     "index.residence.title": "La Résidence",
     "index.strong.112": "112",
     "index.strong.1359": "1359",
@@ -190,25 +112,15 @@ const translationsFR = {
     "index.subtitle": "Votre guide digital",
     "index.title": "🏡 Katikias 33",
     "index.welcome.greeting": "💌 Mot d'accueil",
-    "index.welcome.text1": "Nous sommes heureux de vous accueillir chez nous. Nous passons fréquemment de très agréables moments dans cet appartement et nous espérons qu'il en sera de même pour vous.",
-    "index.welcome.text2": "Nous avons mis tout notre cœur et beaucoup de soin pour meubler ce petit cocon et nous ne doutons pas, que vous saurez, vous aussi, en profiter et le préserver au mieux pour ceux qui vous succéderont.",
-    "index.welcome.text3": "Nous vous invitons, avant tout, à profiter de l'appartement et de la vue magnifique qu'il offre sur la baie de Bandol, l'île de Bendor et sur la mer. Nous avons réalisé ce guide pour rendre votre séjour plus agréable et pour essayer de répondre au mieux aux questions que vous pourriez vous poser.",
-    "index.welcome.text4": "Bon séjour…",
-    "index.welcome.text5": "Béatrix et Jean-François.",
     "index.welcome.title": "Bienvenue à la maison !",
-
-    // placard
+    "nav.back": "← Retour",
     "placard.title": "🗄️ Placard Bleu",
-
-    // placard_bleu
     "placard_bleu.li.box_fibre_orange_wifi": "Box fibre Orange Wi‑Fi",
     "placard_bleu.li.chaise_haute": "Chaise haute",
     "placard_bleu.li.lit_parapluie_bébé": "Lit parapluie bébé",
     "placard_bleu.li.plancha": "Plancha",
     "placard_bleu.li.table_à_langer": "Table à langer",
     "placard_bleu.li.équipement_bébé": "Équipement Bébé",
-
-    // proximity
     "proximity.h2.activités": "🏌️ Activités",
     "proximity.h2.commerces_services": "🛒 Commerces & Services",
     "proximity.h2.plages": "🏖️ Plages",
@@ -231,10 +143,7 @@ const translationsFR = {
     "proximity.p.profitez_bien_de_votre_séjour_à_katikias": "Profitez bien de votre séjour à Katikias 33 ! 🌟",
     "proximity.p.à_bandol_sanarysurmer_et_saintcyrsurmer": "À Bandol, Sanary-sur-Mer et Saint-Cyr-sur-Mer : nombreuses plages, activités nautiques, restaurants et commerces de bouche.",
     "proximity.strong.marseille": "Marseille :",
-    "proximity.subtitle": "Commerces, activités, plages et accès autour de Katikias 33",
     "proximity.title": "📍 À Proximité",
-
-    // residence
     "residence.h2.gardiens": "👮 Gardiens",
     "residence.h2.parc": "🌳 Parc",
     "residence.h2.piscine": "🏊‍♀️ Piscine",
@@ -251,11 +160,6 @@ const translationsFR = {
     "residence.li.les_cartons": "Les cartons",
     "residence.li.les_déchets_ménagers": "Les déchets ménagers",
     "residence.li.les_plastiques": "Les plastiques",
-    "residence.li.lundi_au_vendredi_9h12h_et_18h19h": "Lundi au vendredi :",
-    "residence.strong.lundi_au_vendredi": "Lundi au vendredi :",
-    "residence.li.samedi_9h12h": "Samedi :",
-    "residence.strong.samedi": "Samedi :",
-    "residence.p.ajoutez_imagesplan_accesjpg": "Ajoutez images/plan_acces.jpg",
     "residence.p.dans_le_local_poubelles_toujours_ouvert": "Dans le local Poubelles toujours ouvert",
     "residence.p.dans_leurs_poubelles_respectives": "Dans leurs poubelles respectives.",
     "residence.p.des_bacs_pour_la_collecte_des_verres_se": "Des bacs pour la collecte des verres se trouvent Boulevard du Bois Maurin",
@@ -263,33 +167,21 @@ const translationsFR = {
     "residence.p.informations_pratiques_sur_votre_résiden": "Informations pratiques sur votre résidence",
     "residence.p.la_partie_pataugeoire_est_réservée_exclu": "La partie pataugeoire est réservée exclusivement aux enfants.",
     "residence.p.la_résidence_posée_à_flanc_de_colline_es": "La résidence posée à flanc de colline est entourée d'un parc paysager planté d'essences méditerranéennes et d'une pinède (8 hectares au total).",
-    "residence.p.les_gardiens_connaissent_bien_les_katiki": "Les gardiens connaissent bien \"les Katikias\" et la région. Ils seront toujours de bon conseil et peuvent éventuellement prendre en charge votre courrier.",
     "residence.p.merci_de_respecter_les_règles_de_la_copr": "Merci de respecter les règles de la copropriété. Bon séjour ! 🌟",
     "residence.p.ouverte_de_7h_à_20h_7_jours_sur_7_en_sai": "Regarder les horaires sur l'affiche de la porte d'entrée",
     "residence.p.plan_daccès_non_trouvé": " ",
     "residence.p.plan_de_la_résidence": "📍 Plan de la Résidence",
     "residence.p.pour_des_raisons_sanitaires_il_est_oblig": "Pour des raisons sanitaires, il est obligatoire",
+    "residence.strong.lundi_au_vendredi": "Lundi au vendredi :",
+    "residence.strong.samedi": "Samedi :",
     "residence.strong.téléphone": "Téléphone :",
-    "residence.subtitle": "Informations sur la résidence des Katikias",
-    "residence.title": "La Résidence",
-
-    // room
-    "room.back": "← Retour au plan",
-    "room.equipments": "Équipements",
-    "room.no_image": "Image non disponible",
-
-    // salle_deau
     "salle_deau.li.douche": "Douche",
     "salle_deau.li.miroir_lumineux": "Miroir lumineux",
     "salle_deau.li.radiateur_sdb": "Radiateur sdb",
     "salle_deau.title": "🛁 Salle d'eau",
-
-    // salle_manger
     "salle_manger.li.climatisation": "Climatisation",
     "salle_manger.li.radiateur": "Radiateur",
     "salle_manger.title": "🍽️ Salle à Manger",
-
-    // salon
     "salon.li.alexa": "Alexa",
     "salon.li.box_canal": "Box Canal+",
     "salon.li.box_tv_orange": "Box TV Orange",
@@ -299,8 +191,6 @@ const translationsFR = {
     "salon.li.programmes_tv_canal": "Programmes TV Canal+",
     "salon.li.tv_salon": "TV Salon",
     "salon.title": "🛋️ Salon",
-
-    // terrasse
     "terrasse.li.baie_vitrée": "Baie vitrée",
     "terrasse.li.barbecue": "Barbecue",
     "terrasse.li.plancha": "Plancha",
@@ -309,12 +199,6 @@ const translationsFR = {
     "terrasse.li.sèche_linge": "Sèche linge",
     "terrasse.li.volets_roulants": "Volets roulants",
     "terrasse.title": "🌤️ Terrasse",
-
-    // tips
-    "tips.subtitle": "Tout ce qu'il faut savoir pour bien commencer votre séjour",
-    "tips.title": "Les Essentiels à l'arrivée",
-
-    // tips_and_tricks
     "tips_and_tricks.a.consulter_la_page_résidence": "👉 Consulter la page résidence",
     "tips_and_tricks.a.consulter_le_guide_des_équipements_par_pièce": "👉 Consulter le guide des équipements par pièce",
     "tips_and_tricks.h2.accès_connexions": "📶 Accès & Connexions",
@@ -336,7 +220,6 @@ const translationsFR = {
     "tips_and_tricks.h3.store_banne_attention_au_vent": "🌬️ Store banne - Attention au vent",
     "tips_and_tricks.h3.télévision": "📺 Télévision",
     "tips_and_tricks.h3.volets_roulants_télécommande_somfy": "🔄 Volets roulants (Télécommande Somfy)",
-    "tips_and_tricks.h3.wifi": "📶 Wi-Fi",
     "tips_and_tricks.li.disney_21_code_pin_2383": "Disney+ (21)",
     "tips_and_tricks.li.fermer_les_robinets_et_éteindre_les_lamp": "Fermer les robinets et éteindre les lampes lorsque vous n'êtes plus dans une pièce",
     "tips_and_tricks.li.fermer_les_vitres_de_la_baie_lors_de_lut": "Fermer les vitres de la baie lors de l'utilisation de la climatisation",
@@ -355,8 +238,6 @@ const translationsFR = {
     "tips_and_tricks.p.le_respect_de_la_terre_celle_que_nous_la": "Le respect de la terre, celle que nous laisserons à nos enfants, pour nous agriculteurs, est dans nos gènes. Aussi, nous aimerions vous inviter à effectuer quelques petits gestes pour la planète :",
     "tips_and_tricks.p.les_modes_demploi_détaillés_de_lensemble": "Les modes d'emploi détaillés de l'ensemble des appareils de l'appartement se trouvent dans le tiroir de droite du meuble, sous la climatisation.",
     "tips_and_tricks.p.les_plaques_se_pilotent_par_un_appui_lég": "Les plaques se pilotent par un appui léger et prolongé sur les commandes.",
-    "tips_and_tricks.p.mot_de_passe_cmxplqydfcu7qcyl3n": "Mot de passe :",
-    "tips_and_tricks.p.nom_du_réseau_livebox6a50": "Nom du réseau :",
     "tips_and_tricks.p.nous_sommes_heureux_de_mettre_à_votre_di": "Nous sommes heureux de mettre à votre disposition un petit stock de denrées de base que vous trouverez en dépannage dans le placard.",
     "tips_and_tricks.p.pour_plus_dinformations_sur_la_résidence": "Pour plus d'informations sur la résidence, les gardiens, la piscine et les services :",
     "tips_and_tricks.p.pour_plus_dinformations_sur_les_équipeme": "Pour plus d'informations sur les équipements :",
@@ -365,8 +246,43 @@ const translationsFR = {
     "tips_and_tricks.p.solidarité_merci_de_penser_à_renouveler": "🤝 Solidarité :",
     "tips_and_tricks.p.un_tiroir_de_lavage_à_couverts_se_situe": "Un tiroir de lavage à couverts se situe tout en haut du lave-vaisselle.",
     "tips_and_tricks.p.vous_allez_vivre_dans_un_espace_où_lon_c": "Vous allez vivre dans un espace où l'on croise peu ses voisins. Nous vous souhaitons de profiter agréablement de votre séjour, mais aussi de respecter au mieux la tranquillité des résidents.",
-
-    // wc
     "wc.li.armoire_électrique": "Armoire électrique",
     "wc.title": "🚻 WC",
+    "chambre.li.climatisation": "Climatisation Chambre",
+    "departure_procedure.h2.heure_de_départ": "Heure de départ",
+    "emergencies.strong.112": "112",
+    "placard_bleu.li.service_à_raclette": "Service à raclette",
+    "proximity.strong.aqualand_saintcyr": "Aqualand Saint-Cyr",
+    "proximity.strong.autoroute_a50_sortie_12_bandol": "Autoroute A50 (Sortie 12 Bandol)",
+    "proximity.strong.circuit_paul_ricard_du_castellet": "Circuit Paul Ricard du Castellet",
+    "proximity.strong.domaines_viticoles_de_bandol": "Domaines viticoles de Bandol",
+    "proximity.strong.gare_sncf": "Gare SNCF",
+    "proximity.strong.golf_de_frégate": "Golf de Frégate",
+    "proximity.strong.intermarché_carrefour_et_super_u": "Intermarché, Carrefour et Super U",
+    "proximity.strong.marchés_de_bandol": "Marchés de Bandol",
+    "proximity.strong.marchés_de_sanarysurmer": "Marchés de Sanary-sur-Mer",
+    "proximity.strong.que_faire_à_bandol": "Que faire à Bandol ?",
+    "proximity.strong.toulon": "Toulon",
+    "proximity.strong.villages_typiques": "Villages typiques",
+    "proximity.strong.zoo_parc_de_sanarysurmer": "Zoo Parc de Sanary-sur-Mer",
+    "residence.p.les_gardiens_connaissent_bien_les_katiki": "Les gardiens connaissent bien les Katikias et la région",
+    "residence.strong.7h_à_20h_7_jours_sur_7": "7h à 20h, 7 jours sur 7",
+    "residence.strong.boulevard_du_bois_maurin": "Boulevard du Bois Maurin",
+    "residence.strong.bracelets_rouges": "Bracelets rouges",
+    "residence.strong.local_poubelles_toujours_ouvert": "Local Poubelles toujours ouvert",
+    "residence.strong.obligatoire": "Obligatoire",
+    "tips_and_tricks.strong.chambre": "Chambre",
+    "tips_and_tricks.strong.disney_21": "Disney+ (21)",
+    "tips_and_tricks.strong.eau_calcaire": "Eau calcaire",
+    "tips_and_tricks.strong.en_cas_de_mise_en_sécurité": "En cas de mise en sécurité",
+    "tips_and_tricks.strong.important": "Important - Sécurité",
+    "tips_and_tricks.strong.important_sécurité": "Important - Sécurité",
+    "tips_and_tricks.strong.netflix_22": "Netflix (22)",
+    "tips_and_tricks.strong.règlement": "Règlement",
+    "tips_and_tricks.strong.salon": "Salon",
+    "tips_and_tricks.strong.solidarité": "Solidarité",
+    "tips_and_tricks.strong.symbole_neige": "Symbole neige ❄️",
+    "tips_and_tricks.strong.symbole_soleil": "Symbole soleil ☀️",
+    "residence.strong.lundi_au_vendredi": "Lundi au vendredi 9h-12h et 18h-19h",
+    "residence.strong.samedi": "Samedi 9h-12h"
 };

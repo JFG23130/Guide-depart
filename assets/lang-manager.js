@@ -21,15 +21,15 @@ const LanguageManager = {
      */
     loadLanguages: function() {
         console.log('🔄 Chargement des langues...');
-        console.log('FR:', typeof translationsFR, Object.keys(translationsFR || {}).length, 'clés');
-        console.log('EN:', typeof translationsEN, Object.keys(translationsEN || {}).length, 'clés');
-        console.log('DE:', typeof translationsDE, Object.keys(translationsDE || {}).length, 'clés');
-        console.log('ES:', typeof translationsES, Object.keys(translationsES || {}).length, 'clés');
+        console.log('FR:', typeof window.translationsFR, Object.keys(window.translationsFR || {}).length, 'clés');
+        console.log('EN:', typeof window.translationsEN, Object.keys(window.translationsEN || {}).length, 'clés');
+        console.log('DE:', typeof window.translationsDE, Object.keys(window.translationsDE || {}).length, 'clés');
+        console.log('ES:', typeof window.translationsES, Object.keys(window.translationsES || {}).length, 'clés');
         
-        if (typeof translationsFR !== 'undefined') this.allLanguages['fr'] = translationsFR;
-        if (typeof translationsEN !== 'undefined') this.allLanguages['en'] = translationsEN;
-        if (typeof translationsDE !== 'undefined') this.allLanguages['de'] = translationsDE;
-        if (typeof translationsES !== 'undefined') this.allLanguages['es'] = translationsES;
+        if (typeof window.translationsFR !== 'undefined') this.allLanguages['fr'] = window.translationsFR;
+        if (typeof window.translationsEN !== 'undefined') this.allLanguages['en'] = window.translationsEN;
+        if (typeof window.translationsDE !== 'undefined') this.allLanguages['de'] = window.translationsDE;
+        if (typeof window.translationsES !== 'undefined') this.allLanguages['es'] = window.translationsES;
         
         console.log('✅ Langues chargées avec succès');
     },

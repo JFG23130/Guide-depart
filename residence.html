@@ -326,6 +326,47 @@
     <script src="assets/lang-de.js"></script>
     <script src="assets/lang-es.js"></script>
     <script src="assets/init-translations.js"></script>
+    <script>
+        // Fonction pour changer la langue
+        function changeLanguage(lang) {
+            console.log('📢 changeLanguage appelé avec:', lang);
+            
+            if (typeof LanguageSystemHTML === 'undefined') {
+                console.error('❌ LanguageSystemHTML non défini, attente...');
+                setTimeout(() => changeLanguage(lang), 500);
+                return;
+            }
+            
+            console.log('✅ LanguageSystemHTML trouvé');
+            LanguageSystemHTML.setLanguage(lang);
+            
+            const selector = document.getElementById('langSelector');
+            if (selector) {
+                selector.value = lang;
+                console.log('✅ Sélecteur mis à jour');
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('📋 DOMContentLoaded triggered');
+            
+            let waits = 0;
+            const checkReady = setInterval(() => {
+                waits++;
+                if (typeof LanguageSystemHTML !== 'undefined') {
+                    clearInterval(checkReady);
+                    const selector = document.getElementById('langSelector');
+                    if (selector) {
+                        selector.value = LanguageSystemHTML.currentLanguage;
+                        console.log('✅ Sélecteur initialisé avec:', LanguageSystemHTML.currentLanguage);
+                    }
+                } else if (waits > 50) {
+                    clearInterval(checkReady);
+                    console.warn('⚠️ LanguageSystemHTML non disponible après 5s');
+                }
+            }, 100);
+        });
+    </script>
 </body>
 </html>
 <script>
