@@ -741,6 +741,24 @@ const translations = {
         "wc.li.armoire_électrique": "Electrical cabinet",
         "wc.title": "🚻 WC",
 
+//Ajoutez
+"tips_and_tricks.p.en_cas_de_mise_en_sécurité_la_diode_de": "La diode de la clef reste allumée. Appuyez sur ce témoin quelques secondes pour réinitialiser.",
+"tips_and_tricks.strong.en_cas_de_mise_en_sécurité": "⚠️ En cas de mise en sécurité :",
+
+"tips_and_tricks.p.eau_calcaire_leau_est_calcaire_et_laiss": "L'eau est calcaire et laisse facilement des traces. Pensez à mettre régulièrement un produit anti-calcaire.",
+"tips_and_tricks.strong.eau_calcaire": "⚠️ Eau calcaire :",
+
+"tips_and_tricks.p.important_en_cas_de_risque_de_vent_fort": "En cas de risque de vent fort ou lorsque vous sortez, pensez à bien replier le store banne et fermer les baies vitrées.",
+"tips_and_tricks.strong.important": "⚠️ Important :",
+
+"tips_and_tricks.p.règlement_la_copropriété_nautorise_pas": "La copropriété n'autorise pas les nuisances sonores et interdit l'accès à la partie gravillonnée devant la terrasse.",
+"tips_and_tricks.strong.règlement": "⚠️ Règlement :",
+
+"tips_and_tricks.p.solidarité_merci_de_penser_à_renouveler": "Merci de penser à renouveler ce petit stock pour les prochains voyageurs.",
+"tips_and_tricks.strong.solidarité": "🤝 Solidarité :"
+
+
+
     },
     de: {  // Deutsch
         // Navigation commune
