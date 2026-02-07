@@ -1,0 +1,88 @@
+# ========================================
+# 🛡️ SÉCURITÉ - FICHIERS SENSIBLES À IGNORER
+# ========================================
+
+# ⚠️ FICHIERS AVEC CODES SENSIBLES
+# Ne JAMAIS déployer sur GitHub public
+assets/codes-config-private.js           # Codes WiFi + Portail + Airbnb
+KatikiasDeployer_v5/                       # Données Airbnb (sensibles)
+KatikiasDeployer_v5/reservations_final.csv  # Données complètes Airbnb (noms, emails, etc.)
+hub.html
+arrival_guide.html
+messages_invites.md
+
+# ========================================
+# 🐍 Python
+# ========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ========================================
+# 📝 Environnements virtuels
+# ========================================
+venv/
+ENV/
+env/
+.venv
+
+# ========================================
+# 💾 Caches et fichiers temporaires
+# ========================================
+.cache/
+*.cache
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# ========================================
+# 🔧 Éditeurs et IDEs
+# ========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
+
+# ========================================
+# 🌐 Node.js (si utilisé)
+# ========================================
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# ========================================
+# 🔑 Credentials et secrets
+# ========================================
+.env
+.env.local
+.env.*.local
+secrets.json
+credentials.json
+config.local.json
+
+# ========================================
+# 📊 Données sensibles
+# ========================================
+*.csv               # Sauf codes_invites.md qui est public
+!codes_invites.md   # EXCEPTION: ce fichier est OK (pas d'infos sensibles)
