@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏠 Katikias 33 - Bienvenue</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 50px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .emoji-header {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .language-selector:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        @media (max-width: 600px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.25);
+        }
+
+        .card.guide {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card.codes {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+            font-size: 1.6em;
+            font-weight: 600;
+            color: white;
+        }
+
+        .card p {
+            margin-bottom: 25px;
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        a.button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 14px 35px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card.codes a.button {
+            color: #f5576c;
+        }
+
+        a.button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .divider {
+            height: 1px;
+            background: #eee;
+            margin: 40px 0;
+        }
+
+        .info-section {
+            background: #f5f7fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .info-section h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .info-section p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            color: #999;
+            font-size: 0.9em;
+            line-height: 1.8;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .footer p {
+            margin: 8px 0;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .quick-access {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border: 2px solid #e8ecf1;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .quick-access h4 {
+            color: #667eea;
+            margin-bottom: 12px;
+            font-size: 1em;
+        }
+
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .quick-link {
+            background: white;
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            text-decoration: none;
+            border: 1px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .quick-link:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 25px;
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .emoji-header {
+                font-size: 3em;
+            }
+
+            .card {
+                padding: 25px 20px;
+            }
+
+            .card h2 {
+                font-size: 1.5em;
+            }
+
+            .card-icon {
+                font-size: 3em;
+            }
+
+            .language-selector {
+                top: 15px;
+                right: 15px;
+                font-size: 12px;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <select class="language-selector" id="language-select" onchange="changeLanguage(this.value)">
+        <option value="fr" selected>🇫🇷 Français</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="de">🇩🇪 Deutsch</option>
+        <option value="es">🇪🇸 Español</option>
+    </select>
+
+    <div class="container">
+        <header>
+            <div class="emoji-header">🏡</div>
+            <h1>Katikias 33</h1>
+            <p class="subtitle">Votre accueil personnalisé</p>
+            <div class="welcome-message">
+                Bienvenue! Nous sommes ravis de vous accueillir. Consultez le guide complet pour toutes les informations pratiques sur l'appartement.
+            </div>
+        </header>
+
+        <!-- Main Cards -->
+        <div class="cards-grid">
+            <!-- Guide Card -->
+            <div class="card guide">
+                <div class="card-content">
+                    <div class="card-icon">📖</div>
+                    <h2>Guide d'arrivée</h2>
+                    <p>Accès à l'appartement, commodités, WiFi, consignes de sécurité et conseils pratiques.</p>
+                    <a href="arrival_guide.html" class="button">Consulter →</a>
+                </div>
+            </div>
+
+            <!-- Codes Card -->
+            <div class="card codes">
+                <div class="card-content">
+                    <div class="card-icon">🔐</div>
+                    <h2>Codes sécurisés</h2>
+                    <p>WiFi, portail, accès personnalisé et autres informations confidentielles.</p>
+                    <a href="access.html" class="button">Voir codes →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Info Sections -->
+        <div class="info-section">
+            <h3>✨ Tout ce que vous trouverez ici</h3>
+            <ul class="info-list">
+                <li>Guide complet de l'appartement</li>
+                <li>Codes d'accès sécurisés (WiFi, Portail)</li>
+                <li>Instructions d'arrivée et départ</li>
+                <li>Recommandations locales</li>
+                <li>Contacts d'urgence</li>
+            </ul>
+        </div>
+
+        <div class="info-section" style="margin-top: 20px;">
+            <h3>🚀 Comment utiliser ce guide</h3>
+            <p>
+                <strong>1. Consultez le guide d'arrivée</strong> pour familiariser vous avec l'appartement<br>
+                <strong>2. Notez vos codes personnels</strong> fournis dans la section sécurisée<br>
+                <strong>3. Posez vos questions</strong> en cas de besoin
+            </p>
+        </div>
+
+        <div class="quick-access">
+            <h4>📌 Accès rapide</h4>
+            <div class="quick-links">
+                <a href="index.html" class="quick-link">Accueil</a>
+                <a href="arrival_guide.html" class="quick-link">Arrivée</a>
+                <a href="access.html" class="quick-link">Codes</a>
+                <a href="emergencies.html" class="quick-link">Urgences</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p data-lang-key="hub.tip">💡 Astuce: Marquez cette page en favoris pour y revenir facilement</p>
+            
+            <div class="contact-info">
+            <p><strong>Katikias 33</strong> - Votre séjour en confiance</p>
+            <p>Pour toute question : nous sommes à votre écoute</p>
+            <p style="margin-top: 15px; font-size: 0.85em; color: #bbb;">
+                Guide généré automatiquement | Dernière mise à jour: <span id="date-update">05/02/2026</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Extract code from URL
+        function getCodeFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('code');
+        }
+
+        // Get user's preferred language
+        function getUserLanguage() {
+            const browserLang = navigator.language.split('-')[0];
+            const supportedLangs = ['fr', 'en', 'de', 'es'];
+            return supportedLangs.includes(browserLang) ? browserLang : 'fr';
+        }
+
+        // Initialize
+        function init() {
+            const code = getCodeFromURL();
+            if (code) {
+                console.log('Code trouvé:', code);
+                // Stocker le code pour utilisation sur d'autres pages
+                sessionStorage.setItem('guestCode', code);
+                // Rediriger vers la page appropriée après 1 seconde
+                setTimeout(() => {
+                    window.location.href = 'arrival_guide.html';
+                }, 1500);
+            }
+
+            // Set language
+            const userLang = getUserLanguage();
+            document.getElementById('language-select').value = userLang;
+        }
+
+        function changeLanguage(lang) {
+            sessionStorage.setItem('preferredLanguage', lang);
+            window.location.reload();
+        }
+
+        // Update date
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date();
+            const formatted = today.toLocaleDateString('fr-FR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+            document.getElementById('date-update').textContent = formatted;
+        });
+
+        // Initialize on load
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>

@@ -149,54 +149,36 @@
             line-height: 1.5;
         }
         .quick-access {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
-            border-radius: 15px;
-            padding: 20px;
+            background: #f0f7ff;
+            border: 2px solid #90caf9;
+            border-radius: 16px;
+            padding: 25px;
             margin: 20px 0;
+            text-align: center;
         }
         .quick-access h3 {
-            color: #856404;
-            margin-bottom: 15px;
+            color: #1565c0;
+            margin-bottom: 10px;
             text-align: center;
         }
-        .quick-info {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+        .quick-access p {
+            color: #345;
+            margin-bottom: 18px;
+            line-height: 1.5;
         }
-        .quick-item {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 1rem;
-            color: #856404;
-            min-height: 150px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .quick-item .access-code {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #333;
+        .quick-button {
             display: inline-block;
-            margin-left: 6px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
-        .quick-item .portal-codes {
-            font-size: 0.95rem;
-            color: #765c0b;
-            line-height: 1.4;
-        }
-        .quick-item .quick-item-image {
-            margin-top: 8px;
-        }
-        .quick-item .quick-item-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 6px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        .quick-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
         }
         .quick-item strong {
             display: block;
@@ -327,38 +309,9 @@
             </div>
 
             <div class="quick-access">
-                <h3 data-lang-key="index.quick.title">🔑 Accès Rapide</h3>
-                <div class="quick-info">
-                    <div class="quick-item">
-                        <strong data-lang-key="index.strong.portail">🚪 Portail</strong>
-                        <div class="portal-codes">
-                            <div>🚶‍♂️ Piéton : <span class="access-code" data-lang-key="index.strong.1398">1398</span></div>
-                            <div>🚗 Voiture : <span class="access-code" data-lang-key="index.strong.1359">1359</span></div>
-                        </div>
-                        <div class="quick-item-image">
-                            <img src="images/telecomande_portail.png" alt="Télécommande du portail" onerror="this.style.display='none'">
-                        </div>
-                    </div>
-                    <div class="quick-item">
-                        <strong data-lang-key="index.strong.wifi">📶 Wi-Fi</strong>
-                        Katikias33
-                        <div style="margin-top:8px;">
-                            <img src="images/qrcodewifi.jpg" alt="QR code Wi‑Fi" style="max-width:100%; height:auto; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" onerror="this.style.display='none'">
-                        </div>
-                    </div>
-                    <a href="emergencies.html" class="quick-item" style="text-decoration: none;">
-                        <strong data-lang-key="index.strong.urgences">🚨 Urgences</strong>
-                        <strong style="font-size:1.8rem; color: #d32f2f;" data-lang-key="index.strong.112">112</strong>
-                        <div style="font-size:0.8rem; color:#666; margin-top:5px;">les contacts</div>
-                    </a>
-                    <div class="quick-item">
-                        <strong data-lang-key="index.strong.piscine">🏊‍♀️ Piscine</strong>
-                        Bracelet rouge obligatoire
-                        <div style="margin-top:8px;">
-                            <img src="images/bracelet_rouge.png" alt="Bracelet rouge piscine" style="max-width:100%; height:auto; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.15);" onerror="this.style.display='none'">
-                        </div>
-                    </div>
-                </div>
+                <h3 data-lang-key="index.quick.codes.title">🔐 Codes sécurisés</h3>
+                <p data-lang-key="index.quick.codes.subtitle">Accédez à vos codes Wi‑Fi et portail avec votre code personnel.</p>
+                <a href="codes-acces.html" class="quick-button" data-lang-key="index.quick.codes.button">Ouvrir l'accès sécurisé</a>
             </div>
         </div>
         
@@ -367,6 +320,8 @@
         </div>
     </div>
 
+    <script src="assets/codes-config-generated.js?v=1"></script>
+    <script src="assets/guard-access.js?v=1"></script>
     <script>
         // Toggle collapsible sections
         function toggleCollapsible(element) {

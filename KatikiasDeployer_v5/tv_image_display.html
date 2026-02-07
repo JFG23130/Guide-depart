@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katikias 33 - TV Display</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            overflow: hidden; 
+            background: #000;
+        }
+        #displayImage {
+            width: 100vw;
+            height: 100vh;
+            object-fit: contain;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <img id="displayImage" src="tv_images/arrival_G_JF.jpg" alt="TV Display">
+    
+    <script>
+        // Configuration
+        const config = {
+            currentGuest: "G_JF",
+            checkInDate: "12/10/2025",
+            checkOutDate: "14/10/2025"
+        };
+        
+        function getCurrentScenario() {
+            const now = new Date();
+            const currentHour = now.getHours();
+            const currentDate = now.toLocaleDateString('fr-FR');
+            
+            // Vérifier si c'est le jour d'arrivée
+            if (currentDate === config.checkInDate) {
+                if (currentHour >= 13) {
+                    return `tv_images/arrival_${config.currentGuest}.jpg`;
+                }
+            }
+            
+            // Vérifier si c'est le jour de départ
+            if (currentDate === config.checkOutDate) {
+                if (currentHour < 13) {
+                    return `tv_images/departure_${config.currentGuest}.jpg`;
+                }
+            }
+            
+            // Par défaut, afficher "bonne journée"
+            return 'tv_images/good_day.jpg';
+        }
+        
+        function updateDisplay() {
+            const imageUrl = getCurrentScenario();
+            const img = document.getElementById('displayImage');
+            
+            // Vérifier si l'image a changé
+            if (img.src.endsWith(imageUrl)) {
+                return; // Pas de changement
+            }
+            
+            // Mettre à jour l'image avec un fondu
+            img.style.opacity = '0';
+            setTimeout(() => {
+                img.src = imageUrl;
+                img.onload = () => {
+                    img.style.transition = 'opacity 1s';
+                    img.style.opacity = '1';
+                };
+            }, 500);
+            
+            console.log(`Image mise a jour: ${imageUrl}`);
+        }
+        
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDisplay();
+            
+            // Mettre à jour toutes les minutes
+            setInterval(updateDisplay, 60000);
+        });
+    </script>
+</body>
+</html>

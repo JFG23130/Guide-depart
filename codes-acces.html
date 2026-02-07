@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="codes.title">🔐 Codes d'accès - Katikias 33</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .language-selector:hover {
+            background: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        /* Authentication Form */
+        .auth-form {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        input[type="checkbox"] {
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            color: #555;
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .error {
+            display: none;
+            background: #fee;
+            color: #c00;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #f5576c;
+        }
+
+        .error.show {
+            display: block;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        /* Codes Display */
+        .codes-display {
+            display: none;
+        }
+
+        .codes-display.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .welcome-message {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .guest-summary {
+            background: #f7f9ff;
+            border-left: 4px solid #667eea;
+            padding: 16px 18px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .guest-name {
+            font-weight: 700;
+            font-size: 1.05em;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .guest-stay {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .guest-stay span.label {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .guide-btn {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            padding: 14px;
+            margin: 10px 0 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .guide-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .code-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .code-card h3 {
+            margin-bottom: 12px;
+            color: #333;
+            font-size: 1.2em;
+        }
+
+        .code-value {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #667eea;
+            letter-spacing: 2px;
+            text-align: center;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+
+        .code-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+
+        .logout-btn {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+            margin-top: 30px;
+        }
+
+        .logout-btn:hover {
+            box-shadow: 0 10px 20px rgba(245, 87, 108, 0.3);
+        }
+
+        .logout-btn:disabled {
+            background: #d9d9d9;
+            color: #888;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .help-text {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 8px;
+            color: #333;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        .info-box {
+            background: #f7f9ff;
+            border-left: 4px solid #667eea;
+            padding: 14px 16px;
+            border-radius: 10px;
+            color: #333;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin: 15px 0 20px;
+        }
+
+        .info-box ul {
+            margin: 8px 0 0 18px;
+        }
+
+        .info-box li {
+            margin: 4px 0;
+        }
+
+        .divider {
+            height: 1px;
+            background: #eee;
+            margin: 30px 0;
+        }
+
+        .expired-message {
+            display: none;
+            background: #ffe0b2;
+            border: 2px solid #ff9800;
+            color: #333;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .expired-message.show {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .code-value {
+                font-size: 1.1em;
+            }
+
+            .language-selector {
+                top: 10px;
+                right: 10px;
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <select class="language-selector" id="language-select" onchange="changeLanguage(this.value)">
+        <option value="fr">🇫🇷 Français</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="de">🇩🇪 Deutsch</option>
+        <option value="es">🇪🇸 Español</option>
+    </select>
+
+    <div class="container">
+        <header>
+            <h1 data-lang-key="codes.h1">🏠 Katikias 33 - Codes d'accès</h1>
+        </header>
+
+        <div class="expired-message" id="expired-message" data-lang-key="codes.expired">
+            ⏰ Votre séjour est terminé. Merci de votre visite !
+        </div>
+
+        <!-- Authentication Form -->
+        <div class="auth-form" id="auth-form">
+            <p class="subtitle" data-lang-key="codes.subtitle">Merci de renseigner le code d'accès fourni dans votre message Airbnb ou dans le livret d'accueil.</p>
+
+            <div class="info-box">
+                <strong>📩 Où trouver votre code ?</strong>
+                <ul>
+                    <li>Dans votre message Airbnb (ou WhatsApp/SMS)</li>
+                    <li>Format : KATI-XXXXXXX</li>
+                    <li>Un code par réservation</li>
+                </ul>
+            </div>
+            
+            <div class="error" id="error-message"></div>
+
+            <form onsubmit="validateCode(event)">
+                <div class="form-group">
+                    <label for="access-code" data-lang-key="codes.label">Code d'accès personnel</label>
+                    <input type="text" id="access-code" placeholder="KATI-XXXXXXX" required autocomplete="off" inputmode="text">
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="remember-device">
+                        <span data-lang-key="codes.remember">☑️ Mémoriser sur cet appareil</span>
+                    </label>
+                </div>
+
+                <button type="submit" data-lang-key="codes.button">Valider</button>
+            </form>
+
+            <div class="help-text" data-lang-key="codes.help">
+                Besoin d'aide ? Contactez Katikias 33 via l'application Airbnb.
+            </div>
+        </div>
+
+        <!-- Codes Display -->
+        <div class="codes-display" id="codes-display">
+            <div class="welcome-message" data-lang-key="codes.welcome">✅ Bienvenue de retour !</div>
+
+            <div class="guest-summary">
+                <div class="guest-name" id="guest-name">Invité</div>
+                <div class="guest-stay">
+                    <div><span class="label" data-lang-key="codes.arrival_label">Arrivée</span> : <span id="guest-arrival">—</span></div>
+                    <div><span class="label" data-lang-key="codes.departure_label">Départ</span> : <span id="guest-departure">—</span></div>
+                </div>
+            </div>
+
+            <a class="guide-btn" href="index.html" data-lang-key="codes.guide_button">Accéder au guide</a>
+
+            <div class="code-card">
+                <h3 data-lang-key="codes.wifi">📶 Wi-Fi</h3>
+                <div class="code-label" data-lang-key="codes.wifi_network">Réseau</div>
+                <div class="code-value" id="wifi-code">—</div>
+                <div class="code-label" data-lang-key="codes.wifi_password">Mot de passe</div>
+                <div class="code-value" id="wifi-password">—</div>
+            </div>
+
+            <div class="code-card">
+                <h3 data-lang-key="codes.gate">🚪 Portail d'accès</h3>
+                <div class="code-value" id="gate-code">—</div>
+            </div>
+
+            <button class="logout-btn" onclick="logout()" data-lang-key="codes.logout">🚪 Je quitte le logement</button>
+        </div>
+    </div>
+
+    <!-- Load translation files -->
+    <script src="assets/lang-fr.js?v=4"></script>
+    <script src="assets/lang-en.js?v=4"></script>
+    <script src="assets/lang-de.js?v=4"></script>
+    <script src="assets/lang-es.js?v=4"></script>
+    <script src="assets/lang-manager.js?v=4"></script>
+    
+    <!-- Load access codes configuration -->
+    <!-- Option 1: Utiliser la config générée depuis CSV (recommandé) -->
+    <script src="assets/codes-config-generated.js?v=1"></script>
+    
+    <!-- Option 2: Ou charger la config manuelle -->
+    <!-- <script src="assets/codes-config.js?v=1"></script> -->
+
+    <script>
+        // Ajouter des codes de démonstration permanents
+        if (typeof CODES_DATABASE !== 'undefined') {
+            CODES_DATABASE['DEMO-123'] = { expires: '2099-12-31', guest: 'Demo' };
+            CODES_DATABASE['TEST-123'] = { expires: '2099-12-31', guest: 'Test' };
+        }
+
+        const STORAGE_STATE_KEY = 'katikias_access_granted';
+        const STORAGE_CODE_KEY = 'katikias_current_code';
+        const STORAGE_EXPIRY_KEY = 'katikias_expiry_date';
+
+        function ensureFallbackTranslations() {
+            const needsFallback = !LanguageManager.allLanguages.fr || !LanguageManager.allLanguages.fr['codes.h1'];
+            if (!needsFallback) return;
+
+            LanguageManager.allLanguages.fr = {
+                ...(LanguageManager.allLanguages.fr || {}),
+                'codes.title': '🔐 Codes d\'accès - Katikias 33',
+                'codes.h1': '🏠 Katikias 33 - Codes d\'accès',
+                'codes.subtitle': 'Saisissez le code reçu par message (Airbnb/WhatsApp/SMS) pour afficher vos codes Wi‑Fi et portail.',
+                'codes.label': 'Code d\'accès reçu',
+                'codes.placeholder': 'Entrez votre code (ex. KATI-XXXXXXX)',
+                'codes.button': 'Afficher mes codes',
+                'codes.error': '❌ Code invalide ou expiré. Vérifiez votre message et réessayez.',
+                'codes.remember': '☑️ Se souvenir de moi sur cet appareil',
+                'codes.expired': '⏰ Séjour terminé : vos codes sont désactivés. Contactez l\'hôte si besoin.',
+                'codes.logout': '🚪 Déconnexion / Fin de séjour',
+                'codes.welcome': '✅ Accès validé. Voici vos codes.',
+                'codes.guest_demo': 'Invité de démonstration',
+                'codes.arrival_label': 'Arrivée',
+                'codes.departure_label': 'Départ',
+                'codes.guide_button': 'Accéder au guide',
+                'codes.wifi': '📶 Wi‑Fi',
+                'codes.wifi_network': 'Réseau Wi‑Fi',
+                'codes.wifi_password': 'Mot de passe Wi‑Fi',
+                'codes.gate': '🚪 Code portail',
+                'codes.help': 'Si vous ne retrouvez pas votre code, contactez l\'hôte via Airbnb.'
+            };
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            LanguageManager.loadLanguages();
+            ensureFallbackTranslations();
+
+            const savedLanguage = localStorage.getItem('preferredLanguage') || 'fr';
+            document.getElementById('language-select').value = savedLanguage;
+            LanguageManager.setLanguage(savedLanguage);
+            updatePageLanguage(savedLanguage);
+
+            // Retry once if translations were late
+            setTimeout(() => {
+                LanguageManager.loadLanguages();
+                ensureFallbackTranslations();
+                updatePageLanguage(savedLanguage);
+            }, 150);
+
+            // Check if already authenticated
+            checkAuthentication();
+        });
+
+        // Change language
+        function changeLanguage(lang) {
+            localStorage.setItem('preferredLanguage', lang);
+            LanguageManager.setLanguage(lang);
+            updatePageLanguage(lang);
+        }
+
+        // Update all text content
+        function updatePageLanguage(lang) {
+            const titleKey = document.querySelector('title').getAttribute('data-lang-key');
+            if (titleKey) {
+                document.title = LanguageManager.get(titleKey);
+            }
+
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                const text = LanguageManager.get(key);
+
+                if (text === `[${key}]`) {
+                    return;
+                }
+                
+                if (element.tagName === 'TITLE') {
+                    document.title = text;
+                } else if (element.tagName === 'BUTTON' || element.tagName === 'LABEL') {
+                    element.textContent = text;
+                } else {
+                    element.innerHTML = text;
+                }
+            });
+
+            const accessInput = document.getElementById('access-code');
+            if (accessInput) {
+                const placeholder = LanguageManager.get('codes.placeholder');
+                if (placeholder !== '[codes.placeholder]') {
+                    accessInput.placeholder = placeholder;
+                }
+            }
+        }
+
+        // Check if code is still valid
+        function isCodeValid(code) {
+            const data = CODES_DATABASE[code.toUpperCase()];
+            if (!data) return false;
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if (!data.arrival || !data.departure) {
+                return false;
+            }
+
+            const [ad, am, ay] = data.arrival.split('/').map(Number);
+            const [dd, dm, dy] = data.departure.split('/').map(Number);
+            const arrival = new Date(ay, am - 1, ad);
+            const departure = new Date(dy, dm - 1, dd);
+            arrival.setHours(0, 0, 0, 0);
+            departure.setHours(0, 0, 0, 0);
+            return today >= arrival && today <= departure;
+        }
+
+        // Check if already authenticated
+        function checkAuthentication() {
+            const isGranted = sessionStorage.getItem(STORAGE_STATE_KEY);
+            const savedCode = localStorage.getItem(STORAGE_CODE_KEY);
+            const expiryDate = localStorage.getItem(STORAGE_EXPIRY_KEY);
+
+            if (isGranted === '1' || (savedCode && isCodeValid(savedCode))) {
+                showCodes(savedCode || sessionStorage.getItem(STORAGE_CODE_KEY));
+            } else if (savedCode) {
+                localStorage.removeItem(STORAGE_CODE_KEY);
+                localStorage.removeItem(STORAGE_EXPIRY_KEY);
+            }
+        }
+
+        // Validate code
+        function validateCode(event) {
+            event.preventDefault();
+            const code = document.getElementById('access-code').value.toUpperCase();
+            const errorMsg = document.getElementById('error-message');
+
+            if (!isCodeValid(code)) {
+                errorMsg.textContent = LanguageManager.get('codes.error');
+                errorMsg.classList.add('show');
+                document.getElementById('access-code').value = '';
+                setTimeout(() => {
+                    errorMsg.classList.remove('show');
+                }, 3000);
+                return;
+            }
+
+            // Code is valid
+            if (document.getElementById('remember-device').checked) {
+                localStorage.setItem(STORAGE_CODE_KEY, code);
+                localStorage.setItem(STORAGE_EXPIRY_KEY, CODES_DATABASE[code].expires);
+            }
+
+            sessionStorage.setItem(STORAGE_STATE_KEY, '1');
+            sessionStorage.setItem(STORAGE_CODE_KEY, code);
+            showCodes(code);
+        }
+
+        // Show codes
+        function showCodes(code) {
+            const data = CODES_DATABASE[code.toUpperCase()];
+            if (!data) return;
+
+            // Check expiration
+            const now = new Date();
+            const expiry = new Date(data.expires);
+            
+            if (now > expiry) {
+                document.getElementById('expired-message').classList.add('show');
+                document.getElementById('auth-form').style.display = 'none';
+                document.getElementById('codes-display').style.display = 'none';
+                return;
+            }
+
+            document.getElementById('auth-form').style.display = 'none';
+            document.getElementById('codes-display').classList.add('show');
+
+            const guestName = data.guest || LanguageManager.get('codes.guest_demo');
+            document.getElementById('guest-name').textContent = guestName;
+            document.getElementById('guest-arrival').textContent = data.arrival || '—';
+            document.getElementById('guest-departure').textContent = data.departure || '—';
+
+            const logoutBtn = document.querySelector('.logout-btn');
+            if (logoutBtn) {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                let departureDate = null;
+                if (data.departure) {
+                    const parts = data.departure.split('/');
+                    if (parts.length === 3) {
+                        departureDate = new Date(Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]));
+                        departureDate.setHours(0, 0, 0, 0);
+                    }
+                }
+
+                if (departureDate && today < departureDate) {
+                    logoutBtn.disabled = true;
+                    logoutBtn.title = 'Disponible le jour du départ.';
+                } else {
+                    logoutBtn.disabled = false;
+                    logoutBtn.title = '';
+                }
+            }
+
+            // Update codes (WiFi + Portail uniquement)
+            const wifiValue = data.wifi || data.wifi_password || '—';
+            document.getElementById('wifi-code').textContent = wifiValue;
+            document.getElementById('wifi-password').textContent = data.wifi_password || wifiValue;
+            document.getElementById('gate-code').textContent = data.portail || data.gate || '—';
+        }
+
+        // Logout
+        function logout() {
+            const logoutBtn = document.querySelector('.logout-btn');
+            if (logoutBtn && logoutBtn.disabled) {
+                return;
+            }
+            sessionStorage.removeItem(STORAGE_STATE_KEY);
+            sessionStorage.removeItem(STORAGE_CODE_KEY);
+            localStorage.removeItem(STORAGE_CODE_KEY);
+            localStorage.removeItem(STORAGE_EXPIRY_KEY);
+            location.reload();
+        }
+    </script>
+</body>
+</html>
