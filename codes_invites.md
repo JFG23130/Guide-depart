@@ -1,6 +1,6 @@
 # 🔐 Codes invités générés automatiquement
 
-_Dernière mise à jour : 07/02/2026 19:05_
+_Dernière mise à jour : 07/02/2026 19:17_
 
 ## 📋 Table complète des codes
 
@@ -49,7 +49,7 @@ Nous sommes ravis de vous accueillir!
 {{LIEN}}
 
 Ce lien vous donne accès à:
-✅ Codes WiFi et portail
+✅ Code d'accès portail
 ✅ Guide d'arrivée complet
 ✅ Informations pratiques
 

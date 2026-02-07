@@ -473,6 +473,8 @@
         const STORAGE_STATE_KEY = 'katikias_access_granted';
         const STORAGE_CODE_KEY = 'katikias_current_code';
         const STORAGE_EXPIRY_KEY = 'katikias_expiry_date';
+        const DEFAULT_PORTAL_PEDESTRIAN = '1398';
+        const DEFAULT_PORTAL_VEHICLE = '1359';
 
         function ensureFallbackTranslations() {
             const needsFallback = !LanguageManager.allLanguages.fr || !LanguageManager.allLanguages.fr['codes.h1'];
@@ -710,8 +712,8 @@
             }
 
             // Update codes (Portail uniquement)
-            const ped = data.portail_pieton || data.gate_pedestrian || data.portal_pedestrian;
-            const veh = data.portail_voiture || data.gate_vehicle || data.portal_vehicle;
+            const ped = data.portail_pieton || data.gate_pedestrian || data.portal_pedestrian || DEFAULT_PORTAL_PEDESTRIAN;
+            const veh = data.portail_voiture || data.gate_vehicle || data.portal_vehicle || DEFAULT_PORTAL_VEHICLE;
             document.getElementById('gate-pedestrian').textContent = ped || '—';
             document.getElementById('gate-vehicle').textContent = veh || '—';
 
