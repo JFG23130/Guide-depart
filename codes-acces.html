@@ -526,6 +526,14 @@
 
             // Check if already authenticated
             checkAuthentication();
+
+            // Auto-login if code is in URL
+            const params = new URLSearchParams(window.location.search);
+            const urlCode = params.get('code');
+            if (urlCode) {
+                document.getElementById('access-code').value = urlCode.toUpperCase();
+                validateCodeValue(urlCode.toUpperCase());
+            }
         });
 
         // Change language
@@ -568,6 +576,17 @@
             }
         }
 
+        function parseDateDmy(dmy) {
+            if (!dmy) return null;
+            const parts = dmy.split('/').map(Number);
+            if (parts.length !== 3) return null;
+            const [d, m, y] = parts;
+            if (!d || !m || !y) return null;
+            const dt = new Date(y, m - 1, d);
+            dt.setHours(0, 0, 0, 0);
+            return dt;
+        }
+
         // Check if code is still valid
         function isCodeValid(code) {
             const data = CODES_DATABASE[code.toUpperCase()];
@@ -580,12 +599,9 @@
                 return false;
             }
 
-            const [ad, am, ay] = data.arrival.split('/').map(Number);
-            const [dd, dm, dy] = data.departure.split('/').map(Number);
-            const arrival = new Date(ay, am - 1, ad);
-            const departure = new Date(dy, dm - 1, dd);
-            arrival.setHours(0, 0, 0, 0);
-            departure.setHours(0, 0, 0, 0);
+            const arrival = parseDateDmy(data.arrival);
+            const departure = parseDateDmy(data.departure);
+            if (!arrival || !departure) return false;
             return today >= arrival && today <= departure;
         }
 
@@ -593,20 +609,27 @@
         function checkAuthentication() {
             const isGranted = sessionStorage.getItem(STORAGE_STATE_KEY);
             const savedCode = localStorage.getItem(STORAGE_CODE_KEY);
-            const expiryDate = localStorage.getItem(STORAGE_EXPIRY_KEY);
+            const sessionCode = sessionStorage.getItem(STORAGE_CODE_KEY);
+            const code = savedCode || sessionCode;
 
-            if (isGranted === '1' || (savedCode && isCodeValid(savedCode))) {
-                showCodes(savedCode || sessionStorage.getItem(STORAGE_CODE_KEY));
-            } else if (savedCode) {
-                localStorage.removeItem(STORAGE_CODE_KEY);
-                localStorage.removeItem(STORAGE_EXPIRY_KEY);
+            if (code && (isGranted === '1' || savedCode)) {
+                if (isCodeValid(code)) {
+                    showCodes(code);
+                    return;
+                }
             }
+
+            // Nettoyage si code invalide/expiré
+            sessionStorage.removeItem(STORAGE_STATE_KEY);
+            sessionStorage.removeItem(STORAGE_CODE_KEY);
+            localStorage.removeItem(STORAGE_CODE_KEY);
+            localStorage.removeItem(STORAGE_EXPIRY_KEY);
+            document.getElementById('expired-message').classList.remove('show');
+            document.getElementById('auth-form').style.display = 'block';
+            document.getElementById('codes-display').style.display = 'none';
         }
 
-        // Validate code
-        function validateCode(event) {
-            event.preventDefault();
-            const code = document.getElementById('access-code').value.toUpperCase();
+        function validateCodeValue(code) {
             const errorMsg = document.getElementById('error-message');
 
             if (!isCodeValid(code)) {
@@ -619,10 +642,9 @@
                 return;
             }
 
-            // Code is valid
             if (document.getElementById('remember-device').checked) {
                 localStorage.setItem(STORAGE_CODE_KEY, code);
-                localStorage.setItem(STORAGE_EXPIRY_KEY, CODES_DATABASE[code].expires);
+                localStorage.setItem(STORAGE_EXPIRY_KEY, CODES_DATABASE[code].expires || '');
             }
 
             sessionStorage.setItem(STORAGE_STATE_KEY, '1');
@@ -630,18 +652,32 @@
             showCodes(code);
         }
 
+        // Validate code
+        function validateCode(event) {
+            if (event) event.preventDefault();
+            const code = document.getElementById('access-code').value.toUpperCase();
+            validateCodeValue(code);
+        }
+
         // Show codes
         function showCodes(code) {
             const data = CODES_DATABASE[code.toUpperCase()];
             if (!data) return;
 
-            // Check expiration
-            const now = new Date();
-            const expiry = new Date(data.expires);
-            
-            if (now > expiry) {
-                document.getElementById('expired-message').classList.add('show');
-                document.getElementById('auth-form').style.display = 'none';
+            if (!isCodeValid(code)) {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const departure = parseDateDmy(data.departure);
+
+                if (departure && today > departure) {
+                    document.getElementById('expired-message').classList.add('show');
+                    document.getElementById('auth-form').style.display = 'none';
+                    document.getElementById('codes-display').style.display = 'none';
+                    return;
+                }
+
+                document.getElementById('expired-message').classList.remove('show');
+                document.getElementById('auth-form').style.display = 'block';
                 document.getElementById('codes-display').style.display = 'none';
                 return;
             }

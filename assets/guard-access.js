@@ -48,8 +48,18 @@
     }
 
     const codeFromUrl = getCodeFromUrl();
-    if (codeFromUrl) {
-        sessionStorage.setItem(STORAGE_CODE_KEY, codeFromUrl);
+
+    if (typeof CODES_DATABASE !== 'undefined' && codeFromUrl) {
+        const dataFromUrl = CODES_DATABASE[codeFromUrl.toUpperCase()];
+        if (dataFromUrl && isWithinStay(dataFromUrl)) {
+            sessionStorage.setItem(STORAGE_STATE_KEY, '1');
+            sessionStorage.setItem(STORAGE_CODE_KEY, codeFromUrl);
+        } else if (dataFromUrl) {
+            sessionStorage.removeItem(STORAGE_STATE_KEY);
+            sessionStorage.removeItem(STORAGE_CODE_KEY);
+            blockAccess('Le guide est accessible uniquement pendant votre période de séjour.');
+            return;
+        }
     }
 
     const granted = sessionStorage.getItem(STORAGE_STATE_KEY) === '1';
@@ -62,12 +72,7 @@
     }
 
     const data = CODES_DATABASE[code.toUpperCase()];
-    if (!data) {
-        window.location.replace('codes-acces.html');
-        return;
-    }
-
-    if (!isWithinStay(data)) {
+    if (!data || !isWithinStay(data)) {
         sessionStorage.removeItem(STORAGE_STATE_KEY);
         sessionStorage.removeItem(STORAGE_CODE_KEY);
         blockAccess('Le guide est accessible uniquement pendant votre période de séjour.');
