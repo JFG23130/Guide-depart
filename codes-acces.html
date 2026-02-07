@@ -582,9 +582,7 @@
             if (parts.length !== 3) return null;
             const [d, m, y] = parts;
             if (!d || !m || !y) return null;
-            const dt = new Date(y, m - 1, d);
-            dt.setHours(0, 0, 0, 0);
-            return dt;
+            return new Date(y, m - 1, d);
         }
 
         // Check if code is still valid
@@ -592,8 +590,7 @@
             const data = CODES_DATABASE[code.toUpperCase()];
             if (!data) return false;
 
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
+            const now = new Date();
 
             if (!data.arrival || !data.departure) {
                 return false;
@@ -602,7 +599,11 @@
             const arrival = parseDateDmy(data.arrival);
             const departure = parseDateDmy(data.departure);
             if (!arrival || !departure) return false;
-            return today >= arrival && today <= departure;
+            const arrivalStart = new Date(arrival);
+            arrivalStart.setHours(0, 0, 0, 0);
+            const departureEnd = new Date(departure);
+            departureEnd.setHours(23, 59, 59, 999);
+            return now >= arrivalStart && now <= departureEnd;
         }
 
         // Check if already authenticated
@@ -665,17 +666,19 @@
             if (!data) return;
 
             if (!isCodeValid(code)) {
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
+                const now = new Date();
                 const departure = parseDateDmy(data.departure);
 
-                if (departure && today > departure) {
-                    document.getElementById('expired-message').classList.add('show');
-                    document.getElementById('auth-form').style.display = 'none';
-                    document.getElementById('codes-display').style.display = 'none';
-                    return;
+                if (departure) {
+                    const departureEnd = new Date(departure);
+                    departureEnd.setHours(23, 59, 59, 999);
+                    if (now > departureEnd) {
+                        document.getElementById('expired-message').classList.add('show');
+                        document.getElementById('auth-form').style.display = 'none';
+                        document.getElementById('codes-display').style.display = 'none';
+                        return;
+                    }
                 }
-
                 document.getElementById('expired-message').classList.remove('show');
                 document.getElementById('auth-form').style.display = 'block';
                 document.getElementById('codes-display').style.display = 'none';

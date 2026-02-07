@@ -13,14 +13,11 @@
         if (parts.length !== 3) return null;
         const [dd, mm, yyyy] = parts.map(Number);
         if (!dd || !mm || !yyyy) return null;
-        const d = new Date(yyyy, mm - 1, dd);
-        d.setHours(0, 0, 0, 0);
-        return d;
+        return new Date(yyyy, mm - 1, dd);
     }
 
     function isWithinStay(data) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        const now = new Date();
 
         if (!data || !data.arrival || !data.departure) {
             return false;
@@ -31,8 +28,12 @@
         if (!arrival || !departure) {
             return false;
         }
+        const arrivalStart = new Date(arrival);
+        arrivalStart.setHours(0, 0, 0, 0);
+        const departureEnd = new Date(departure);
+        departureEnd.setHours(23, 59, 59, 999);
 
-        return today >= arrival && today <= departure;
+        return now >= arrivalStart && now <= departureEnd;
     }
 
     function blockAccess(message) {
