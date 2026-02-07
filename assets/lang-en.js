@@ -317,8 +317,11 @@ window.translationsEN = {
     "codes.wifi": "📶 Wi-Fi",
     "codes.wifi_network": "Wi‑Fi network",
     "codes.wifi_password": "Wi‑Fi password",
+    "codes.wifi_qr": "Wi‑Fi QR code",
     "codes.pool": "🏊‍♀️ Pool",
     "codes.gate": "🚪 Gate code",
+    "codes.gate_pedestrian": "Pedestrian",
+    "codes.gate_vehicle": "Vehicle",
     "codes.parking": "🚗 Parking",
     "codes.help": "If you can't find your code, contact the host via Airbnb."
 };

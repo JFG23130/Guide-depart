@@ -278,6 +278,19 @@
             margin-top: 8px;
         }
 
+        .wifi-qr {
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        .wifi-qr img {
+            max-width: 180px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
         .logout-btn {
             background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
             margin-top: 30px;
@@ -442,11 +455,19 @@
                 <div class="code-value" id="wifi-code">—</div>
                 <div class="code-label" data-lang-key="codes.wifi_password">Mot de passe</div>
                 <div class="code-value" id="wifi-password">—</div>
+                <div class="wifi-qr" id="wifi-qr-container" style="display:none;">
+                    <div class="code-label" data-lang-key="codes.wifi_qr">QR Code Wi‑Fi</div>
+                    <img id="wifi-qr" alt="QR code Wi‑Fi">
+                </div>
             </div>
 
             <div class="code-card">
                 <h3 data-lang-key="codes.gate">🚪 Portail d'accès</h3>
-                <div class="code-value" id="gate-code">—</div>
+                <div class="code-label" data-lang-key="codes.gate_pedestrian">Piéton</div>
+                <div class="code-value" id="gate-pedestrian">—</div>
+                <div class="code-label" data-lang-key="codes.gate_vehicle">Voiture</div>
+                <div class="code-value" id="gate-vehicle">—</div>
+                <div class="code-value" id="gate-code" style="display:none;">—</div>
             </div>
 
             <button class="logout-btn" onclick="logout()" data-lang-key="codes.logout">🚪 Je quitte le logement</button>
@@ -720,7 +741,28 @@
             const wifiValue = data.wifi || data.wifi_password || '—';
             document.getElementById('wifi-code').textContent = wifiValue;
             document.getElementById('wifi-password').textContent = data.wifi_password || wifiValue;
-            document.getElementById('gate-code').textContent = data.portail || data.gate || '—';
+            const qrContainer = document.getElementById('wifi-qr-container');
+            const qrImg = document.getElementById('wifi-qr');
+            if (data.wifi_qr) {
+                qrImg.src = data.wifi_qr;
+                qrContainer.style.display = 'block';
+            } else {
+                qrContainer.style.display = 'none';
+            }
+
+            const ped = data.portail_pieton || data.gate_pedestrian || data.portal_pedestrian;
+            const veh = data.portail_voiture || data.gate_vehicle || data.portal_vehicle;
+            document.getElementById('gate-pedestrian').textContent = ped || '—';
+            document.getElementById('gate-vehicle').textContent = veh || '—';
+
+            const legacyGate = data.portail || data.gate || null;
+            const legacyEl = document.getElementById('gate-code');
+            if (legacyGate && !ped && !veh) {
+                legacyEl.style.display = 'block';
+                legacyEl.textContent = legacyGate;
+            } else {
+                legacyEl.style.display = 'none';
+            }
         }
 
         // Logout
