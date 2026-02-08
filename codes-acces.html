@@ -443,6 +443,8 @@
 
             if (code && (isGranted === '1' || savedCode)) {
                 if (isCodeValid(code)) {
+                    sessionStorage.setItem(STORAGE_STATE_KEY, '1');
+                    sessionStorage.setItem(STORAGE_CODE_KEY, code);
                     window.location.href = 'index.html';
                     return;
                 }
@@ -470,7 +472,8 @@
 
             if (document.getElementById('remember-device').checked) {
                 localStorage.setItem(STORAGE_CODE_KEY, code);
-                localStorage.setItem(STORAGE_EXPIRY_KEY, CODES_DATABASE[code].expires || '');
+                const data = (typeof CODES_DATABASE !== 'undefined') ? CODES_DATABASE[code] : null;
+                localStorage.setItem(STORAGE_EXPIRY_KEY, data && data.expires ? data.expires : '');
             }
 
             sessionStorage.setItem(STORAGE_STATE_KEY, '1');
