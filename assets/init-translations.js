@@ -105,11 +105,8 @@ const LanguageSystemHTML = {
                 return;
             }
             
-            // Nettoyer le contenu précédent
-            element.innerHTML = '';
-            
-            // Ajouter le texte traduit
-            element.appendChild(document.createTextNode(translation));
+            // Injecter la traduction (HTML autorisé pour les liens)
+            element.innerHTML = translation;
         });
         
         // Mettre à jour l'attribut lang du document
