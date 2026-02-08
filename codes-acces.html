@@ -168,133 +168,6 @@
             75% { transform: translateX(10px); }
         }
 
-        /* Codes Display */
-        .codes-display {
-            display: none;
-        }
-
-        .codes-display.show {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .welcome-message {
-            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
-            color: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 1.1em;
-        }
-
-        .guest-summary {
-            background: #f7f9ff;
-            border-left: 4px solid #667eea;
-            padding: 16px 18px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-
-        .guest-name {
-            font-weight: 700;
-            font-size: 1.05em;
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .guest-stay {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            color: #555;
-            font-size: 0.95em;
-        }
-
-        .guest-stay span.label {
-            color: #667eea;
-            font-weight: 600;
-        }
-
-        .guide-btn {
-            display: inline-block;
-            width: 100%;
-            text-align: center;
-            padding: 14px;
-            margin: 10px 0 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .guide-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        .code-card {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border-left: 4px solid #667eea;
-        }
-
-        .code-card h3 {
-            margin-bottom: 12px;
-            color: #333;
-            font-size: 1.2em;
-        }
-
-        .code-value {
-            background: white;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #667eea;
-            letter-spacing: 2px;
-            text-align: center;
-            margin: 10px 0;
-            word-break: break-all;
-        }
-
-        .code-label {
-            color: #666;
-            font-size: 0.9em;
-            margin-top: 8px;
-        }
-
-        .logout-btn {
-            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
-            margin-top: 30px;
-        }
-
-        .logout-btn:hover {
-            box-shadow: 0 10px 20px rgba(245, 87, 108, 0.3);
-        }
-
-        .logout-btn:disabled {
-            background: #d9d9d9;
-            color: #888;
-            cursor: not-allowed;
-            box-shadow: none;
-            transform: none;
-        }
-
         .help-text {
             background: #f0f4ff;
             border-left: 4px solid #667eea;
@@ -329,22 +202,6 @@
             height: 1px;
             background: #eee;
             margin: 30px 0;
-        }
-
-        .expired-message {
-            display: none;
-            background: #ffe0b2;
-            border: 2px solid #ff9800;
-            color: #333;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 1.1em;
-        }
-
-        .expired-message.show {
-            display: block;
         }
 
         @media (max-width: 480px) {
@@ -384,10 +241,6 @@
             <h1 data-lang-key="codes.h1">🏠 Katikias 33 - Codes d'accès</h1>
         </header>
 
-        <div class="expired-message" id="expired-message" data-lang-key="codes.expired">
-            ⏰ Votre séjour est terminé. Merci de votre visite !
-        </div>
-
         <!-- Authentication Form -->
         <div class="auth-form" id="auth-form">
             <p class="subtitle" data-lang-key="codes.subtitle">Merci de renseigner votre code de réservation Airbnb pour accéder au guide.</p>
@@ -424,30 +277,6 @@
             </div>
         </div>
 
-        <!-- Codes Display -->
-        <div class="codes-display" id="codes-display">
-            <div class="welcome-message" data-lang-key="codes.welcome">✅ Bienvenue de retour !</div>
-
-            <div class="guest-summary">
-                <div class="guest-name" id="guest-name">Invité</div>
-                <div class="guest-stay">
-                    <div><span class="label" data-lang-key="codes.arrival_label">Arrivée</span> : <span id="guest-arrival">—</span></div>
-                    <div><span class="label" data-lang-key="codes.departure_label">Départ</span> : <span id="guest-departure">—</span></div>
-                </div>
-            </div>
-
-            <a class="guide-btn" href="index.html" data-lang-key="codes.guide_button">Accéder au guide</a>
-
-            <div class="code-card">
-                <h3 data-lang-key="codes.gate">🚪 Portail d'accès</h3>
-                <div class="code-label" data-lang-key="codes.gate_pedestrian">Piéton</div>
-                <div class="code-value" id="gate-pedestrian">1398</div>
-                <div class="code-label" data-lang-key="codes.gate_vehicle">Voiture</div>
-                <div class="code-value" id="gate-vehicle">1359</div>
-                <div class="code-value" id="gate-code" style="display:none;">—</div>
-            </div>
-
-            <button class="logout-btn" onclick="logout()" data-lang-key="codes.logout">🚪 Je quitte le logement</button>
         </div>
     </div>
 
@@ -477,8 +306,6 @@
         const STORAGE_STATE_KEY = 'katikias_access_granted';
         const STORAGE_CODE_KEY = 'katikias_current_code';
         const STORAGE_EXPIRY_KEY = 'katikias_expiry_date';
-        const DEFAULT_PORTAL_PEDESTRIAN = '1398';
-        const DEFAULT_PORTAL_VEHICLE = '1359';
         const ALWAYS_VALID_CODES = new Set(['DEMO12', 'TEST123', 'DMP83']);
 
         function ensureFallbackTranslations() {
@@ -624,7 +451,7 @@
 
             if (code && (isGranted === '1' || savedCode)) {
                 if (isCodeValid(code)) {
-                    showCodes(code);
+                    window.location.href = 'index.html';
                     return;
                 }
             }
@@ -634,9 +461,6 @@
             sessionStorage.removeItem(STORAGE_CODE_KEY);
             localStorage.removeItem(STORAGE_CODE_KEY);
             localStorage.removeItem(STORAGE_EXPIRY_KEY);
-            document.getElementById('expired-message').classList.remove('show');
-            document.getElementById('auth-form').style.display = 'block';
-            document.getElementById('codes-display').style.display = 'none';
         }
 
         function validateCodeValue(code) {
@@ -669,94 +493,7 @@
             validateCodeValue(code);
         }
 
-        // Show codes
-        function showCodes(code) {
-            const normalized = code.toUpperCase();
-            let data = CODES_DATABASE[normalized];
-            if (!data && ALWAYS_VALID_CODES.has(normalized)) {
-                data = { guest: 'Accès permanent', arrival: '—', departure: '—' };
-            }
-            if (!data) return;
-
-            if (!isCodeValid(code)) {
-                const now = new Date();
-                const departure = parseDateDmy(data.departure);
-
-                if (departure) {
-                    const departureEnd = new Date(departure);
-                    departureEnd.setHours(23, 59, 59, 999);
-                    if (now > departureEnd) {
-                        document.getElementById('expired-message').classList.add('show');
-                        document.getElementById('auth-form').style.display = 'none';
-                        document.getElementById('codes-display').style.display = 'none';
-                        return;
-                    }
-                }
-                document.getElementById('expired-message').classList.remove('show');
-                document.getElementById('auth-form').style.display = 'block';
-                document.getElementById('codes-display').style.display = 'none';
-                return;
-            }
-
-            document.getElementById('auth-form').style.display = 'none';
-            document.getElementById('codes-display').classList.add('show');
-
-            const guestName = data.guest || LanguageManager.get('codes.guest_demo');
-            document.getElementById('guest-name').textContent = guestName;
-            document.getElementById('guest-arrival').textContent = data.arrival || '—';
-            document.getElementById('guest-departure').textContent = data.departure || '—';
-
-            const logoutBtn = document.querySelector('.logout-btn');
-            if (logoutBtn) {
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
-
-                let departureDate = null;
-                if (data.departure) {
-                    const parts = data.departure.split('/');
-                    if (parts.length === 3) {
-                        departureDate = new Date(Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]));
-                        departureDate.setHours(0, 0, 0, 0);
-                    }
-                }
-
-                if (departureDate && today < departureDate) {
-                    logoutBtn.disabled = true;
-                    logoutBtn.title = 'Disponible le jour du départ.';
-                } else {
-                    logoutBtn.disabled = false;
-                    logoutBtn.title = '';
-                }
-            }
-
-            // Update codes (Portail uniquement)
-            const ped = data.portail_pieton || data.gate_pedestrian || data.portal_pedestrian || DEFAULT_PORTAL_PEDESTRIAN;
-            const veh = data.portail_voiture || data.gate_vehicle || data.portal_vehicle || DEFAULT_PORTAL_VEHICLE;
-            document.getElementById('gate-pedestrian').textContent = ped || '—';
-            document.getElementById('gate-vehicle').textContent = veh || '—';
-
-            const legacyGate = data.portail || data.gate || null;
-            const legacyEl = document.getElementById('gate-code');
-            if (legacyGate && !ped && !veh) {
-                legacyEl.style.display = 'block';
-                legacyEl.textContent = legacyGate;
-            } else {
-                legacyEl.style.display = 'none';
-            }
-        }
-
-        // Logout
-        function logout() {
-            const logoutBtn = document.querySelector('.logout-btn');
-            if (logoutBtn && logoutBtn.disabled) {
-                return;
-            }
-            sessionStorage.removeItem(STORAGE_STATE_KEY);
-            sessionStorage.removeItem(STORAGE_CODE_KEY);
-            localStorage.removeItem(STORAGE_CODE_KEY);
-            localStorage.removeItem(STORAGE_EXPIRY_KEY);
-            location.reload();
-        }
+        // Logout removed (display page no longer used)
     </script>
 </body>
 </html>
