@@ -1,6 +1,7 @@
 (function () {
     const STORAGE_STATE_KEY = 'katikias_access_granted';
     const STORAGE_CODE_KEY = 'katikias_current_code';
+    const ALWAYS_VALID_CODES = new Set(['DEMO123', 'TEST123', 'DMP83']);
 
     function getCodeFromUrl() {
         const params = new URLSearchParams(window.location.search);
@@ -51,15 +52,21 @@
     const codeFromUrl = getCodeFromUrl();
 
     if (typeof CODES_DATABASE !== 'undefined' && codeFromUrl) {
-        const dataFromUrl = CODES_DATABASE[codeFromUrl.toUpperCase()];
-        if (dataFromUrl && isWithinStay(dataFromUrl)) {
+        const normalized = codeFromUrl.toUpperCase();
+        if (ALWAYS_VALID_CODES.has(normalized)) {
             sessionStorage.setItem(STORAGE_STATE_KEY, '1');
-            sessionStorage.setItem(STORAGE_CODE_KEY, codeFromUrl);
-        } else if (dataFromUrl) {
-            sessionStorage.removeItem(STORAGE_STATE_KEY);
-            sessionStorage.removeItem(STORAGE_CODE_KEY);
-            blockAccess('Le guide est accessible uniquement pendant votre période de séjour.');
-            return;
+            sessionStorage.setItem(STORAGE_CODE_KEY, normalized);
+        } else {
+            const dataFromUrl = CODES_DATABASE[normalized];
+            if (dataFromUrl && isWithinStay(dataFromUrl)) {
+                sessionStorage.setItem(STORAGE_STATE_KEY, '1');
+                sessionStorage.setItem(STORAGE_CODE_KEY, normalized);
+            } else if (dataFromUrl) {
+                sessionStorage.removeItem(STORAGE_STATE_KEY);
+                sessionStorage.removeItem(STORAGE_CODE_KEY);
+                blockAccess('Le guide est accessible uniquement pendant votre période de séjour.');
+                return;
+            }
         }
     }
 
@@ -72,7 +79,11 @@
         return;
     }
 
-    const data = CODES_DATABASE[code.toUpperCase()];
+    const normalized = code ? code.toUpperCase() : '';
+    if (ALWAYS_VALID_CODES.has(normalized)) {
+        return;
+    }
+    const data = CODES_DATABASE[normalized];
     if (!data || !isWithinStay(data)) {
         sessionStorage.removeItem(STORAGE_STATE_KEY);
         sessionStorage.removeItem(STORAGE_CODE_KEY);

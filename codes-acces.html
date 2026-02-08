@@ -390,13 +390,13 @@
 
         <!-- Authentication Form -->
         <div class="auth-form" id="auth-form">
-            <p class="subtitle" data-lang-key="codes.subtitle">Merci de renseigner le code d'accès fourni dans votre message Airbnb ou dans le livret d'accueil.</p>
+            <p class="subtitle" data-lang-key="codes.subtitle">Merci de renseigner votre code de réservation Airbnb pour accéder au guide.</p>
 
             <div class="info-box">
                 <strong>📩 Où trouver votre code ?</strong>
                 <ul>
                     <li>Dans votre message Airbnb (ou WhatsApp/SMS)</li>
-                    <li>Format : KATI-XXXXXXX</li>
+                    <li>Format : code de réservation (ex. HM2PT4Y925)</li>
                     <li>Un code par réservation</li>
                 </ul>
             </div>
@@ -405,8 +405,8 @@
 
             <form onsubmit="validateCode(event)">
                 <div class="form-group">
-                    <label for="access-code" data-lang-key="codes.label">Code d'accès personnel</label>
-                    <input type="text" id="access-code" placeholder="KATI-XXXXXXX" required autocomplete="off" inputmode="text">
+                    <label for="access-code" data-lang-key="codes.label">Code de réservation</label>
+                    <input type="text" id="access-code" placeholder="HM2PT4Y925" required autocomplete="off" inputmode="text">
                 </div>
 
                 <div class="form-group">
@@ -479,6 +479,7 @@
         const STORAGE_EXPIRY_KEY = 'katikias_expiry_date';
         const DEFAULT_PORTAL_PEDESTRIAN = '1398';
         const DEFAULT_PORTAL_VEHICLE = '1359';
+        const ALWAYS_VALID_CODES = new Set(['DEMO123', 'TEST123', 'DMP83']);
 
         function ensureFallbackTranslations() {
             const needsFallback = !LanguageManager.allLanguages.fr || !LanguageManager.allLanguages.fr['codes.h1'];
@@ -488,9 +489,9 @@
                 ...(LanguageManager.allLanguages.fr || {}),
                 'codes.title': '🔐 Codes d\'accès - Katikias 33',
                 'codes.h1': '🏠 Katikias 33 - Codes d\'accès',
-                'codes.subtitle': 'Saisissez le code reçu par message (Airbnb/WhatsApp/SMS) pour afficher votre code d\'accès portail.',
-                'codes.label': 'Code d\'accès reçu',
-                'codes.placeholder': 'Entrez votre code (ex. KATI-XXXXXXX)',
+                'codes.subtitle': 'Saisissez votre code de réservation Airbnb pour accéder au guide.',
+                'codes.label': 'Code de réservation',
+                'codes.placeholder': 'Entrez votre code (ex. HM2PT4Y925)',
                 'codes.button': 'Afficher mes codes',
                 'codes.error': '❌ Code invalide ou expiré. Vérifiez votre message et réessayez.',
                 'codes.remember': '☑️ Se souvenir de moi sur cet appareil',
@@ -586,7 +587,12 @@
 
         // Check if code is still valid
         function isCodeValid(code) {
-            const data = CODES_DATABASE[code.toUpperCase()];
+            const normalized = code.toUpperCase();
+            if (ALWAYS_VALID_CODES.has(normalized)) {
+                return true;
+            }
+
+            const data = CODES_DATABASE[normalized];
             if (!data) return false;
 
             const now = new Date();
@@ -661,7 +667,11 @@
 
         // Show codes
         function showCodes(code) {
-            const data = CODES_DATABASE[code.toUpperCase()];
+            const normalized = code.toUpperCase();
+            let data = CODES_DATABASE[normalized];
+            if (!data && ALWAYS_VALID_CODES.has(normalized)) {
+                data = { guest: 'Accès permanent', arrival: '—', departure: '—' };
+            }
             if (!data) return;
 
             if (!isCodeValid(code)) {
