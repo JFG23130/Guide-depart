@@ -13,13 +13,17 @@ function waitForTranslations() {
     if (typeof translationsFR !== 'undefined' && 
         typeof translationsEN !== 'undefined' && 
         typeof translationsDE !== 'undefined' && 
-        typeof translationsES !== 'undefined') {
+        typeof translationsES !== 'undefined' &&
+        typeof translationsNL !== 'undefined' &&
+        typeof translationsIT !== 'undefined') {
         
         console.log('✅ Tous les fichiers de langue chargés');
         console.log('FR:', Object.keys(translationsFR).length, 'clés');
         console.log('EN:', Object.keys(translationsEN).length, 'clés');
         console.log('DE:', Object.keys(translationsDE).length, 'clés');
         console.log('ES:', Object.keys(translationsES).length, 'clés');
+        console.log('NL:', Object.keys(translationsNL).length, 'clés');
+        console.log('IT:', Object.keys(translationsIT).length, 'clés');
         
         // Initialiser le système
         initLanguageSystem();
@@ -32,6 +36,8 @@ function waitForTranslations() {
         console.log('EN:', typeof translationsEN);
         console.log('DE:', typeof translationsDE);
         console.log('ES:', typeof translationsES);
+        console.log('NL:', typeof translationsNL);
+        console.log('IT:', typeof translationsIT);
     }
 }
 
@@ -53,7 +59,9 @@ const LanguageSystemHTML = {
             'fr': typeof translationsFR !== 'undefined' ? translationsFR : {},
             'en': typeof translationsEN !== 'undefined' ? translationsEN : {},
             'de': typeof translationsDE !== 'undefined' ? translationsDE : {},
-            'es': typeof translationsES !== 'undefined' ? translationsES : {}
+            'es': typeof translationsES !== 'undefined' ? translationsES : {},
+            'nl': typeof translationsNL !== 'undefined' ? translationsNL : {},
+            'it': typeof translationsIT !== 'undefined' ? translationsIT : {}
         };
         
         const translations = allTranslations[lang] || allTranslations['fr'];
@@ -63,7 +71,7 @@ const LanguageSystemHTML = {
     
     // Définir la langue
     setLanguage(lang) {
-        if (!['fr', 'en', 'de', 'es'].includes(lang)) {
+        if (!['fr', 'en', 'de', 'es', 'nl', 'it'].includes(lang)) {
             console.error('❌ Langue inconnue:', lang);
             return;
         }

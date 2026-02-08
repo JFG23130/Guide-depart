@@ -1,12 +1,11 @@
 # 🔐 Codes invités générés automatiquement
 
-_Dernière mise à jour : 07/02/2026 19:17_
+_Dernière mise à jour : 08/02/2026 09:37_
 
 ## 📋 Table complète des codes
 
 | Invité | Téléphone | Arrivée | Départ | Code | Lien direct |
 | --- | --- | --- | --- | --- | --- |
-| Lotfi Anis Benahmed | +33 6 21 98 44 41 | 05/02/2026 | 07/02/2026 | `KATI-5LXUWKQ` | https://guide.katikias33.fr/index.html?code=KATI-5LXUWKQ |
 | Clemence Nataf | +33 6 15 47 70 11 | 07/02/2026 | 09/02/2026 | `KATI-NNTQ2PA` | https://guide.katikias33.fr/index.html?code=KATI-NNTQ2PA |
 | Florence Moulin | +33 6 03 35 89 47 | 13/02/2026 | 16/02/2026 | `KATI-MN6ZZMA` | https://guide.katikias33.fr/index.html?code=KATI-MN6ZZMA |
 | Sylvie Larroque | +33 7 78 21 40 19 | 27/02/2026 | 01/03/2026 | `KATI-Y3D3FCA` | https://guide.katikias33.fr/index.html?code=KATI-Y3D3FCA |
@@ -63,15 +62,15 @@ L'équipe Katikias 33
 
 ## 💡 Exemples pratiques
 
-### Pour Lotfi Anis Benahmed
+### Pour Clemence Nataf
 
 **SMS:**
 ```
-Bonjour Lotfi,
-Votre code d'accès Katikias 33: KATI-5LXUWKQ
-Guide: https://guide.katikias33.fr/index.html?code=KATI-5LXUWKQ
+Bonjour Clemence,
+Votre code d'accès Katikias 33: KATI-NNTQ2PA
+Guide: https://guide.katikias33.fr/index.html?code=KATI-NNTQ2PA
 ```
 
-**WhatsApp:** +33 6 21 98 44 41
-**Messagerie Airbnb:** Code HM2PT4Y925
+**WhatsApp:** +33 6 15 47 70 11
+**Messagerie Airbnb:** Code HM8JJK8J9P
 

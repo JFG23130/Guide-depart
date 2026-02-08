@@ -10,7 +10,9 @@ const LanguageManager = {
         'fr': {},
         'en': {},
         'de': {},
-        'es': {}
+        'es': {},
+        'nl': {},
+        'it': {}
     },
 
     // Langue actuelle
@@ -25,11 +27,15 @@ const LanguageManager = {
         console.log('EN:', typeof window.translationsEN, Object.keys(window.translationsEN || {}).length, 'clés');
         console.log('DE:', typeof window.translationsDE, Object.keys(window.translationsDE || {}).length, 'clés');
         console.log('ES:', typeof window.translationsES, Object.keys(window.translationsES || {}).length, 'clés');
+        console.log('NL:', typeof window.translationsNL, Object.keys(window.translationsNL || {}).length, 'clés');
+        console.log('IT:', typeof window.translationsIT, Object.keys(window.translationsIT || {}).length, 'clés');
         
         if (typeof window.translationsFR !== 'undefined') this.allLanguages['fr'] = window.translationsFR;
         if (typeof window.translationsEN !== 'undefined') this.allLanguages['en'] = window.translationsEN;
         if (typeof window.translationsDE !== 'undefined') this.allLanguages['de'] = window.translationsDE;
         if (typeof window.translationsES !== 'undefined') this.allLanguages['es'] = window.translationsES;
+        if (typeof window.translationsNL !== 'undefined') this.allLanguages['nl'] = window.translationsNL;
+        if (typeof window.translationsIT !== 'undefined') this.allLanguages['it'] = window.translationsIT;
         
         console.log('✅ Langues chargées avec succès');
     },

@@ -1,7 +1,7 @@
 /**
  * Configuration des codes d'accès (VERSION PUBLIQUE - SÉCURISÉE)
  * Générée automatiquement depuis reservations_final.csv
- * Date: 2026-02-07 19:17:02
+ * Date: 2026-02-08 09:37:15
  * 
  * ⚠️ SÉCURITÉ: Les codes WiFi et Portail sont OMIS intentionnellement
  *    Ils sont stockés dans un fichier séparé NON PUBLIÉ (.gitignore)
@@ -13,12 +13,6 @@
  */
 
 const CODES_DATABASE = {
-    'KATI-5LXUWKQ': {
-        expires: '2026-02-07',
-        guest: 'Lotfi Anis Benahmed',
-        arrival: '05/02/2026',
-        departure: '07/02/2026'
-    },
     'KATI-NNTQ2PA': {
         expires: '2026-02-09',
         guest: 'Clemence Nataf',
