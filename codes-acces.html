@@ -393,11 +393,11 @@
             <p class="subtitle" data-lang-key="codes.subtitle">Merci de renseigner votre code de réservation Airbnb pour accéder au guide.</p>
 
             <div class="info-box">
-                <strong>📩 Où trouver votre code ?</strong>
+                <strong data-lang-key="codes.where_title">📩 Où trouver votre code ?</strong>
                 <ul>
-                    <li>Dans votre message Airbnb (ou WhatsApp/SMS)</li>
-                    <li>Format : code de réservation (ex. HM2PT4Y925)</li>
-                    <li>Un code par réservation</li>
+                    <li data-lang-key="codes.where_item_airbnb">Dans votre message Airbnb (ou WhatsApp/SMS)</li>
+                    <li data-lang-key="codes.where_item_format">Format : code de réservation (ex. HM2PT4Y925)</li>
+                    <li data-lang-key="codes.where_item_unique">Un code par réservation</li>
                 </ul>
             </div>
             
@@ -479,7 +479,7 @@
         const STORAGE_EXPIRY_KEY = 'katikias_expiry_date';
         const DEFAULT_PORTAL_PEDESTRIAN = '1398';
         const DEFAULT_PORTAL_VEHICLE = '1359';
-        const ALWAYS_VALID_CODES = new Set(['DEMO123', 'TEST123', 'DMP83']);
+        const ALWAYS_VALID_CODES = new Set(['DEMO12', 'TEST123', 'DMP83']);
 
         function ensureFallbackTranslations() {
             const needsFallback = !LanguageManager.allLanguages.fr || !LanguageManager.allLanguages.fr['codes.h1'];
@@ -499,6 +499,10 @@
                 'codes.logout': '🚪 Déconnexion / Fin de séjour',
                 'codes.welcome': '✅ Accès validé. Voici vos codes.',
                 'codes.guest_demo': 'Invité de démonstration',
+                'codes.where_title': '📩 Où trouver votre code ?',
+                'codes.where_item_airbnb': 'Dans votre message Airbnb (ou WhatsApp/SMS)',
+                'codes.where_item_format': 'Format : code de réservation (ex. HM2PT4Y925)',
+                'codes.where_item_unique': 'Un code par réservation',
                 'codes.arrival_label': 'Arrivée',
                 'codes.departure_label': 'Départ',
                 'codes.guide_button': 'Accéder au guide',

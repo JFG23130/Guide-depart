@@ -1,7 +1,7 @@
 (function () {
     const STORAGE_STATE_KEY = 'katikias_access_granted';
     const STORAGE_CODE_KEY = 'katikias_current_code';
-    const ALWAYS_VALID_CODES = new Set(['DEMO123', 'TEST123', 'DMP83']);
+    const ALWAYS_VALID_CODES = new Set(['DEMO12', 'TEST123', 'DMP83']);
 
     function getCodeFromUrl() {
         const params = new URLSearchParams(window.location.search);
