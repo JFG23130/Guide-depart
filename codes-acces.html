@@ -355,7 +355,6 @@
             const urlCode = params.get('code');
             if (urlCode) {
                 document.getElementById('access-code').value = urlCode.toUpperCase();
-                validateCodeValue(urlCode.toUpperCase());
             }
         });
 
@@ -474,6 +473,7 @@
                 localStorage.setItem(STORAGE_CODE_KEY, code);
                 const data = (typeof CODES_DATABASE !== 'undefined') ? CODES_DATABASE[code] : null;
                 localStorage.setItem(STORAGE_EXPIRY_KEY, data && data.expires ? data.expires : '');
+                localStorage.setItem(STORAGE_STATE_KEY, '1');
             }
 
             sessionStorage.setItem(STORAGE_STATE_KEY, '1');

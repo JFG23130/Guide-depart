@@ -71,9 +71,20 @@
     }
 
     const granted = sessionStorage.getItem(STORAGE_STATE_KEY) === '1';
-    const code = sessionStorage.getItem(STORAGE_CODE_KEY) || codeFromUrl;
+    const localGranted = localStorage.getItem(STORAGE_STATE_KEY) === '1';
+    const localCode = localStorage.getItem(STORAGE_CODE_KEY);
+    const code = sessionStorage.getItem(STORAGE_CODE_KEY) || localCode || codeFromUrl;
 
-    if (!granted || !code || typeof CODES_DATABASE === 'undefined') {
+    if (!granted && localGranted && localCode) {
+        const normalizedLocal = localCode.toUpperCase();
+        if (ALWAYS_VALID_CODES.has(normalizedLocal) || (typeof CODES_DATABASE !== 'undefined' && isWithinStay(CODES_DATABASE[normalizedLocal]))) {
+            sessionStorage.setItem(STORAGE_STATE_KEY, '1');
+            sessionStorage.setItem(STORAGE_CODE_KEY, normalizedLocal);
+        }
+    }
+
+    const isGrantedNow = sessionStorage.getItem(STORAGE_STATE_KEY) === '1';
+    if (!isGrantedNow || !code || typeof CODES_DATABASE === 'undefined') {
         const target = code ? `codes-acces.html?code=${encodeURIComponent(code)}` : 'codes-acces.html';
         window.location.replace(target);
         return;
