@@ -435,25 +435,24 @@
 
         // Check if already authenticated
         function checkAuthentication() {
-            const isGranted = sessionStorage.getItem(STORAGE_STATE_KEY);
+            const localGranted = localStorage.getItem(STORAGE_STATE_KEY) === '1';
             const savedCode = localStorage.getItem(STORAGE_CODE_KEY);
-            const sessionCode = sessionStorage.getItem(STORAGE_CODE_KEY);
-            const code = savedCode || sessionCode;
 
-            if (code && (isGranted === '1' || savedCode)) {
-                if (isCodeValid(code)) {
-                    sessionStorage.setItem(STORAGE_STATE_KEY, '1');
-                    sessionStorage.setItem(STORAGE_CODE_KEY, code);
-                    window.location.href = 'index.html';
-                    return;
-                }
+            if (localGranted && savedCode && isCodeValid(savedCode)) {
+                sessionStorage.setItem(STORAGE_STATE_KEY, '1');
+                sessionStorage.setItem(STORAGE_CODE_KEY, savedCode);
+                window.location.href = 'index.html';
+                return;
             }
 
             // Nettoyage si code invalide/expiré
             sessionStorage.removeItem(STORAGE_STATE_KEY);
             sessionStorage.removeItem(STORAGE_CODE_KEY);
-            localStorage.removeItem(STORAGE_CODE_KEY);
-            localStorage.removeItem(STORAGE_EXPIRY_KEY);
+            if (savedCode && !isCodeValid(savedCode)) {
+                localStorage.removeItem(STORAGE_CODE_KEY);
+                localStorage.removeItem(STORAGE_EXPIRY_KEY);
+                localStorage.removeItem(STORAGE_STATE_KEY);
+            }
         }
 
         function validateCodeValue(code) {
