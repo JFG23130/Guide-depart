@@ -416,7 +416,7 @@
                     </label>
                 </div>
 
-                <button type="submit" data-lang-key="codes.button">Valider</button>
+                <button type="submit" data-lang-key="codes.button">Accéder au guide</button>
             </form>
 
             <div class="help-text" data-lang-key="codes.help">
@@ -655,7 +655,7 @@
 
             sessionStorage.setItem(STORAGE_STATE_KEY, '1');
             sessionStorage.setItem(STORAGE_CODE_KEY, code);
-            showCodes(code);
+            window.location.href = 'index.html';
         }
 
         // Validate code

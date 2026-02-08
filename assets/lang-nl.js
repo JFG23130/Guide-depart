@@ -332,7 +332,7 @@ window.translationsNL = {
     "codes.subtitle": "Voer uw Airbnb-reserveringscode in om de gids te openen.",
     "codes.label": "Reserveringscode",
     "codes.placeholder": "Voer uw code in (bijv. HM2PT4Y925)",
-    "codes.button": "Mijn codes tonen",
+    "codes.button": "Gids openen",
     "codes.error": "❌ Ongeldige of verlopen code. Controleer uw bericht en probeer het opnieuw.",
     "codes.remember": "☑️ Onthoud mij op dit apparaat",
     "codes.expired": "⏰ Verblijf afgelopen: uw codes zijn uitgeschakeld. Neem contact op met de host indien nodig.",

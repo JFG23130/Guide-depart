@@ -332,7 +332,7 @@ window.translationsIT = {
     "codes.subtitle": "Inserisci il tuo codice di prenotazione Airbnb per accedere alla guida.",
     "codes.label": "Codice di prenotazione",
     "codes.placeholder": "Inserisci il tuo codice (es. HM2PT4Y925)",
-    "codes.button": "Mostra i miei codici",
+    "codes.button": "Apri la guida",
     "codes.error": "❌ Codice non valido o scaduto. Controlla il messaggio e riprova.",
     "codes.remember": "☑️ Ricordami su questo dispositivo",
     "codes.expired": "⏰ Soggiorno terminato: i tuoi codici sono disattivati. Contatta l'host se necessario.",

@@ -332,7 +332,7 @@ window.translationsES = {
     "codes.subtitle": "Introduce tu código de reserva de Airbnb para acceder al guía.",
     "codes.label": "Código de reserva",
     "codes.placeholder": "Ingrese su código (p. ej. HM2PT4Y925)",
-    "codes.button": "Mostrar mis códigos",
+    "codes.button": "Abrir la guía",
     "codes.error": "❌ Código inválido o caducado. Revisa tu mensaje e inténtalo de nuevo.",
     "codes.remember": "☑️ Recordarme en este dispositivo",
     "codes.expired": "⏰ Estancia finalizada: tus códigos están desactivados. Contacta al anfitrión si es necesario.",
