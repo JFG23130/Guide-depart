@@ -233,7 +233,7 @@ window.translationsEN = {
     "tips_and_tricks.p.chambre_en_choisissant_hdmi1_comme_sourc": "Bedroom :",
     "tips_and_tricks.p.codes_daccès_instructions_détaillées_et": "Detailed instructions, essential information and access codes.",
     "tips_and_tricks.p.eau_calcaire_leau_est_calcaire_et_laiss": "⚠️ Hard water:",
-    "tips_and_tricks.p.en_cas_de_mise_en_sécurité_la_diode_de": "⚠️ In case of security:",
+    "tips_and_tricks.p.en_cas_de_mise_en_sécurité_la_diode_de": "⚠️ In case of safety lock: the key indicator light stays on. Press this indicator for a few seconds to reset.",
     "tips_and_tricks.p.important_en_cas_de_risque_de_vent_fort": "⚠️ Important:",
     "tips_and_tricks.p.important_sécurité_les_volets_roulants": "⚠️ Important safety: The roller shutters do not have a safety device, please check that there are no obstacles when you close them with Somfy remote controls.",
     "tips_and_tricks.p.la_climatisation_sallume_avec_le_bouton": "The air conditioning is turned on with the button located at the bottom right of the console, and/or is controlled with the remote control.",

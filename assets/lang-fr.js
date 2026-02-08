@@ -235,7 +235,7 @@ window.translationsFR = {
     "tips_and_tricks.p.chambre_en_choisissant_hdmi1_comme_sourc": "Chambre :",
     "tips_and_tricks.p.codes_daccès_instructions_détaillées_et": "Instructions détaillées, informations essentielles et codes d'accès.",
     "tips_and_tricks.p.eau_calcaire_leau_est_calcaire_et_laiss": "⚠️ Eau calcaire :",
-    "tips_and_tricks.p.en_cas_de_mise_en_sécurité_la_diode_de": "⚠️ En cas de mise en sécurité :",
+    "tips_and_tricks.p.en_cas_de_mise_en_sécurité_la_diode_de": "⚠️ En cas de mise en sécurité : la diode de la clef reste allumée. Appuyez sur ce témoin quelques secondes pour réinitialiser.",
     "tips_and_tricks.p.important_en_cas_de_risque_de_vent_fort": "⚠️ Important :",
     "tips_and_tricks.p.important_sécurité_les_volets_roulants": "⚠️ Important sécurité : Les volets roulants n'ont pas de dispositif de sécurité, veuillez s'il vous plaît, vérifier qu'il n'y ait pas d'obstacle, lorsque vous les fermerez avec les télécommandes Somfy.",
     "tips_and_tricks.p.la_climatisation_sallume_avec_le_bouton": "La climatisation s'allume avec le bouton situé en bas à droite de la console, et/ou se pilote avec la télécommande.",
