@@ -291,7 +291,7 @@
     
     <!-- Load access codes configuration -->
     <!-- Option 1: Utiliser la config générée depuis CSV (recommandé) -->
-    <script src="assets/codes-config-generated.js?v=1"></script>
+    <script src="assets/codes-config-generated.js?v=20260318"></script>
     
     <!-- Option 2: Ou charger la config manuelle -->
     <!-- <script src="assets/codes-config.js?v=1"></script> -->
@@ -321,6 +321,9 @@
                 'codes.placeholder': 'Entrez votre code (ex. HM2PT4Y925)',
                 'codes.button': 'Accéder au guide',
                 'codes.error': '❌ Code invalide ou expiré. Vérifiez votre message et réessayez.',
+                'codes.error_unknown': '❌ Code inconnu ou guide pas encore mis à jour. Réessayez plus tard ou contactez l’hôte via Airbnb.',
+                'codes.error_future': '⏳ Accès ouvert à partir du {{ARRIVAL}} (jour d’arrivée).',
+                'codes.error_past': '❌ Séjour terminé : ce code ne donne plus accès au guide.',
                 'codes.remember': '☑️ Se souvenir de moi sur cet appareil',
                 'codes.where_title': '📩 Où trouver votre code ?',
                 'codes.where_item_airbnb': 'Dans votre message Airbnb (ou WhatsApp/SMS)',
@@ -407,30 +410,43 @@
             return new Date(y, m - 1, d);
         }
 
-        // Check if code is still valid
-        function isCodeValid(code) {
-            const normalized = code.toUpperCase();
-            if (ALWAYS_VALID_CODES.has(normalized)) {
-                return true;
-            }
+        function normalizeAccessCode(raw) {
+            return (raw || '').toUpperCase().replace(/\s+/g, '').trim();
+        }
+
+        function getCodeAccessState(raw) {
+            const normalized = normalizeAccessCode(raw);
+            if (!normalized) return { ok: false, reason: 'empty' };
+            if (ALWAYS_VALID_CODES.has(normalized)) return { ok: true, normalized };
 
             const data = CODES_DATABASE[normalized];
-            if (!data) return false;
+            if (!data) return { ok: false, reason: 'unknown', normalized };
 
             const now = new Date();
-
             if (!data.arrival || !data.departure) {
-                return false;
+                return { ok: false, reason: 'unknown', normalized };
             }
 
             const arrival = parseDateDmy(data.arrival);
             const departure = parseDateDmy(data.departure);
-            if (!arrival || !departure) return false;
+            if (!arrival || !departure) return { ok: false, reason: 'unknown', normalized };
+
             const arrivalStart = new Date(arrival);
             arrivalStart.setHours(0, 0, 0, 0);
             const departureEnd = new Date(departure);
             departureEnd.setHours(23, 59, 59, 999);
-            return now >= arrivalStart && now <= departureEnd;
+
+            if (now < arrivalStart) {
+                return { ok: false, reason: 'future', normalized, arrival: data.arrival, departure: data.departure };
+            }
+            if (now > departureEnd) {
+                return { ok: false, reason: 'past', normalized, departure: data.departure };
+            }
+            return { ok: true, normalized };
+        }
+
+        function isCodeValid(code) {
+            return getCodeAccessState(code).ok === true;
         }
 
         // Check if already authenticated
@@ -457,33 +473,50 @@
 
         function validateCodeValue(code) {
             const errorMsg = document.getElementById('error-message');
+            const state = getCodeAccessState(code);
 
-            if (!isCodeValid(code)) {
-                errorMsg.textContent = LanguageManager.get('codes.error');
+            if (!state.ok) {
+                let msg = LanguageManager.get('codes.error');
+                if (state.reason === 'unknown') {
+                    msg = (LanguageManager.get('codes.error_unknown') !== '[codes.error_unknown]')
+                        ? LanguageManager.get('codes.error_unknown')
+                        : '❌ Code inconnu ou guide pas encore mis à jour par l’hôte. Si votre séjour est proche, réessayez plus tard ou contactez l’hôte.';
+                } else if (state.reason === 'future') {
+                    msg = (LanguageManager.get('codes.error_future') !== '[codes.error_future]')
+                        ? LanguageManager.get('codes.error_future').replace('{{ARRIVAL}}', state.arrival)
+                        : '⏳ Accès ouvert à partir du ' + state.arrival + ' (jour d’arrivée). Revenez à cette date.';
+                } else if (state.reason === 'past') {
+                    msg = (LanguageManager.get('codes.error_past') !== '[codes.error_past]')
+                        ? LanguageManager.get('codes.error_past')
+                        : '❌ Séjour terminé : ce code ne donne plus accès au guide.';
+                }
+                errorMsg.textContent = msg;
                 errorMsg.classList.add('show');
                 document.getElementById('access-code').value = '';
                 setTimeout(() => {
                     errorMsg.classList.remove('show');
-                }, 3000);
+                }, 5000);
                 return;
             }
 
+            const normalized = state.normalized;
+
             if (document.getElementById('remember-device').checked) {
-                localStorage.setItem(STORAGE_CODE_KEY, code);
-                const data = (typeof CODES_DATABASE !== 'undefined') ? CODES_DATABASE[code] : null;
+                localStorage.setItem(STORAGE_CODE_KEY, normalized);
+                const data = (typeof CODES_DATABASE !== 'undefined') ? CODES_DATABASE[normalized] : null;
                 localStorage.setItem(STORAGE_EXPIRY_KEY, data && data.expires ? data.expires : '');
                 localStorage.setItem(STORAGE_STATE_KEY, '1');
             }
 
             sessionStorage.setItem(STORAGE_STATE_KEY, '1');
-            sessionStorage.setItem(STORAGE_CODE_KEY, code);
+            sessionStorage.setItem(STORAGE_CODE_KEY, normalized);
             window.location.href = 'index.html';
         }
 
         // Validate code
         function validateCode(event) {
             if (event) event.preventDefault();
-            const code = document.getElementById('access-code').value.toUpperCase();
+            const code = normalizeAccessCode(document.getElementById('access-code').value);
             validateCodeValue(code);
         }
 
