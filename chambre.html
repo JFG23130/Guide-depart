@@ -73,14 +73,14 @@
             <h1 data-lang-key="chambre.title">🛏️ Chambre</h1>
         </div>
         <div class="content">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <ul>
-                <li data-captions="Lit 160" data-photo-paths="images/chambre_lit_160.jpg">Lit 160</li>
-                <li data-photo-pdfs="pdfs/climatisation.pdf|pdfs/climatisation.pdf" data-photo-paths="images/climatisation_chambre.jpg|images/climatisation_chambre_2.jpg">Climatisation Chambre</li>
-                <li data-photo-paths="images/radiateur.png">Radiateur</li>
-                <li data-photo-paths="images/tv_chambre.png">TV_chambre</li>
-                <li data-photo-pdfs="pdfs/box_tv_orange.pdf" data-photo-paths="images/box_tv_orange.jpg">Box TV Orange</li>
-                <li data-photo-paths="images/programmes_tv_orange.jpg|images/programmes_tv_orange_2.jpg">Programmes TV Orange</li>
-                <li>Table &#224; repasser</li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <ul>
+                <li data-slug="lit_160" data-captions="Lit 160" data-photo-paths="images/chambre_lit_160.jpg">Lit 160</li>
+                <li data-slug="climatisation_chambre" data-photo-paths="images/climatisation_chambre.jpg|images/climatisation_chambre_2.jpg">Climatisation Chambre</li>
+                <li data-slug="radiateur" data-photo-paths="images/radiateur.png">Radiateur</li>
+                <li data-slug="tv_chambre" data-photo-paths="images/tv_chambre.png">TV_chambre</li>
+                <li data-slug="box_tv_orange" data-photo-paths="images/box_tv_orange.jpg">Box TV Orange</li>
+                <li data-slug="programmes_tv_orange" data-photo-paths="images/programmes_tv_orange.jpg|images/programmes_tv_orange_2.jpg">Programmes TV Orange</li>
+                <li data-slug="table_a_repasser">Table &#224; repasser</li>
             </ul>
         </div>
         <div class="footer">Katikias 33</div>
@@ -110,44 +110,62 @@
             next();
         }
         function findAdditionalImages(baseName, parentWrap, captions){
-            // Chercher images supplémentaires: nom_2, nom_3, etc.
-            for(let num = 2; num <= 10; num++){
-                let found = false;
-                const bases = [pageKey + '_' + baseName + '_' + num, baseName + '_' + num];
-                for(let baseIdx = 0; baseIdx < bases.length && !found; baseIdx++){
-                    for(let extIdx = 0; extIdx < exts.length && !found; extIdx++){
-                        const src = 'images/' + bases[baseIdx] + '.' + exts[extIdx];
-                        const probe = new Image();
-                        probe.onerror = function(){};
-                        probe.onload = function(){
-                            found = true;
-                            const img = document.createElement('img');
-                            img.src = src;
-                            img.alt = 'Image ' + num;
-                            img.style.maxWidth = '320px';
-                            img.style.maxHeight = '260px';
-                            img.style.width = 'auto';
-                            img.style.height = 'auto';
-                            img.style.objectFit = 'contain';
-                            img.style.borderRadius = '10px';
-                            img.style.boxShadow = '0 4px 10px rgba(0,0,0,0.12)';
-                            img.style.marginTop = '10px';
-                            parentWrap.appendChild(img);
-                            // Légendes : captions[0] = image principale, captions[1] = fichier _2, captions[2] = _3, etc.
-                            if(captions && captions[num - 1]){
-                                const cap = document.createElement('div');
-                                cap.className = 'caption';
-                                cap.textContent = captions[num - 1];
-                                parentWrap.appendChild(cap);
-                            }
-                        };
-                        probe.src = src;
-                    }
-                }
+            // Images nom_2, nom_3… — une sonde à la fois (l’ancienne boucle lançait ~80 requêtes d’un coup → 404 partout dans la console).
+            let num = 2;
+            let foundAny = false;
+            let consecutiveMiss = 0;
+            function afterNumFailed(){
+                consecutiveMiss++;
+                if(foundAny && consecutiveMiss >= 2){ return; }
+                num++;
+                if(num > 10){ return; }
+                tryVariant(0, 0);
             }
+            function tryVariant(baseIdx, extIdx){
+                if(foundAny && consecutiveMiss >= 2){ return; }
+                const bases = [pageKey + '_' + baseName + '_' + num, baseName + '_' + num];
+                if(baseIdx >= bases.length){
+                    afterNumFailed();
+                    return;
+                }
+                if(extIdx >= exts.length){
+                    tryVariant(baseIdx + 1, 0);
+                    return;
+                }
+                const src = 'images/' + bases[baseIdx] + '.' + exts[extIdx];
+                const probe = new Image();
+                probe.onload = function(){
+                    foundAny = true;
+                    consecutiveMiss = 0;
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = 'Image ' + num;
+                    img.style.maxWidth = '320px';
+                    img.style.maxHeight = '260px';
+                    img.style.width = 'auto';
+                    img.style.height = 'auto';
+                    img.style.objectFit = 'contain';
+                    img.style.borderRadius = '10px';
+                    img.style.boxShadow = '0 4px 10px rgba(0,0,0,0.12)';
+                    img.style.marginTop = '10px';
+                    parentWrap.appendChild(img);
+                    if(captions && captions[num - 1]){
+                        const cap = document.createElement('div');
+                        cap.className = 'caption';
+                        cap.textContent = captions[num - 1];
+                        parentWrap.appendChild(cap);
+                    }
+                    num++;
+                    if(num > 10){ return; }
+                    tryVariant(0, 0);
+                };
+                probe.onerror = function(){ tryVariant(baseIdx, extIdx + 1); };
+                probe.src = src;
+            }
+            tryVariant(0, 0);
         }
         function runRoomPhotos(){
-        document.querySelectorAll('ul li').forEach(li =>{
+        document.querySelectorAll('.content ul li').forEach(li =>{
             const label = li.textContent.trim();
             const slug = slugify(label);
             const bases = [pageKey + '_' + slug, slug];

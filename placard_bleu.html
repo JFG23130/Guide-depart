@@ -73,14 +73,14 @@
             <h1 data-lang-key="placard.title">🗄️ Placard Bleu</h1>
         </div>
         <div class="content">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <ul>
-                <li data-captions="Baignoire|petit transat de bain" data-photo-paths="images/placard_bleu_equipement_bebe.jpeg|images/placard_bleu_equipement_bebe_2.jpeg">&#201;quipement B&#233;b&#233;</li>
-                <li data-captions="Montage du lit parapluie. &#224; l&#39;&#233;tape 4 et 5, veillez que sur chacun des 4 cot&#233;s les montants sont bien compl&#233;tement v&#233;rouill&#233;s|Rangement du lit parapluie" data-photo-paths="images/lit_parapluie_bebe.png|images/lit_parapluie_bebe_2.png">Lit parapluie b&#233;b&#233;</li>
-                <li data-photo-paths="images/table_a_langer.jpg">Table &#224; langer</li>
-                <li data-photo-paths="images/chaise_haute.jpg">Chaise haute</li>
-                <li data-photo-paths="images/service_a_raclette.jpeg">Service &#224; raclette</li>
-                <li data-photo-paths="images/plancha.png">Plancha</li>
-                <li data-photo-paths="images/box_fibre_orange_wi_fi.png">Box fibre Orange Wi‑Fi</li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <ul>
+                <li data-slug="equipement_bebe" data-captions="Baignoire|petit transat de bain" data-photo-paths="images/placard_bleu_equipement_bebe.jpeg|images/placard_bleu_equipement_bebe_2.jpeg">&#201;quipement B&#233;b&#233;</li>
+                <li data-slug="lit_parapluie_bebe" data-captions="Montage du lit parapluie. &#224; l&#39;&#233;tape 4 et 5, veillez que sur chacun des 4 cot&#233;s les montants sont bien compl&#233;tement v&#233;rouill&#233;s|Rangement du lit parapluie" data-photo-paths="images/lit_parapluie_bebe.png|images/lit_parapluie_bebe_2.png">Lit parapluie b&#233;b&#233;</li>
+                <li data-slug="table_a_langer" data-photo-paths="images/table_a_langer.jpg">Table &#224; langer</li>
+                <li data-slug="chaise_haute" data-photo-paths="images/chaise_haute.jpg">Chaise haute</li>
+                <li data-slug="service_a_raclette" data-photo-paths="images/service_a_raclette.jpeg">Service &#224; raclette</li>
+                <li data-slug="plancha" data-photo-paths="images/plancha.png">Plancha</li>
+                <li data-slug="box_fibre_orange_wi_fi" data-photo-paths="images/box_fibre_orange_wi_fi.png">Box fibre Orange Wi‑Fi</li>
             </ul>
         </div>
         <div class="footer">Katikias 33</div>
@@ -110,44 +110,62 @@
             next();
         }
         function findAdditionalImages(baseName, parentWrap, captions){
-            // Chercher images supplémentaires: nom_2, nom_3, etc.
-            for(let num = 2; num <= 10; num++){
-                let found = false;
-                const bases = [pageKey + '_' + baseName + '_' + num, baseName + '_' + num];
-                for(let baseIdx = 0; baseIdx < bases.length && !found; baseIdx++){
-                    for(let extIdx = 0; extIdx < exts.length && !found; extIdx++){
-                        const src = 'images/' + bases[baseIdx] + '.' + exts[extIdx];
-                        const probe = new Image();
-                        probe.onerror = function(){};
-                        probe.onload = function(){
-                            found = true;
-                            const img = document.createElement('img');
-                            img.src = src;
-                            img.alt = 'Image ' + num;
-                            img.style.maxWidth = '320px';
-                            img.style.maxHeight = '260px';
-                            img.style.width = 'auto';
-                            img.style.height = 'auto';
-                            img.style.objectFit = 'contain';
-                            img.style.borderRadius = '10px';
-                            img.style.boxShadow = '0 4px 10px rgba(0,0,0,0.12)';
-                            img.style.marginTop = '10px';
-                            parentWrap.appendChild(img);
-                            // Légendes : captions[0] = image principale, captions[1] = fichier _2, captions[2] = _3, etc.
-                            if(captions && captions[num - 1]){
-                                const cap = document.createElement('div');
-                                cap.className = 'caption';
-                                cap.textContent = captions[num - 1];
-                                parentWrap.appendChild(cap);
-                            }
-                        };
-                        probe.src = src;
-                    }
-                }
+            // Images nom_2, nom_3… — une sonde à la fois (l’ancienne boucle lançait ~80 requêtes d’un coup → 404 partout dans la console).
+            let num = 2;
+            let foundAny = false;
+            let consecutiveMiss = 0;
+            function afterNumFailed(){
+                consecutiveMiss++;
+                if(foundAny && consecutiveMiss >= 2){ return; }
+                num++;
+                if(num > 10){ return; }
+                tryVariant(0, 0);
             }
+            function tryVariant(baseIdx, extIdx){
+                if(foundAny && consecutiveMiss >= 2){ return; }
+                const bases = [pageKey + '_' + baseName + '_' + num, baseName + '_' + num];
+                if(baseIdx >= bases.length){
+                    afterNumFailed();
+                    return;
+                }
+                if(extIdx >= exts.length){
+                    tryVariant(baseIdx + 1, 0);
+                    return;
+                }
+                const src = 'images/' + bases[baseIdx] + '.' + exts[extIdx];
+                const probe = new Image();
+                probe.onload = function(){
+                    foundAny = true;
+                    consecutiveMiss = 0;
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = 'Image ' + num;
+                    img.style.maxWidth = '320px';
+                    img.style.maxHeight = '260px';
+                    img.style.width = 'auto';
+                    img.style.height = 'auto';
+                    img.style.objectFit = 'contain';
+                    img.style.borderRadius = '10px';
+                    img.style.boxShadow = '0 4px 10px rgba(0,0,0,0.12)';
+                    img.style.marginTop = '10px';
+                    parentWrap.appendChild(img);
+                    if(captions && captions[num - 1]){
+                        const cap = document.createElement('div');
+                        cap.className = 'caption';
+                        cap.textContent = captions[num - 1];
+                        parentWrap.appendChild(cap);
+                    }
+                    num++;
+                    if(num > 10){ return; }
+                    tryVariant(0, 0);
+                };
+                probe.onerror = function(){ tryVariant(baseIdx, extIdx + 1); };
+                probe.src = src;
+            }
+            tryVariant(0, 0);
         }
         function runRoomPhotos(){
-        document.querySelectorAll('ul li').forEach(li =>{
+        document.querySelectorAll('.content ul li').forEach(li =>{
             const label = li.textContent.trim();
             const slug = slugify(label);
             const bases = [pageKey + '_' + slug, slug];

@@ -1,14 +1,14 @@
 {
   "Equipments": [
     {
-      "Id": "01a76f54389b4c49822b93a7dd964c58",
+      "Id": "e4ac45796b0b44d28f0cef1d768a3bec",
       "Name": "Lit 160",
       "Category": "\uD83D\uDECF\uFE0F Chambre",
       "Comment": "",
       "ImagePath": "images/chambre_lit_160.jpg",
       "Photos": [
         {
-          "Id": "2c9baa4364d2490ea15c501348df5419",
+          "Id": "536c4e785b1049238011f86fe59cc8ea",
           "Path": "images/chambre_lit_160.jpg",
           "Comment": "Lit 160",
           "PdfPath": "",
@@ -19,21 +19,21 @@
       "DisplayOrder": 10
     },
     {
-      "Id": "39b95f1b79394488b0959d9767316825",
+      "Id": "cfdc1abadb304be385c4e6e1b5e71b71",
       "Name": "Climatisation Chambre",
       "Category": "\uD83D\uDECF\uFE0F Chambre",
-      "Comment": "PDF: pdfs/climatisation.pdf",
+      "Comment": "",
       "ImagePath": "images/climatisation_chambre.jpg",
       "Photos": [
         {
-          "Id": "26165bede4434bc2abead5fd6c197404",
+          "Id": "fdba82726c184a358e942a618a9a3864",
           "Path": "images/climatisation_chambre.jpg",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "b19c3a5c2a7b4b3bb932969954e244c2",
+          "Id": "3ad69a4e069f4f819493c38213942b69",
           "Path": "images/climatisation_chambre_2.jpg",
           "Comment": "",
           "PdfPath": "",
@@ -44,14 +44,14 @@
       "DisplayOrder": 20
     },
     {
-      "Id": "66b25a3cae5b4668b5a4f5f0d70b607d",
+      "Id": "b6de814fe4564cb28c0999a6ea3e1fdc",
       "Name": "Radiateur",
       "Category": "\uD83D\uDECF\uFE0F Chambre",
       "Comment": "",
       "ImagePath": "images/radiateur.png",
       "Photos": [
         {
-          "Id": "1fa6d90c6c044e18af9fd3fc2969efdd",
+          "Id": "6bf72c62b06e4c1fbd239d9b0062b480",
           "Path": "images/radiateur.png",
           "Comment": "",
           "PdfPath": "",
@@ -62,14 +62,14 @@
       "DisplayOrder": 30
     },
     {
-      "Id": "8e0127f056564fe7b2947f2362067263",
+      "Id": "e7bc20ea3a8c443d883233b4059b7093",
       "Name": "TV_chambre",
       "Category": "\uD83D\uDECF\uFE0F Chambre",
       "Comment": "",
       "ImagePath": "images/tv_chambre.png",
       "Photos": [
         {
-          "Id": "02b9bfdcb38d4973924b61784ebfb2d7",
+          "Id": "ce7d8bed939a421e99aca4b17207afbd",
           "Path": "images/tv_chambre.png",
           "Comment": "",
           "PdfPath": "",
@@ -80,14 +80,14 @@
       "DisplayOrder": 40
     },
     {
-      "Id": "8dc52775194b41dc87cf04e0fe9bf3d9",
+      "Id": "f460e329931f4f34ab1e278a4729c519",
       "Name": "Box TV Orange",
       "Category": "\uD83D\uDECF\uFE0F Chambre",
-      "Comment": "PDF: pdfs/box_tv_orange.pdf",
+      "Comment": "",
       "ImagePath": "images/box_tv_orange.jpg",
       "Photos": [
         {
-          "Id": "938cdb526d9f4d5288b0d5e7756104e2",
+          "Id": "2962d8d5067d41d084ced560909a53b0",
           "Path": "images/box_tv_orange.jpg",
           "Comment": "",
           "PdfPath": "",
@@ -98,21 +98,21 @@
       "DisplayOrder": 50
     },
     {
-      "Id": "425806349a69406ebbc9e1a1c52030ef",
+      "Id": "833c453137074e128892a5075ebf4f00",
       "Name": "Programmes TV Orange",
       "Category": "\uD83D\uDECF\uFE0F Chambre",
       "Comment": "",
       "ImagePath": "images/programmes_tv_orange.jpg",
       "Photos": [
         {
-          "Id": "980cb6df08c44005a44d5f5817acc3b0",
+          "Id": "124882ccab3a481a9c09cb9a6e30a046",
           "Path": "images/programmes_tv_orange.jpg",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "b7e8bb256f284dca970db67675766dcf",
+          "Id": "b1ed7f218dae4f5b9324ffeec559ed5c",
           "Path": "images/programmes_tv_orange_2.jpg",
           "Comment": "",
           "PdfPath": "",
@@ -123,7 +123,7 @@
       "DisplayOrder": 60
     },
     {
-      "Id": "aaedb3a012e947e7b0f24332ebf854b0",
+      "Id": "33cd849e9b5346b9894c9854d9600e47",
       "Name": "Table \u00E0 repasser",
       "Category": "\uD83D\uDECF\uFE0F Chambre",
       "Comment": "",
@@ -133,21 +133,21 @@
       "DisplayOrder": 70
     },
     {
-      "Id": "f8bf3050da254677b7f61d2e17568d2d",
+      "Id": "d9412ea977c648319c90e616d3f8bbec",
       "Name": "Mini r\u00E9frig\u00E9rateur",
       "Category": "\uD83C\uDF7D\uFE0F Cuisine",
-      "Comment": "PDF: pdfs/mini_refrigerateur.pdf",
+      "Comment": "",
       "ImagePath": "images/mini_refrigerateur.png",
       "Photos": [
         {
-          "Id": "27afb689cee143e8ad22739ebad6a6e7",
+          "Id": "829928917a284a1da9d1d06e637d357a",
           "Path": "images/mini_refrigerateur.png",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "f60101dc0e87449687ac259a08d171fc",
+          "Id": "73801e0705d84e26858b288dabb81d1c",
           "Path": "images/mini_refrigerateur_2.png",
           "Comment": "marche et r\u00E9glage temp\u00E9rature",
           "PdfPath": "",
@@ -158,14 +158,14 @@
       "DisplayOrder": 80
     },
     {
-      "Id": "2e9e37b407984d878cc2f9b3c1ce5151",
+      "Id": "e0d15a1e29c54096ba04ec66024e7f0f",
       "Name": "Cong\u00E9lateur",
       "Category": "\uD83C\uDF7D\uFE0F Cuisine",
-      "Comment": "PDF: pdfs/congelateur.pdf",
+      "Comment": "",
       "ImagePath": "images/congelateur.png",
       "Photos": [
         {
-          "Id": "165308fcbea64685ba8fb8efb23bbf4e",
+          "Id": "e78b5fe169a34667a0c0f15ce3519a85",
           "Path": "images/congelateur.png",
           "Comment": "",
           "PdfPath": "",
@@ -176,28 +176,28 @@
       "DisplayOrder": 90
     },
     {
-      "Id": "1b4aada93f65434b92e7bea51f555439",
+      "Id": "13dabb5aac5446dcb7b9f4bb38e92624",
       "Name": "Four",
       "Category": "\uD83C\uDF7D\uFE0F Cuisine",
-      "Comment": "PDF: pdfs/four.pdf",
+      "Comment": "",
       "ImagePath": "images/four.png",
       "Photos": [
         {
-          "Id": "231e67fdb495477f9944f60e6a0ff43c",
+          "Id": "da1008ea689c4e05bb3b4bcc9a629cf1",
           "Path": "images/four.png",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "79f9ba6e3d364a939f87eb57b1686d68",
+          "Id": "3a1180a76ab24344bd8bcba62a33d5c7",
           "Path": "images/four_2.png",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 20
         },
         {
-          "Id": "d5241b4660d24ea598f24f3fe698f7b3",
+          "Id": "b3e1c64d95814d0e8e5295df3f071223",
           "Path": "images/cuisine_four_3.jpg",
           "Comment": "",
           "PdfPath": "",
@@ -208,28 +208,28 @@
       "DisplayOrder": 100
     },
     {
-      "Id": "bead9c8b416242ce850a4a1e1c899946",
+      "Id": "59d9e955c24c49249bcacb0b7eb0c8b0",
       "Name": "Cafeti\u00E8re",
       "Category": "\uD83C\uDF7D\uFE0F Cuisine",
-      "Comment": "PDF: pdfs/cafetiere.pdf",
+      "Comment": "",
       "ImagePath": "images/cuisine_cafetiere_4.jpeg",
       "Photos": [
         {
-          "Id": "26e85946e8e941cfb9a884c85a9cdf97",
+          "Id": "09105deec4e24ceeba55b5c170ed4366",
           "Path": "images/cuisine_cafetiere_4.jpeg",
           "Comment": "Bouton marche arret",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "89a5875714f248ffa561ea6f82b50f82",
+          "Id": "d74be7ee7cf04e7bbed273ada1efaa72",
           "Path": "images/cuisine_cafetiere_2.jpeg",
           "Comment": "ouverture filtre",
           "PdfPath": "",
           "DisplayOrder": 20
         },
         {
-          "Id": "35b79506b4d24505bd7c62122cea54f6",
+          "Id": "20a8e3184ca049358857bfeb7725c554",
           "Path": "images/cuisine_cafetiere_3.jpeg",
           "Comment": "ouverture eau",
           "PdfPath": "",
@@ -240,14 +240,14 @@
       "DisplayOrder": 110
     },
     {
-      "Id": "e544efef7c3744adbb1be2773a05cb53",
+      "Id": "1324f2d03f414d29b0c72a0fc637f5ee",
       "Name": "Machine \u00E0 caf\u00E9 Senseo",
       "Category": "\uD83C\uDF7D\uFE0F Cuisine",
-      "Comment": "PDF: pdfs/senseo.pdf",
+      "Comment": "",
       "ImagePath": "images/machine_a_cafe_senseo.png",
       "Photos": [
         {
-          "Id": "1712bee5ad604caca83c06ef3d03c79b",
+          "Id": "0b2f8dae035544e8805a26ebd82ab74f",
           "Path": "images/machine_a_cafe_senseo.png",
           "Comment": "Capsule Sens\u00E9o exclusivement",
           "PdfPath": "",
@@ -258,28 +258,28 @@
       "DisplayOrder": 120
     },
     {
-      "Id": "0d764cb112cc4a649b6da5ec7a58a924",
+      "Id": "12eb24b7229c4a259137b8021f302d26",
       "Name": "Bouilloire",
       "Category": "\uD83C\uDF7D\uFE0F Cuisine",
-      "Comment": "PDF: pdfs/bouilloire_sana.pdf",
+      "Comment": "",
       "ImagePath": "images/bouilloire.png",
       "Photos": [
         {
-          "Id": "1b7b0a09dfb343ce8867015a93152254",
+          "Id": "c913ca9e16084b14b99f82fe7f272155",
           "Path": "images/bouilloire.png",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "dbf7e8551c0a4aeb83b5e22805f0d3ce",
+          "Id": "744be1dce5e54848b7c44b4591ee65dd",
           "Path": "images/cuisine_bouilloire_2.jpeg",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 20
         },
         {
-          "Id": "79bec6ebf31d4eaf9913af195c6ecc8e",
+          "Id": "c288e13510984393a2de7436fe1216a2",
           "Path": "images/cuisine_bouilloire_3.jpeg",
           "Comment": "ouverture remplissage eau",
           "PdfPath": "",
@@ -290,28 +290,28 @@
       "DisplayOrder": 130
     },
     {
-      "Id": "2cdcfa44f49c421ea1dde7b3012a904c",
+      "Id": "851645e963714bb3a5bb48c5bbe08b12",
       "Name": "Grille-pain",
       "Category": "\uD83C\uDF7D\uFE0F Cuisine",
       "Comment": "",
       "ImagePath": "images/cuisine_grille_pain.jpeg",
       "Photos": [
         {
-          "Id": "95a46b88ce5f41d8a79aa8a2ae882b98",
+          "Id": "8ac0bbec21e5422fa3201d07d6e9ee0d",
           "Path": "images/cuisine_grille_pain.jpeg",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "e585225d5caa49949ec86839db509710",
+          "Id": "debc47f5d37e46ceb3e2fecbda41ae92",
           "Path": "images/cuisine_grille_pain_2.jpeg",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 20
         },
         {
-          "Id": "a62f18f15d574064b674f3b14661569c",
+          "Id": "b31c7a7e55124c299b5de4b1b4c69e25",
           "Path": "images/cuisine_grille_pain_3.jpeg",
           "Comment": "tirroir \u00E0 miettes.",
           "PdfPath": "",
@@ -322,21 +322,21 @@
       "DisplayOrder": 140
     },
     {
-      "Id": "174a9d8e41ab4373b51dc0a3cc0c427f",
+      "Id": "801b024feb5e4ee7b278f362caf164c5",
       "Name": "Machine \u00E0 laver",
       "Category": "\uD83C\uDF7D\uFE0F Cuisine",
-      "Comment": "PDF: pdfs/lave_linge.pdf",
+      "Comment": "",
       "ImagePath": "images/machine_a_laver.png",
       "Photos": [
         {
-          "Id": "d8aa24a96c064b65a95ca1011cb8a9d3",
+          "Id": "4995e1c541db4a999568fa1931810a76",
           "Path": "images/machine_a_laver.png",
           "Comment": "Panneau de commande Reglage cycle, allumage, d\u00E9marrage",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "ac3fcd6f6e984216a5116d344ec25eee",
+          "Id": "a064d700471f4670b02428dcafa0fc7d",
           "Path": "images/machine_a_laver_2.png",
           "Comment": "Attention petite musique de fin d\u0027activit\u00E9e",
           "PdfPath": "",
@@ -347,21 +347,21 @@
       "DisplayOrder": 150
     },
     {
-      "Id": "15de5fad0f164af28dba59b3dc0ef7a7",
+      "Id": "ef27c0eaf15f40e1a6789d0b1c31728c",
       "Name": "Plaque cuisson vitro c\u00E9ramique",
       "Category": "\uD83C\uDF7D\uFE0F Cuisine",
-      "Comment": "PDF: pdfs/plaques_de_cuisson.pdf",
+      "Comment": "",
       "ImagePath": "images/plaque_cuisson_vitro_ceramique.png",
       "Photos": [
         {
-          "Id": "e70c9559ee974917963e3f868971af5f",
+          "Id": "4e2abe4d20ee4184b4645e8ab91b7c6a",
           "Path": "images/plaque_cuisson_vitro_ceramique.png",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "b45f1b5120ba4f30b7a262ad18112efe",
+          "Id": "1447140621d243caba8d0adb9ce2b403",
           "Path": "images/plaque_cuisson_vitro_ceramique_2.png",
           "Comment": "1\u003E choix de la plaque (defilement) 2\u003E r\u00E9gle la puissance de chauffe (1 \u00E0 9) 3\u003E Si la clef est allum\u00E9 = s\u00E9curit\u00E9 active (appuyer 5 secondes pour d\u00E9verrouiller )",
           "PdfPath": "",
@@ -372,14 +372,14 @@
       "DisplayOrder": 160
     },
     {
-      "Id": "b91c54c7209543acb64f7ad6685f5a6b",
+      "Id": "154596183ae0472ca7746cad517cd4a1",
       "Name": "Lave-vaisselle",
       "Category": "\uD83C\uDF7D\uFE0F Cuisine",
-      "Comment": "PDF: pdfs/lave_vaisselle.pdf",
+      "Comment": "",
       "ImagePath": "images/lave_vaisselle.png",
       "Photos": [
         {
-          "Id": "4b1b2bc711da4a42bcfad9a7e54b02b0",
+          "Id": "5b7dc929ba95450487a673126fa4751e",
           "Path": "images/lave_vaisselle.png",
           "Comment": "",
           "PdfPath": "",
@@ -390,14 +390,14 @@
       "DisplayOrder": 170
     },
     {
-      "Id": "14df7430b98f419b8beab2448d221684",
+      "Id": "6b059a014f5e46a2bfe6e2c54c2933be",
       "Name": "Douche",
       "Category": "\uD83D\uDEC1 Salle d\u0027eau",
-      "Comment": "PDF: pdfs/douche.pdf",
+      "Comment": "",
       "ImagePath": "images/douche.png",
       "Photos": [
         {
-          "Id": "5a232c3cb96d446784f6bab6500f12ea",
+          "Id": "17135d8bd60249acb080c344c45f8dd2",
           "Path": "images/douche.png",
           "Comment": "",
           "PdfPath": "",
@@ -408,28 +408,28 @@
       "DisplayOrder": 180
     },
     {
-      "Id": "8566ba50ce33481dacbd93ba7a57a010",
+      "Id": "a4df32edc951458992a1d2694ac4b000",
       "Name": "Radiateur sdb",
       "Category": "\uD83D\uDEC1 Salle d\u0027eau",
-      "Comment": "PDF: pdfs/radiateur_sdb.pdf",
+      "Comment": "",
       "ImagePath": "images/radiateur_sdb.png",
       "Photos": [
         {
-          "Id": "31ab0a51f4c14295abb328c9a0a2a4c3",
+          "Id": "ce8b056b7d4f4208930489e6792b058f",
           "Path": "images/radiateur_sdb.png",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "5b8cbefa0b474360884735bd1ace0418",
+          "Id": "b06f279b2d7c4b06aed0c53792421680",
           "Path": "images/radiateur_sdb_2.jpg",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 20
         },
         {
-          "Id": "11a5c48809de4a29be80c82670f1e40f",
+          "Id": "b6346d0a7d184f5692a9237fe8eacf8d",
           "Path": "images/radiateur_sdb_3.jpg",
           "Comment": "",
           "PdfPath": "",
@@ -440,14 +440,14 @@
       "DisplayOrder": 190
     },
     {
-      "Id": "fb52c6e2502d48608f62cecd06f6adac",
+      "Id": "a9f72f1e16e740fe8ba6dc27529c2111",
       "Name": "Miroir lumineux",
       "Category": "\uD83D\uDEC1 Salle d\u0027eau",
-      "Comment": "PDF: pdfs/miroir_neo.pdf",
+      "Comment": "",
       "ImagePath": "images/miroir_lumineux.jpeg",
       "Photos": [
         {
-          "Id": "2b086c065ee047b3bb8800298aeb76c1",
+          "Id": "35e1265d05b148fdad469a21c5576cc7",
           "Path": "images/miroir_lumineux.jpeg",
           "Comment": "",
           "PdfPath": "",
@@ -458,28 +458,28 @@
       "DisplayOrder": 200
     },
     {
-      "Id": "fdfddc34c4e94354a4f34c5be6e40c06",
+      "Id": "4f8c08892eca4fd9a679ed4afdf94d14",
       "Name": "Climatisation",
       "Category": "\uD83C\uDF7D\uFE0F Salle \u00E0 Manger",
-      "Comment": "PDF: pdfs/climatisation.pdf",
+      "Comment": "",
       "ImagePath": "images/climatisation.jpg",
       "Photos": [
         {
-          "Id": "1463799769c64246a3af3304a0a521ff",
+          "Id": "2f16dc4d3648432fafbfdc7d885d4731",
           "Path": "images/climatisation.jpg",
           "Comment": "Vue d\u0027ensemble de la climatisation",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "61528f9e92474ac1a2379e633b800643",
+          "Id": "9c36e4630606491daf129ee0c0d476df",
           "Path": "images/climatisation_2.jpg",
           "Comment": "T\u00E9l\u00E9commande mode Climatisation",
           "PdfPath": "",
           "DisplayOrder": 20
         },
         {
-          "Id": "b79dce4ba7f847cf85593d493566b10d",
+          "Id": "6880bed32f7c432ea7be042ca43fe5f6",
           "Path": "images/climatisation_3.jpg",
           "Comment": "T\u00E9l\u00E9commande mode Chauffage",
           "PdfPath": "",
@@ -490,14 +490,14 @@
       "DisplayOrder": 210
     },
     {
-      "Id": "9b33be445cef40908caac03e44aca545",
+      "Id": "ea2adbad75bd484eb2b9c48f569c084e",
       "Name": "Radiateur",
       "Category": "\uD83C\uDF7D\uFE0F Salle \u00E0 Manger",
-      "Comment": "PDF: pdfs/radiateur_salon.pdf",
+      "Comment": "",
       "ImagePath": "images/radiateur.png",
       "Photos": [
         {
-          "Id": "741f07ad9c7e45fe95500a014b099719",
+          "Id": "9a1078eb9e414cee8aac8da729de4a85",
           "Path": "images/radiateur.png",
           "Comment": "",
           "PdfPath": "",
@@ -508,21 +508,21 @@
       "DisplayOrder": 220
     },
     {
-      "Id": "92f2c38469ed4b64922828e911c50139",
+      "Id": "3773dab70a664795bd143554a3742513",
       "Name": "Enceinte bluetooth",
       "Category": "\uD83D\uDECB\uFE0F Salon",
-      "Comment": "PDF: pdfs/enceinte_bluetooth.pdf",
+      "Comment": "",
       "ImagePath": "images/enceinte_bluetooth.png",
       "Photos": [
         {
-          "Id": "e44201e7f71848cd8e7ccfe7c2e4b692",
+          "Id": "15ee30a551104029aecb0b52fc02c561",
           "Path": "images/enceinte_bluetooth.png",
           "Comment": "l\u0027appairage se fait en pressant le bouton marche deux secondes. Ensuite, sur votre smartphone par exemple s\u00E9lectionnez Bluetooth: \u0022UB\u002B Eupho E2\u0022",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "83697fbdd09947b2b3302f6551070eaf",
+          "Id": "b802f7387be34057a296d45d5d482f72",
           "Path": "images/salon_enceinte_bluetooth_2.jpeg",
           "Comment": "Recharge USB C",
           "PdfPath": "",
@@ -533,14 +533,14 @@
       "DisplayOrder": 230
     },
     {
-      "Id": "24dae65e50eb485397b5733504f06fe3",
+      "Id": "29cb4ae507d94e839dc3aafaa4560a81",
       "Name": "Alexa",
       "Category": "\uD83D\uDECB\uFE0F Salon",
-      "Comment": "PDF: pdfs/alexa.pdf",
+      "Comment": "",
       "ImagePath": "images/alexa.png",
       "Photos": [
         {
-          "Id": "ba44291b4565497e99a97652e2fbb2e6",
+          "Id": "6b9f026e7f4d46b19170970c469a4fb8",
           "Path": "images/alexa.png",
           "Comment": "",
           "PdfPath": "",
@@ -551,14 +551,14 @@
       "DisplayOrder": 240
     },
     {
-      "Id": "4912ba05521a4a03abedca02d6226654",
+      "Id": "74095138cbe24a1aa4b4e6612182a88f",
       "Name": "TV Salon",
       "Category": "\uD83D\uDECB\uFE0F Salon",
-      "Comment": "PDF: pdfs/tv_salon.pdf",
+      "Comment": "",
       "ImagePath": "images/tv_salon.jpg",
       "Photos": [
         {
-          "Id": "f51c5f44b6a349819b54d19898e01637",
+          "Id": "7bdc5398a5b94235a153445f3b3f96c1",
           "Path": "images/tv_salon.jpg",
           "Comment": "",
           "PdfPath": "",
@@ -569,14 +569,14 @@
       "DisplayOrder": 250
     },
     {
-      "Id": "10370c6fad114b7fb598a3fbe3e7d1de",
+      "Id": "b427ff28d3594a698586c553d63add79",
       "Name": "Box TV Orange",
       "Category": "\uD83D\uDECB\uFE0F Salon",
-      "Comment": "PDF: pdfs/box_tv_orange.pdf",
+      "Comment": "",
       "ImagePath": "images/box_tv_orange.jpg",
       "Photos": [
         {
-          "Id": "f04141e6a950429aa60a5740ae5a4b27",
+          "Id": "1d7a3575a1f24fc584f96977f7238530",
           "Path": "images/box_tv_orange.jpg",
           "Comment": "",
           "PdfPath": "",
@@ -587,21 +587,21 @@
       "DisplayOrder": 260
     },
     {
-      "Id": "3f99799ea1974cdd8158dcd7a367381b",
+      "Id": "435bfa85cd35463b85d07ad41883c6d8",
       "Name": "Box Canal\u002B",
       "Category": "\uD83D\uDECB\uFE0F Salon",
       "Comment": "",
       "ImagePath": "images/box_canal.jpg",
       "Photos": [
         {
-          "Id": "e46850ced30d4e3c8c42d7fe9daba459",
+          "Id": "3384171497454e8790417ef9c4b7e267",
           "Path": "images/box_canal.jpg",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "b1958ac00f24409cb160808e74a3669c",
+          "Id": "d85b2beb45df4fa0a0032a5d7f6efb9e",
           "Path": "images/box_canal_2.png",
           "Comment": "",
           "PdfPath": "",
@@ -612,28 +612,28 @@
       "DisplayOrder": 270
     },
     {
-      "Id": "2b7d3634836b49cfa17703369561fb4b",
+      "Id": "057342252a6e44ff96c92ca26690fcff",
       "Name": "Programmes TV Canal\u002B",
       "Category": "\uD83D\uDECB\uFE0F Salon",
       "Comment": "",
       "ImagePath": "images/programmes_tv_canal.jpg",
       "Photos": [
         {
-          "Id": "9440365a5a934c4cb6b3f80a2a3cfccd",
+          "Id": "17ef45ddf5da402bb64bd9209a53ad43",
           "Path": "images/programmes_tv_canal.jpg",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "c5154b613d41435bb07d4d33cf8e70e0",
+          "Id": "e062334f96014257a45acdd1dd45d235",
           "Path": "images/programmes_tv_canal_2.jpg",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 20
         },
         {
-          "Id": "988384b5dccb4b099189440862a3e2e3",
+          "Id": "8d6d2cb52c714b90ab685d9d867c4ed9",
           "Path": "images/programmes_tv_canal_3.jpg",
           "Comment": "",
           "PdfPath": "",
@@ -644,14 +644,14 @@
       "DisplayOrder": 280
     },
     {
-      "Id": "2aa5112af1624e81ab4091d70e20bdad",
+      "Id": "39a280203564493988a1ef787e5a604a",
       "Name": "Jeux de soci\u00E9t\u00E9",
       "Category": "\uD83D\uDECB\uFE0F Salon",
       "Comment": "",
       "ImagePath": "images/jeux_de_societe.jpg",
       "Photos": [
         {
-          "Id": "e14b70542f5d4dd78a15d2c98c2991c5",
+          "Id": "3055b06aaad94446be9916a56178724b",
           "Path": "images/jeux_de_societe.jpg",
           "Comment": "",
           "PdfPath": "",
@@ -662,14 +662,14 @@
       "DisplayOrder": 290
     },
     {
-      "Id": "e70f7d36474048fda16c789316b8ceab",
+      "Id": "e47bb27475a341bfb7fdff686a38e635",
       "Name": "Canap\u00E9 convertible",
       "Category": "\uD83D\uDECB\uFE0F Salon",
       "Comment": "",
       "ImagePath": "images/canape_convertible.png",
       "Photos": [
         {
-          "Id": "2382d1c97bf240b88f9bdb2bc8f29696",
+          "Id": "873b3df4365a49a48cc2874d37cbe54a",
           "Path": "images/canape_convertible.png",
           "Comment": "Canap\u00E9 convertible Rapido larguer 140.",
           "PdfPath": "",
@@ -680,14 +680,14 @@
       "DisplayOrder": 300
     },
     {
-      "Id": "fb465c01e38446c4b3454fb516dd235e",
+      "Id": "98c5b0a488ac4dbc83f8d1e0fe4a1408",
       "Name": "Barbecue",
       "Category": "\uD83C\uDF24\uFE0F Terrasse",
       "Comment": "",
       "ImagePath": "images/terrasse_barbecue_2.jpg",
       "Photos": [
         {
-          "Id": "fac77ed707b0434883c54392ceb84514",
+          "Id": "478c53484bd642e797e9c93ee21b2754",
           "Path": "images/terrasse_barbecue_2.jpg",
           "Comment": "Attention aux \u00E9l\u00E9ments tr\u00E9s chaud. Pensez \u00E0 nettoyer apr\u00E9s utilisation Merci.",
           "PdfPath": "",
@@ -698,14 +698,14 @@
       "DisplayOrder": 310
     },
     {
-      "Id": "a780bc9b515146b9a0b2645310f697f4",
+      "Id": "2fc7a43323544f14b97c6fea54a34ad4",
       "Name": "Plancha",
       "Category": "\uD83C\uDF24\uFE0F Terrasse",
       "Comment": "",
       "ImagePath": "images/plancha.png",
       "Photos": [
         {
-          "Id": "092be928b58f4b24b517918c3ebddf74",
+          "Id": "83e9392fbdad4a6d96a4efaf2b1c2669",
           "Path": "images/plancha.png",
           "Comment": "Attention aux \u00E9l\u00E9ments tr\u00E9s chaud. Pensez \u00E0 nettoyer apr\u00E9s utilisation Merci.",
           "PdfPath": "",
@@ -716,14 +716,14 @@
       "DisplayOrder": 320
     },
     {
-      "Id": "639ded34e1a14e19abcae69a5bcd4b28",
+      "Id": "cd6dc956be7c4369a2adb1edd8c7146d",
       "Name": "S\u00E8che linge",
       "Category": "\uD83C\uDF24\uFE0F Terrasse",
       "Comment": "",
       "ImagePath": "images/seche_linge.jpg",
       "Photos": [
         {
-          "Id": "4f3c592b048646cba768f3c566bf2c0c",
+          "Id": "a1bf584f0ef149c993e76ab0943c2e01",
           "Path": "images/seche_linge.jpg",
           "Comment": "",
           "PdfPath": "",
@@ -734,21 +734,21 @@
       "DisplayOrder": 330
     },
     {
-      "Id": "a0f2b8f2f6704d22be22f2817af53c4b",
+      "Id": "ffa9f812717640cbba27b80e7f00d88a",
       "Name": "Baie vitr\u00E9e",
       "Category": "\uD83C\uDF24\uFE0F Terrasse",
       "Comment": "",
       "ImagePath": "images/terrasse_baie_vitree_2.jpg",
       "Photos": [
         {
-          "Id": "281c0821b107412983203f85d5356d93",
+          "Id": "e5f647b9e50845b98ec9c50d9691868c",
           "Path": "images/terrasse_baie_vitree_2.jpg",
           "Comment": "Loquet central Vertical=Ferm\u00E9, Horizontal=Ouvert",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "d99d4484b3da4cd88426fe291336069c",
+          "Id": "2d2fa1d77ee7472397faf0a337a7ad2f",
           "Path": "images/terrasse_baie_vitree_3.jpg",
           "Comment": "Loquet lat\u00E9ral tirer puis tourner: Vertical=Ferm\u00E9, Horizontal=Ouvert",
           "PdfPath": "",
@@ -759,21 +759,21 @@
       "DisplayOrder": 340
     },
     {
-      "Id": "591895b65b88433ebe97999cb60d3366",
+      "Id": "8103ca74382d4497a48fd38904e46238",
       "Name": "Store banne",
       "Category": "\uD83C\uDF24\uFE0F Terrasse",
       "Comment": "",
       "ImagePath": "images/store_banne.png",
       "Photos": [
         {
-          "Id": "331dfaef27384c539155da4bcecb52a6",
+          "Id": "b8ce60ece3d14b138f47f2df07336edb",
           "Path": "images/store_banne.png",
           "Comment": "Store ouvert / Store referm\u00E9.",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "11bcf58dfb5d467f8618756a1137b614",
+          "Id": "ddcf3def246a46fcb5e7a5dcc54669ce",
           "Path": "images/store_banne_2.png",
           "Comment": "T\u00E9l\u00E9comande et commande murale. Un dispositif de s\u00E9curit\u00E9, en cas de vent violent replie automatiquement le store et ne permet son redeploiement qu\u0027apr\u00E8s 30 minutes. ATTENTION Ce dispositif ne prot\u00E9ge pas des rafales. Veillez \u00E0 replier le store syst\u00E9matiquement lorsque vous sortez ou percevez un risque de vent plus important.",
           "PdfPath": "",
@@ -784,28 +784,28 @@
       "DisplayOrder": 350
     },
     {
-      "Id": "b2837462dbea4ad6a3f57be2591f30d0",
+      "Id": "d6d4b715e1c0468ca45d885ce63ed1b4",
       "Name": "Volets roulants",
       "Category": "\uD83C\uDF24\uFE0F Terrasse",
-      "Comment": "PDF: pdfs/volets_roulants.pdf",
+      "Comment": "",
       "ImagePath": "images/terrasse_volets_roulants_2.png",
       "Photos": [
         {
-          "Id": "d74766ee604a485eae5a39cb98e8bd11",
+          "Id": "1d44331f5363478aaa0fbc52fbef8fb1",
           "Path": "images/terrasse_volets_roulants_2.png",
           "Comment": "Ferm\u00E9",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "e80d62cbf9944f8f9bd47421ad1154d7",
+          "Id": "43d16e2d7d284f8692dca26f7100ada8",
           "Path": "images/terrasse_volets_roulants_3.jpg",
           "Comment": "Ouvert",
           "PdfPath": "",
           "DisplayOrder": 20
         },
         {
-          "Id": "a6fec2042916496285f10051f14dcbdc",
+          "Id": "f9bc512254bd4e38850c4070be9333b9",
           "Path": "images/volets_roulants.png",
           "Comment": "T\u00E9l\u00E9commande: ^ = monter, v = descendre, my= arret. ATTENTION assurez-vous que rien n\u0027entrave la descente du store !",
           "PdfPath": "",
@@ -816,21 +816,21 @@
       "DisplayOrder": 360
     },
     {
-      "Id": "682925d6f6914eadad28c9f43dd9f3e2",
+      "Id": "5414d1553a1c4ebe8222b52d43ba3903",
       "Name": "Robinet jardini\u00E8re",
       "Category": "\uD83C\uDF24\uFE0F Terrasse",
       "Comment": "",
       "ImagePath": "images/terrasse_robinet_jardiniere_2.jpeg",
       "Photos": [
         {
-          "Id": "5df4fa1a76584fc3ba34a70e3217c0d9",
+          "Id": "683dd0f3086f468aa8095685b3d17812",
           "Path": "images/terrasse_robinet_jardiniere_2.jpeg",
           "Comment": "Le programmateur d\u0027arrossage est autonome. Merci de ne pas toucher ou modifier les r\u00E9glages !",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "55d4d6c4d0994dd2ae8c6bb443a2871e",
+          "Id": "9e1c61ac84104b299f415c05320cada6",
           "Path": "images/terrasse_robinet_jardiniere_3.jpg",
           "Comment": "",
           "PdfPath": "",
@@ -841,35 +841,35 @@
       "DisplayOrder": 370
     },
     {
-      "Id": "eac5d19b2a4448309ef73995daae5582",
+      "Id": "38bec9afbff4454fbc170bfd126cbe33",
       "Name": "Armoire \u00E9lectrique",
       "Category": "\uD83D\uDEBB WC",
       "Comment": "",
       "ImagePath": "images/armoire_electrique.jpeg",
       "Photos": [
         {
-          "Id": "5c80b8c22cce4856825e2faec81a22fa",
+          "Id": "589405c8c9a147fb91eaba2181047c5e",
           "Path": "images/armoire_electrique.jpeg",
           "Comment": "En cas de panne de courant ou apr\u00E9s un orage, si certains \u00E9quipements de l\u0027appartement ne fonctionnent pas, vous pouvez v\u00E9rifier en prenant toutes les pr\u00E9cautions n\u00E9cessaire, que le disjoncteur g\u00E9n\u00E9ral ou les petits disjonteurs n\u0027ont pas saut\u00E9. Essayez de les remettre, mais ne jamais insister s\u0027ils ne tiennent pas!",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "4039368908f8408c85a6b8ba1cd6f978",
+          "Id": "ec5f03e858e140a18ec50c42ba65ae9a",
           "Path": "images/armoire_electrique_2.jpeg",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 20
         },
         {
-          "Id": "24a746a9170d478e95fb91214672a9fe",
+          "Id": "f83954045d61427d88ac820cb4182240",
           "Path": "images/armoire_electrique_3.jpeg",
           "Comment": "",
           "PdfPath": "",
           "DisplayOrder": 30
         },
         {
-          "Id": "234d68a4dfa74f1fa92b6cb35e52a679",
+          "Id": "81ae58442b3c4d8b810820af2a6c4a2b",
           "Path": "images/armoire_electrique_4.png",
           "Comment": "",
           "PdfPath": "",
@@ -880,21 +880,21 @@
       "DisplayOrder": 380
     },
     {
-      "Id": "4b1cf73057a64394a4ed358ebad678f2",
+      "Id": "7d296f2ef2d1429ca855bb2821ad768c",
       "Name": "\u00C9quipement B\u00E9b\u00E9",
       "Category": "\uD83D\uDDC4\uFE0F Placard Bleu",
       "Comment": "",
       "ImagePath": "images/placard_bleu_equipement_bebe.jpeg",
       "Photos": [
         {
-          "Id": "fbc4daf9278b4943a215f619c55ca977",
+          "Id": "6e49b3119d1b4ad38fd7c8189c7edc3f",
           "Path": "images/placard_bleu_equipement_bebe.jpeg",
           "Comment": "Baignoire",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "efe2b76c397f4be28551b0878acb395c",
+          "Id": "58ec2772c5144db7a39b4edf0d6f26d7",
           "Path": "images/placard_bleu_equipement_bebe_2.jpeg",
           "Comment": "petit transat de bain",
           "PdfPath": "",
@@ -905,21 +905,21 @@
       "DisplayOrder": 390
     },
     {
-      "Id": "b67220accb0947fdb9eda647dd953c84",
+      "Id": "8ef2dae6ee7b428f8cfff62abb506194",
       "Name": "Lit parapluie b\u00E9b\u00E9",
       "Category": "\uD83D\uDDC4\uFE0F Placard Bleu",
       "Comment": "",
       "ImagePath": "images/lit_parapluie_bebe.png",
       "Photos": [
         {
-          "Id": "b106db9d27444e8485702c98ce227aea",
+          "Id": "7492c948201d44b99b806d18bb08091f",
           "Path": "images/lit_parapluie_bebe.png",
           "Comment": "Montage du lit parapluie. \u00E0 l\u0027\u00E9tape 4 et 5, veillez que sur chacun des 4 cot\u00E9s les montants sont bien compl\u00E9tement v\u00E9rouill\u00E9s",
           "PdfPath": "",
           "DisplayOrder": 10
         },
         {
-          "Id": "8f9fad5dfbc54801b770b220544ffba1",
+          "Id": "28f5218ce2d34fe9bef6734b86588ed3",
           "Path": "images/lit_parapluie_bebe_2.png",
           "Comment": "Rangement du lit parapluie",
           "PdfPath": "",
@@ -930,14 +930,14 @@
       "DisplayOrder": 400
     },
     {
-      "Id": "7ad5adf20943476b801832f60372ce59",
+      "Id": "2bb6765fbad54405b7358c8bbdbbf683",
       "Name": "Table \u00E0 langer",
       "Category": "\uD83D\uDDC4\uFE0F Placard Bleu",
       "Comment": "",
       "ImagePath": "images/table_a_langer.jpg",
       "Photos": [
         {
-          "Id": "76438665d99442b9ae444bc0497dc35a",
+          "Id": "46f06c15ba8444b8bca74cb76c4bf8fa",
           "Path": "images/table_a_langer.jpg",
           "Comment": "",
           "PdfPath": "",
@@ -948,14 +948,14 @@
       "DisplayOrder": 410
     },
     {
-      "Id": "7fe854852ab4461c90def93a0261736d",
+      "Id": "360480582cea41fbb6a54a3e72dcb3aa",
       "Name": "Chaise haute",
       "Category": "\uD83D\uDDC4\uFE0F Placard Bleu",
       "Comment": "",
       "ImagePath": "images/chaise_haute.jpg",
       "Photos": [
         {
-          "Id": "3cfbdaaa434642b58b22717252510ea3",
+          "Id": "3197ca227471441693090ee1b6351f66",
           "Path": "images/chaise_haute.jpg",
           "Comment": "",
           "PdfPath": "",
@@ -966,14 +966,14 @@
       "DisplayOrder": 420
     },
     {
-      "Id": "1c9833522c1349ba887dc20bc6056157",
+      "Id": "c7c6719aa6c24700aee3d9994e5006fe",
       "Name": "Service \u00E0 raclette",
       "Category": "\uD83D\uDDC4\uFE0F Placard Bleu",
       "Comment": "",
       "ImagePath": "images/service_a_raclette.jpeg",
       "Photos": [
         {
-          "Id": "db82ff3f46a14c5eaca0d04add3781b5",
+          "Id": "e4d1feb52518494abf01ad1cd3ab58a9",
           "Path": "images/service_a_raclette.jpeg",
           "Comment": "",
           "PdfPath": "",
@@ -984,14 +984,14 @@
       "DisplayOrder": 430
     },
     {
-      "Id": "84f9e211c12448f0960f0b0f20887420",
+      "Id": "c150c6847be24214acd0198982ae3a7f",
       "Name": "Plancha",
       "Category": "\uD83D\uDDC4\uFE0F Placard Bleu",
       "Comment": "",
       "ImagePath": "images/plancha.png",
       "Photos": [
         {
-          "Id": "d6a1db7ff1204a9c8814100cfad0b71c",
+          "Id": "8da2a481d46d4ce0a3529b372070f1d7",
           "Path": "images/plancha.png",
           "Comment": "",
           "PdfPath": "",
@@ -1002,14 +1002,14 @@
       "DisplayOrder": 440
     },
     {
-      "Id": "608964e5405f4fd9b9494232eac01703",
+      "Id": "f1987003b3c644e2a91f7d9912860a3e",
       "Name": "Box fibre Orange Wi\u2011Fi",
       "Category": "\uD83D\uDDC4\uFE0F Placard Bleu",
       "Comment": "",
       "ImagePath": "images/box_fibre_orange_wi_fi.png",
       "Photos": [
         {
-          "Id": "fb82c327e3d1464d8a3cc172e7a4cabb",
+          "Id": "509e4a5425934b81ac9869cc95ca0a5d",
           "Path": "images/box_fibre_orange_wi_fi.png",
           "Comment": "",
           "PdfPath": "",
@@ -1020,5 +1020,5 @@
       "DisplayOrder": 450
     }
   ],
-  "UpdatedAtUtc": "2026-03-30T10:03:42.4760362Z"
+  "UpdatedAtUtc": "2026-03-30T12:28:40.0674255Z"
 }
