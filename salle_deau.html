@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +19,7 @@
         .back-button { position: fixed; top: 16px; left: 16px; background:#fff; border:none; padding:10px 14px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-decoration:none; color:#333; }
         .footer { text-align:center; padding: 18px; color:#999; border-top:1px solid #eee; }
         .item-photo { margin: 8px 0 16px 18px; }
-        .item-photo img { max-width: 320px; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
+        .item-photo img { max-width: min(100%, 320px); max-height: 260px; width: auto; height: auto; object-fit: contain; display: block; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
         .item-photo a { display: block; }
         .caption { font-size: 0.85rem; color: #666; margin-top: 5px; font-style: italic; }
             .lang-selector {
@@ -73,15 +73,15 @@
             <h1 data-lang-key="salle_deau.title">🛁 Salle d'eau</h1>
         </div>
         <div class="content">
-            <ul>
-                <li data-pdf="pdfs/douche.pdf" data-lang-key="salle_deau.li.douche">Douche</li>
-                <li data-pdf="pdfs/radiateur_sdb.pdf" data-lang-key="salle_deau.li.radiateur_sdb">Radiateur sdb</li>
-                <li data-pdf="pdfs/miroir_neo.pdf" data-lang-key="salle_deau.li.miroir_lumineux">Miroir lumineux</li>
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <ul>
+                <li data-photo-pdfs="pdfs/douche.pdf" data-photo-paths="images/douche.png">Douche</li>
+                <li data-photo-pdfs="pdfs/radiateur_sdb.pdf|pdfs/radiateur_sdb.pdf|pdfs/radiateur_sdb.pdf" data-photo-paths="images/radiateur_sdb.png|images/radiateur_sdb_2.jpg|images/radiateur_sdb_3.jpg">Radiateur sdb</li>
+                <li data-photo-pdfs="pdfs/miroir_neo.pdf" data-photo-paths="images/miroir_lumineux.jpeg">Miroir lumineux</li>
             </ul>
         </div>
         <div class="footer">Katikias 33</div>
     </div>
+    <script src="assets/load-guide-captions.js?v=1"></script>
     <script>
     (function(){
         const pageKey = 'salle_deau';
@@ -121,17 +121,19 @@
                             img.src = src;
                             img.alt = 'Image ' + num;
                             img.style.maxWidth = '320px';
-                            img.style.width = '100%';
+                            img.style.maxHeight = '260px';
+                            img.style.width = 'auto';
                             img.style.height = 'auto';
+                            img.style.objectFit = 'contain';
                             img.style.borderRadius = '10px';
                             img.style.boxShadow = '0 4px 10px rgba(0,0,0,0.12)';
                             img.style.marginTop = '10px';
                             parentWrap.appendChild(img);
-                            // Ajouter légende si disponible (légende pour image_2 = index 1, image_3 = index 2, etc.)
-                            if(captions && captions[num]){
+                            // Légendes : captions[0] = image principale, captions[1] = fichier _2, captions[2] = _3, etc.
+                            if(captions && captions[num - 1]){
                                 const cap = document.createElement('div');
                                 cap.className = 'caption';
-                                cap.textContent = captions[num];
+                                cap.textContent = captions[num - 1];
                                 parentWrap.appendChild(cap);
                             }
                         };
@@ -140,25 +142,72 @@
                 }
             }
         }
+        function runRoomPhotos(){
         document.querySelectorAll('ul li').forEach(li =>{
             const label = li.textContent.trim();
             const slug = slugify(label);
             const bases = [pageKey + '_' + slug, slug];
             const wrap = document.createElement('div');
             wrap.className = 'item-photo';
-            
-            // Vérifier si un PDF est associé
-            const pdfPath = li.getAttribute('data-pdf');
+            const legacyPdf = (li.getAttribute('data-pdf') || '').trim();
+            const perRaw = li.getAttribute('data-photo-pdfs');
+            const perPdfs = perRaw ? perRaw.split('|').map(s => s.trim()) : [];
+
+            li.parentElement.insertBefore(wrap, li.nextSibling);
+            const captionsData = li.getAttribute('data-captions');
+            let captions = null;
+            if(captionsData){
+                captions = captionsData.split('|').map(c => c.trim());
+            }
+            const pathsData = li.getAttribute('data-photo-paths');
+            if(pathsData && pathsData.trim()){
+                const relPaths = pathsData.split('|').map(s => s.trim()).filter(Boolean);
+                relPaths.forEach(function(rel, idx){
+                    const pdfOneRaw = (perPdfs.length > idx && perPdfs[idx]) ? perPdfs[idx] : (!perRaw ? legacyPdf : '');
+                    const pdfOne = (pdfOneRaw || '').trim();
+                    let parent = wrap;
+                    if(pdfOne){
+                        const link = document.createElement('a');
+                        link.href = pdfOne;
+                        link.target = '_blank';
+                        link.rel = 'noopener';
+                        link.style.cursor = 'pointer';
+                        wrap.appendChild(link);
+                        parent = link;
+                    }
+                    const src = rel.replace(/^\//,'');
+                    const im = document.createElement('img');
+                    im.src = src;
+                    im.alt = label + (idx > 0 ? ' ('+(idx+1)+')' : '');
+                    im.style.maxWidth = '320px';
+                    im.style.maxHeight = '260px';
+                    im.style.width = 'auto';
+                    im.style.height = 'auto';
+                    im.style.objectFit = 'contain';
+                    im.style.borderRadius = '10px';
+                    im.style.boxShadow = '0 4px 10px rgba(0,0,0,0.12)';
+                    if(idx > 0){ im.style.marginTop = '10px'; }
+                    if(pdfOne){ im.style.cursor = 'pointer'; }
+                    parent.appendChild(im);
+                    if(captions && captions[idx]){
+                        const cap = document.createElement('div');
+                        cap.className = 'caption';
+                        cap.textContent = captions[idx];
+                        wrap.appendChild(cap);
+                    }
+                });
+            } else {
+            const pdfPath = legacyPdf;
             let imgParent = wrap;
             if(pdfPath){
                 const link = document.createElement('a');
                 link.href = pdfPath;
                 link.target = '_blank';
+                link.rel = 'noopener';
                 link.style.cursor = 'pointer';
                 wrap.appendChild(link);
                 imgParent = link;
             }
-            
             const img = document.createElement('img');
             img.alt = label;
             img.style.display = 'none';
@@ -166,24 +215,22 @@
                 img.style.cursor = 'pointer';
             }
             imgParent.appendChild(img);
-            li.parentElement.insertBefore(wrap, li.nextSibling);
             trySetImage(img, bases);
-            // Récupérer les légendes depuis data-captions
-            const captionsData = li.getAttribute('data-captions');
-            let captions = null;
-            if(captionsData){
-                captions = captionsData.split('|').map(c => c.trim());
-            }
-            // Chercher images supplémentaires avec légendes
             findAdditionalImages(slug, wrap, captions);
-            // Ajouter légende pour l'image principale si disponible
             if(captions && captions[0]){
                 const cap = document.createElement('div');
                 cap.className = 'caption';
                 cap.textContent = captions[0];
                 wrap.appendChild(cap);
             }
+            }
         });
+        }
+        if (typeof __guideMergeCaptionsFromJson === 'function') {
+            __guideMergeCaptionsFromJson(pageKey).then(function(){ runRoomPhotos(); });
+        } else {
+            runRoomPhotos();
+        }
     })();
     </script>
     <script>

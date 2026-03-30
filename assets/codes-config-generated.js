@@ -1,7 +1,7 @@
 /**
  * Configuration des codes d'accès (VERSION PUBLIQUE - SÉCURISÉE)
  * Générée automatiquement depuis reservations_final.csv
- * Date: 2026-03-18 17:32:12
+ * Date: 2026-03-29 11:13:52
  * 
  * ⚠️ SÉCURITÉ: Les codes WiFi et Portail sont OMIS intentionnellement
  *    Ils sont stockés dans un fichier séparé NON PUBLIÉ (.gitignore)
@@ -13,24 +13,6 @@
  */
 
 const CODES_DATABASE = {
-    'HM39DMKK8A': {
-        expires: '2026-03-18',
-        guest: 'Patrick Skariak',
-        arrival: '16/03/2026',
-        departure: '18/03/2026'
-    },
-    'HM5B9DSKXN': {
-        expires: '2026-03-21',
-        guest: 'Salah Oun',
-        arrival: '19/03/2026',
-        departure: '21/03/2026'
-    },
-    'HM2F33XBP4': {
-        expires: '2026-03-23',
-        guest: 'Sophie Lepage',
-        arrival: '21/03/2026',
-        departure: '23/03/2026'
-    },
     'HMKQHWYC5H': {
         expires: '2026-04-10',
         guest: 'Ruth Pardon',
@@ -102,6 +84,12 @@ const CODES_DATABASE = {
         guest: 'Maxime Bogaert',
         arrival: '29/08/2026',
         departure: '08/09/2026'
+    },
+    'HM5WJ38KQ9': {
+        expires: '2026-10-17',
+        guest: 'Benjamin Dickert',
+        arrival: '10/10/2026',
+        departure: '17/10/2026'
     },
     'HMAXWY532X': {
         expires: '2026-10-24',

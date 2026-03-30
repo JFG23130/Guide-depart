@@ -91,6 +91,18 @@ const LanguageSystemHTML = {
         this.translatePage();
     },
     
+    /** Libellés des équipements (li) après traduction : met à jour alt des photos associées */
+    syncRoomPhotoAlts() {
+        document.querySelectorAll('.content ul li').forEach((li) => {
+            const wrap = li.nextElementSibling;
+            if (!wrap || !wrap.classList || !wrap.classList.contains('item-photo')) return;
+            const label = li.textContent.trim();
+            wrap.querySelectorAll('img').forEach((img) => {
+                img.alt = label;
+            });
+        });
+    },
+
     // Traduire la page entière
     translatePage() {
         console.log(`🌐 Traduction de la page en ${this.currentLanguage}`);
@@ -99,8 +111,10 @@ const LanguageSystemHTML = {
         document.querySelectorAll('[data-lang-key]').forEach(element => {
             const key = element.getAttribute('data-lang-key');
             const translation = this.get(key);
+            const optional = element.getAttribute('data-i18n-optional') === 'true';
             
             if (!translation || translation === key) {
+                if (optional) return;
                 console.warn(`⚠️ Clé non trouvée: ${key}`);
                 return;
             }
@@ -111,6 +125,10 @@ const LanguageSystemHTML = {
         
         // Mettre à jour l'attribut lang du document
         document.documentElement.lang = this.currentLanguage;
+
+        if (typeof this.syncRoomPhotoAlts === 'function') {
+            this.syncRoomPhotoAlts();
+        }
     }
 };
 
