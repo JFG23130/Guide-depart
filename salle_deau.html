@@ -73,7 +73,7 @@
             <h1 data-lang-key="salle_deau.title">🛁 Salle d'eau</h1>
         </div>
         <div class="content">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <ul>
                 <li data-slug="douche" data-photo-paths="images/douche.png">Douche</li>
                 <li data-slug="radiateur_sdb" data-photo-paths="images/radiateur_sdb.png|images/radiateur_sdb_2.jpg|images/radiateur_sdb_3.jpg">Radiateur sdb</li>
                 <li data-slug="miroir_lumineux" data-photo-paths="images/miroir_lumineux.jpeg">Miroir lumineux</li>
@@ -243,6 +243,14 @@
             }
             }
         });
+        if (typeof LanguageSystemHTML !== 'undefined') {
+            LanguageSystemHTML.translatePage();
+            setTimeout(function () {
+                if (typeof LanguageSystemHTML !== 'undefined') {
+                    LanguageSystemHTML.translatePage();
+                }
+            }, 700);
+        }
         }
         if (typeof __guideMergeCaptionsFromJson === 'function') {
             __guideMergeCaptionsFromJson(pageKey).then(function(){ runRoomPhotos(); });

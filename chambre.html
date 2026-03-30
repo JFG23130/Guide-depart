@@ -73,7 +73,7 @@
             <h1 data-lang-key="chambre.title">🛏️ Chambre</h1>
         </div>
         <div class="content">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <ul>
                 <li data-slug="lit_160" data-captions="Lit 160" data-photo-paths="images/chambre_lit_160.jpg">Lit 160</li>
                 <li data-slug="climatisation_chambre" data-photo-paths="images/climatisation_chambre.jpg|images/climatisation_chambre_2.jpg">Climatisation Chambre</li>
                 <li data-slug="radiateur" data-photo-paths="images/radiateur.png">Radiateur</li>
@@ -247,6 +247,14 @@
             }
             }
         });
+        if (typeof LanguageSystemHTML !== 'undefined') {
+            LanguageSystemHTML.translatePage();
+            setTimeout(function () {
+                if (typeof LanguageSystemHTML !== 'undefined') {
+                    LanguageSystemHTML.translatePage();
+                }
+            }, 700);
+        }
         }
         if (typeof __guideMergeCaptionsFromJson === 'function') {
             __guideMergeCaptionsFromJson(pageKey).then(function(){ runRoomPhotos(); });
