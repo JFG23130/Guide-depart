@@ -130,22 +130,14 @@ const LanguageSystemHTML = {
             this.syncRoomPhotoAlts();
         }
 
-        // Légendes photos (pages pièce) : clés pipe-séparées sur le <li>, injectées par load-guide-captions.js
-        document.querySelectorAll('.content ul li[data-caption-keys]').forEach((li) => {
-            const keysStr = li.getAttribute('data-caption-keys');
-            if (!keysStr) return;
-            const keys = keysStr.split('|').map((k) => k.trim());
-            const wrap = li.nextElementSibling;
-            if (!wrap || !wrap.classList || !wrap.classList.contains('item-photo')) return;
-            const captions = wrap.querySelectorAll('.caption');
-            captions.forEach((cap, idx) => {
-                const key = keys[idx];
-                if (!key) return;
-                const translation = this.get(key);
-                if (translation && translation !== key) {
-                    cap.textContent = translation;
-                }
-            });
+        // Légendes photos : attribut data-caption-i18n-key posé sur chaque .caption (aligné sur l’index photo)
+        document.querySelectorAll('.caption[data-caption-i18n-key]').forEach((cap) => {
+            const key = cap.getAttribute('data-caption-i18n-key');
+            if (!key) return;
+            const translation = this.get(key);
+            if (translation && translation !== key) {
+                cap.textContent = translation;
+            }
         });
     }
 };

@@ -73,7 +73,7 @@
             <h1 data-lang-key="wc.title">🚻 WC</h1>
         </div>
         <div class="content">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <ul>
                 <li data-slug="armoire_electrique" data-captions="En cas de panne de courant ou apr&#233;s un orage, si certains &#233;quipements de l&#39;appartement ne fonctionnent pas, vous pouvez v&#233;rifier en prenant toutes les pr&#233;cautions n&#233;cessaire, que le disjoncteur g&#233;n&#233;ral ou les petits disjonteurs n&#39;ont pas saut&#233;. Essayez de les remettre, mais ne jamais insister s&#39;ils ne tiennent pas!|||" data-photo-paths="images/armoire_electrique.jpeg|images/armoire_electrique_2.jpeg|images/armoire_electrique_3.jpeg|images/armoire_electrique_4.png">Armoire &#233;lectrique</li>
             </ul>
         </div>
@@ -103,7 +103,7 @@
             }
             next();
         }
-        function findAdditionalImages(baseName, parentWrap, captions){
+        function findAdditionalImages(baseName, parentWrap, captions, capKeysArr){
             // Images nom_2, nom_3… — une sonde à la fois (l’ancienne boucle lançait ~80 requêtes d’un coup → 404 partout dans la console).
             let num = 2;
             let foundAny = false;
@@ -147,6 +147,9 @@
                         const cap = document.createElement('div');
                         cap.className = 'caption';
                         cap.textContent = captions[num - 1];
+                        if (capKeysArr && capKeysArr[num - 1]) {
+                            cap.setAttribute('data-caption-i18n-key', capKeysArr[num - 1]);
+                        }
                         parentWrap.appendChild(cap);
                     }
                     num++;
@@ -168,6 +171,8 @@
             const legacyPdf = (li.getAttribute('data-pdf') || '').trim();
             const perRaw = li.getAttribute('data-photo-pdfs');
             const perPdfs = perRaw ? perRaw.split('|').map(s => s.trim()) : [];
+            const capKeysRaw = li.getAttribute('data-caption-keys');
+            const capKeysArr = capKeysRaw ? capKeysRaw.split('|').map(function (s) { return s.trim(); }) : [];
 
             li.parentElement.insertBefore(wrap, li.nextSibling);
             const captionsData = li.getAttribute('data-captions');
@@ -209,6 +214,9 @@
                         const cap = document.createElement('div');
                         cap.className = 'caption';
                         cap.textContent = captions[idx];
+                        if (capKeysArr[idx]) {
+                            cap.setAttribute('data-caption-i18n-key', capKeysArr[idx]);
+                        }
                         wrap.appendChild(cap);
                     }
                 });
@@ -232,11 +240,14 @@
             }
             imgParent.appendChild(img);
             trySetImage(img, bases);
-            findAdditionalImages(slug, wrap, captions);
+            findAdditionalImages(slug, wrap, captions, capKeysArr);
             if(captions && captions[0]){
                 const cap = document.createElement('div');
                 cap.className = 'caption';
                 cap.textContent = captions[0];
+                if (capKeysArr[0]) {
+                    cap.setAttribute('data-caption-i18n-key', capKeysArr[0]);
+                }
                 wrap.appendChild(cap);
             }
             }
@@ -272,7 +283,7 @@
     <script src="assets/lang-es.js"></script>
     <script src="assets/lang-nl.js"></script>
     <script src="assets/lang-it.js"></script>
-    <script src="assets/init-translations.js"></script>
+    <script src="assets/init-translations.js?v=3"></script>
     <script>
         function changeLanguage(lang) {
             console.log('📢 changeLanguage appelé avec:', lang);

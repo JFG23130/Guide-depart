@@ -73,10 +73,10 @@
             <h1 data-lang-key="salle_deau.title">🛁 Salle d'eau</h1>
         </div>
         <div class="content">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <ul>
-                <li data-slug="douche" data-photo-paths="images/douche.png">Douche</li>
-                <li data-slug="radiateur_sdb" data-photo-paths="images/radiateur_sdb.png|images/radiateur_sdb_2.jpg|images/radiateur_sdb_3.jpg">Radiateur sdb</li>
-                <li data-slug="miroir_lumineux" data-photo-paths="images/miroir_lumineux.jpeg">Miroir lumineux</li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <ul>
+                <li data-slug="douche" data-photo-pdfs="pdfs/salle_d_eau_douche_10.pdf" data-photo-paths="images/douche.png">Douche</li>
+                <li data-slug="radiateur_sdb" data-photo-pdfs="pdfs/salle_d_eau_radiateur_sdb_10.pdf||" data-photo-paths="images/radiateur_sdb.png|images/radiateur_sdb_2.jpg|images/radiateur_sdb_3.jpg">Radiateur sdb</li>
+                <li data-slug="miroir_lumineux" data-photo-pdfs="pdfs/salle_d_eau_miroir_lumineux_10.pdf" data-photo-paths="images/miroir_lumineux.jpeg">Miroir lumineux</li>
             </ul>
         </div>
         <div class="footer">Katikias 33</div>
@@ -105,7 +105,7 @@
             }
             next();
         }
-        function findAdditionalImages(baseName, parentWrap, captions){
+        function findAdditionalImages(baseName, parentWrap, captions, capKeysArr){
             // Images nom_2, nom_3… — une sonde à la fois (l’ancienne boucle lançait ~80 requêtes d’un coup → 404 partout dans la console).
             let num = 2;
             let foundAny = false;
@@ -149,6 +149,9 @@
                         const cap = document.createElement('div');
                         cap.className = 'caption';
                         cap.textContent = captions[num - 1];
+                        if (capKeysArr && capKeysArr[num - 1]) {
+                            cap.setAttribute('data-caption-i18n-key', capKeysArr[num - 1]);
+                        }
                         parentWrap.appendChild(cap);
                     }
                     num++;
@@ -170,6 +173,8 @@
             const legacyPdf = (li.getAttribute('data-pdf') || '').trim();
             const perRaw = li.getAttribute('data-photo-pdfs');
             const perPdfs = perRaw ? perRaw.split('|').map(s => s.trim()) : [];
+            const capKeysRaw = li.getAttribute('data-caption-keys');
+            const capKeysArr = capKeysRaw ? capKeysRaw.split('|').map(function (s) { return s.trim(); }) : [];
 
             li.parentElement.insertBefore(wrap, li.nextSibling);
             const captionsData = li.getAttribute('data-captions');
@@ -211,6 +216,9 @@
                         const cap = document.createElement('div');
                         cap.className = 'caption';
                         cap.textContent = captions[idx];
+                        if (capKeysArr[idx]) {
+                            cap.setAttribute('data-caption-i18n-key', capKeysArr[idx]);
+                        }
                         wrap.appendChild(cap);
                     }
                 });
@@ -234,11 +242,14 @@
             }
             imgParent.appendChild(img);
             trySetImage(img, bases);
-            findAdditionalImages(slug, wrap, captions);
+            findAdditionalImages(slug, wrap, captions, capKeysArr);
             if(captions && captions[0]){
                 const cap = document.createElement('div');
                 cap.className = 'caption';
                 cap.textContent = captions[0];
+                if (capKeysArr[0]) {
+                    cap.setAttribute('data-caption-i18n-key', capKeysArr[0]);
+                }
                 wrap.appendChild(cap);
             }
             }
@@ -274,7 +285,7 @@
     <script src="assets/lang-es.js"></script>
     <script src="assets/lang-nl.js"></script>
     <script src="assets/lang-it.js"></script>
-    <script src="assets/init-translations.js"></script>
+    <script src="assets/init-translations.js?v=3"></script>
     <script>
         function changeLanguage(lang) {
             console.log('📢 changeLanguage appelé avec:', lang);

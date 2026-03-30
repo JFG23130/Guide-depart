@@ -73,12 +73,12 @@
             <h1 data-lang-key="chambre.title">🛏️ Chambre</h1>
         </div>
         <div class="content">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <ul>
                 <li data-slug="lit_160" data-captions="Lit 160" data-photo-paths="images/chambre_lit_160.jpg">Lit 160</li>
                 <li data-slug="climatisation_chambre" data-photo-paths="images/climatisation_chambre.jpg|images/climatisation_chambre_2.jpg">Climatisation Chambre</li>
                 <li data-slug="radiateur" data-photo-paths="images/radiateur.png">Radiateur</li>
                 <li data-slug="tv_chambre" data-photo-paths="images/tv_chambre.png">TV_chambre</li>
-                <li data-slug="box_tv_orange" data-photo-paths="images/box_tv_orange.jpg">Box TV Orange</li>
+                <li data-slug="box_tv_orange" data-photo-pdfs="pdfs/chambre_box_tv_orange_10.pdf" data-photo-paths="images/box_tv_orange.jpg">Box TV Orange</li>
                 <li data-slug="programmes_tv_orange" data-photo-paths="images/programmes_tv_orange.jpg|images/programmes_tv_orange_2.jpg">Programmes TV Orange</li>
                 <li data-slug="table_a_repasser">Table &#224; repasser</li>
             </ul>
@@ -109,7 +109,7 @@
             }
             next();
         }
-        function findAdditionalImages(baseName, parentWrap, captions){
+        function findAdditionalImages(baseName, parentWrap, captions, capKeysArr){
             // Images nom_2, nom_3… — une sonde à la fois (l’ancienne boucle lançait ~80 requêtes d’un coup → 404 partout dans la console).
             let num = 2;
             let foundAny = false;
@@ -153,6 +153,9 @@
                         const cap = document.createElement('div');
                         cap.className = 'caption';
                         cap.textContent = captions[num - 1];
+                        if (capKeysArr && capKeysArr[num - 1]) {
+                            cap.setAttribute('data-caption-i18n-key', capKeysArr[num - 1]);
+                        }
                         parentWrap.appendChild(cap);
                     }
                     num++;
@@ -174,6 +177,8 @@
             const legacyPdf = (li.getAttribute('data-pdf') || '').trim();
             const perRaw = li.getAttribute('data-photo-pdfs');
             const perPdfs = perRaw ? perRaw.split('|').map(s => s.trim()) : [];
+            const capKeysRaw = li.getAttribute('data-caption-keys');
+            const capKeysArr = capKeysRaw ? capKeysRaw.split('|').map(function (s) { return s.trim(); }) : [];
 
             li.parentElement.insertBefore(wrap, li.nextSibling);
             const captionsData = li.getAttribute('data-captions');
@@ -215,6 +220,9 @@
                         const cap = document.createElement('div');
                         cap.className = 'caption';
                         cap.textContent = captions[idx];
+                        if (capKeysArr[idx]) {
+                            cap.setAttribute('data-caption-i18n-key', capKeysArr[idx]);
+                        }
                         wrap.appendChild(cap);
                     }
                 });
@@ -238,11 +246,14 @@
             }
             imgParent.appendChild(img);
             trySetImage(img, bases);
-            findAdditionalImages(slug, wrap, captions);
+            findAdditionalImages(slug, wrap, captions, capKeysArr);
             if(captions && captions[0]){
                 const cap = document.createElement('div');
                 cap.className = 'caption';
                 cap.textContent = captions[0];
+                if (capKeysArr[0]) {
+                    cap.setAttribute('data-caption-i18n-key', capKeysArr[0]);
+                }
                 wrap.appendChild(cap);
             }
             }
@@ -278,7 +289,7 @@
     <script src="assets/lang-es.js"></script>
     <script src="assets/lang-nl.js"></script>
     <script src="assets/lang-it.js"></script>
-    <script src="assets/init-translations.js"></script>
+    <script src="assets/init-translations.js?v=3"></script>
     <script>
         function changeLanguage(lang) {
             console.log('📢 changeLanguage appelé avec:', lang);
