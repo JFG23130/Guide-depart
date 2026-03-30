@@ -6,8 +6,11 @@ setlocal
 set "ROOT=%~dp0"
 set "PY=%ROOT%.venv\Scripts\python.exe"
 if not exist "%PY%" set "PY=python"
-set "DESKTOP_CSV=%USERPROFILE%\OneDrive\Bureau\reservations_final.csv"
-set "TARGET_CSV=%ROOT%KatikiasDeployer_v5\reservations_final.csv"
+set "DESKTOP_CSV=%USERPROFILE%\OneDrive\Bureau\reservations.csv"
+set "DESKTOP_CSV_FINAL=%USERPROFILE%\OneDrive\Bureau\reservations_final.csv"
+set "DESKTOP_WORKFLOW=%USERPROFILE%\OneDrive\Bureau\Katikias_Workflow.bat"
+set "GUIDE_CSV=%USERPROFILE%\OneDrive\Documents\JFG\Appartement Katikias\Guide\reservations.csv"
+set "TARGET_CSV=%ROOT%reservations.csv"
 
 echo ╔══════════════════════════════════════════════════════════════╗
 echo ║        🔐 WORKFLOW SÉCURISÉ - KATIKIAS 33                    ║
@@ -15,23 +18,27 @@ echo ╚════════════════════════
 echo.
 
 echo [1/5] 📁 Export Airbnb
-echo Placez reservations_final.csv sur le Bureau (OneDrive) OU dans KatikiasDeployer_v5
-start "" "%USERPROFILE%\OneDrive\Bureau"
-start "" "%ROOT%KatikiasDeployer_v5"
+echo Placez reservations.csv uniquement dans C:\Users\jfgir\OneDrive\Documents\JFG\Appartement Katikias\Guide
+start "" "%USERPROFILE%\OneDrive\Documents\JFG\Appartement Katikias"
+start "" "%USERPROFILE%\OneDrive\Documents\JFG\Appartement Katikias\Guide"
 echo.
 pause
 
-if exist "%DESKTOP_CSV%" (
-    copy /Y "%DESKTOP_CSV%" "%TARGET_CSV%" >nul
-    echo ✅ Fichier CSV copié depuis le Bureau
+if exist "%GUIDE_CSV%" (
+    copy /Y "%GUIDE_CSV%" "%TARGET_CSV%" >nul
+    echo ✅ Fichier CSV copié depuis le dossier Guide
 ) else if exist "%TARGET_CSV%" (
-    echo ✅ Fichier CSV trouvé dans KatikiasDeployer_v5
+    echo ✅ Fichier CSV trouvé dans le dossier du guide
 ) else (
-    echo ❌ reservations_final.csv introuvable.
-    echo Déposez-le sur le Bureau ou dans KatikiasDeployer_v5, puis relancez.
+    echo ❌ reservations.csv introuvable.
+    echo Déposez-le dans le dossier Guide, puis relancez.
     pause
     exit /b 1
 )
+
+if exist "%DESKTOP_CSV%" del /Q "%DESKTOP_CSV%" >nul 2>&1
+if exist "%DESKTOP_CSV_FINAL%" del /Q "%DESKTOP_CSV_FINAL%" >nul 2>&1
+if exist "%DESKTOP_WORKFLOW%" del /Q "%DESKTOP_WORKFLOW%" >nul 2>&1
 
 echo [2/5] 🔄 Génération des codes
 "%PY%" "%ROOT%generate_all_codes.py"
@@ -47,7 +54,6 @@ echo [3/5] 📨 Envoi aux invités
 echo Ouverture de codes_invites.md
 start "" "%ROOT%codes_invites.md"
 echo.
-pause
 
 echo [4/5] 🔎 Vérification sécurité Git
 cd /d "%ROOT%"
@@ -60,15 +66,15 @@ if %errorlevel% equ 0 (
     exit /b 1
 )
 
-git ls-files --error-unmatch KatikiasDeployer_v5/reservations_final.csv >nul 2>&1
+git ls-files --error-unmatch reservations.csv >nul 2>&1
 if %errorlevel% equ 0 (
-    echo ❌ ERREUR: reservations_final.csv est suivi par Git.
+    echo ❌ ERREUR: reservations.csv est suivi par Git.
     echo Supprimez-le du suivi et relancez.
     pause
     exit /b 1
 )
 
-git status --short | findstr /v "^??" | findstr /i "codes-config-private.js reservations_final.csv" >nul 2>&1
+git status --short | findstr /v "^??" | findstr /i "codes-config-private.js reservations.csv" >nul 2>&1
 if %errorlevel% equ 0 (
     echo ❌ ERREUR: un fichier sensible est en cours de commit.
     echo Vérifiez git status et relancez.
@@ -83,7 +89,7 @@ echo [5/5] ☁️ Déploiement GitHub Pages (fichiers publics seulement)
 git add index.html apartment_guide.html residence.html proximity.html departure_procedure.html tips_and_tricks.html emergencies.html
 git add chambre.html cuisine.html salle_deau.html salle_manger.html salon.html terrasse.html wc.html placard_bleu.html codes-acces.html
 git add access_codes.json access_codes.js codes_invites.md
-git add assets\lang-*.js assets\init-translations.js assets\lang-manager.js assets\codes-config-generated.js assets\guard-access.js
+git add assets\lang-*.js assets\init-translations.js assets\lang-manager.js assets\codes-config-generated.js assets\guard-access.js assets\load-guide-captions.js assets\guide-content.json
 git add images\* pdfs\* _headers CNAME >nul 2>&1
 
 git status --short
@@ -105,6 +111,4 @@ if %errorlevel% neq 0 (
 echo.
 echo ✅ Déploiement réussi
 echo 🌐 https://jfg23130.github.io/Guide-depart/
-echo.
-pause
 endlocal

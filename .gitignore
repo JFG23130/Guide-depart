@@ -1,19 +1,26 @@
-# ========================================
-# 🛡️ SÉCURITÉ - FICHIERS SENSIBLES À IGNORER
-# ========================================
+# Securite : ne pas versionner secrets ni donnees perso
+# (les commentaires sont sur leur propre ligne : pas de "#" en fin de ligne sur un motif)
 
-# ⚠️ FICHIERS AVEC CODES SENSIBLES
-# Ne JAMAIS déployer sur GitHub public
-assets/codes-config-private.js           # Codes WiFi + Portail + Airbnb
-KatikiasDeployer_v5/                       # Données Airbnb (sensibles)
-KatikiasDeployer_v5/reservations_final.csv  # Données complètes Airbnb (noms, emails, etc.)
+assets/codes-config-private.js
+KatikiasDeployer_v5/
 hub.html
 arrival_guide.html
 messages_invites.md
 
-# ========================================
-# 🐍 Python
-# ========================================
+# Sauvegardes locales generees par les outils
+_backups_html/
+_backups_lang/
+
+# Brouillon traductions (optionnel en depot)
+assets/guide-translation-draft.json
+
+# QR codes (souvent WiFi / acces)
+qrcodes/
+
+# Donnees tabulaires (noms, emails, etc.)
+*.csv
+
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -35,17 +42,11 @@ wheels/
 .installed.cfg
 *.egg
 
-# ========================================
-# 📝 Environnements virtuels
-# ========================================
 venv/
 ENV/
 env/
 .venv
 
-# ========================================
-# 💾 Caches et fichiers temporaires
-# ========================================
 .cache/
 *.cache
 .DS_Store
@@ -53,9 +54,6 @@ Thumbs.db
 *.log
 *.tmp
 
-# ========================================
-# 🔧 Éditeurs et IDEs
-# ========================================
 .vscode/
 .idea/
 *.swp
@@ -64,25 +62,13 @@ Thumbs.db
 .sublime-project
 .sublime-workspace
 
-# ========================================
-# 🌐 Node.js (si utilisé)
-# ========================================
 node_modules/
 npm-debug.log
 yarn-error.log
 
-# ========================================
-# 🔑 Credentials et secrets
-# ========================================
 .env
 .env.local
 .env.*.local
 secrets.json
 credentials.json
 config.local.json
-
-# ========================================
-# 📊 Données sensibles
-# ========================================
-*.csv               # Sauf codes_invites.md qui est public
-!codes_invites.md   # EXCEPTION: ce fichier est OK (pas d'infos sensibles)
