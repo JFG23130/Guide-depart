@@ -18,13 +18,16 @@ create index if not exists guide_access_attempts_created_at_idx
 alter table public.guide_access_attempts enable row level security;
 
 drop policy if exists "Allow anon insert guide access log" on public.guide_access_attempts;
+drop policy if exists "Allow insert guide access log" on public.guide_access_attempts;
 
--- Insertion depuis le site public avec la clé anon (sans lecture des lignes)
-create policy "Allow anon insert guide access log"
+-- Insertion depuis le navigateur (clé publiable / anon) — politique large pour tous les rôles clients
+create policy "Allow insert guide access log"
 on public.guide_access_attempts for insert
-to anon
 with check (true);
 
--- Lecture : tableau Supabase ou page admin-access-log.html avec la clé service_role uniquement
+-- Lecture : tableau Supabase ou admin avec la clé secrète uniquement (service_role contourne RLS)
 
 grant insert on public.guide_access_attempts to anon;
+grant insert on public.guide_access_attempts to authenticated;
+grant usage on schema public to anon;
+grant usage on schema public to authenticated;
