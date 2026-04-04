@@ -16,16 +16,21 @@
             outcome: entry.outcome === 'ok' ? 'ok' : 'fail',
             reason: entry.reason != null ? String(entry.reason) : null
         };
+        // Clés sb_publishable_* : ne pas mettre dans Authorization: Bearer (pas un JWT) — la gateway Supabase
+        // utilise surtout l’en-tête apikey. Les anciennes clés anon eyJ… restent en Bearer + apikey.
+        var headers = {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            apikey: cfg.anonKey,
+            Prefer: 'return=minimal'
+        };
+        if (String(cfg.anonKey).indexOf('eyJ') === 0) {
+            headers.Authorization = 'Bearer ' + cfg.anonKey;
+        }
         return fetch(url, {
             method: 'POST',
             mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-                apikey: cfg.anonKey,
-                Authorization: 'Bearer ' + cfg.anonKey,
-                Prefer: 'return=minimal'
-            },
+            headers: headers,
             body: JSON.stringify([row]),
             keepalive: true
         })
