@@ -18,15 +18,32 @@
         };
         return fetch(url, {
             method: 'POST',
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
+                Accept: 'application/json',
                 apikey: cfg.anonKey,
                 Authorization: 'Bearer ' + cfg.anonKey,
                 Prefer: 'return=minimal'
             },
             body: JSON.stringify([row]),
             keepalive: true
-        }).catch(function () {});
+        })
+            .then(function (res) {
+                if (res.ok) {
+                    return;
+                }
+                return res.text().then(function (txt) {
+                    if (typeof console !== 'undefined' && console.warn) {
+                        console.warn('[Guide access-log] HTTP ' + res.status, txt || '');
+                    }
+                });
+            })
+            .catch(function (err) {
+                if (typeof console !== 'undefined' && console.warn) {
+                    console.warn('[Guide access-log]', err);
+                }
+            });
     }
 
     window.logGuideAccessAttempt = logAccessAttempt;
