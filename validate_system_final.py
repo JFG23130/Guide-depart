@@ -16,7 +16,8 @@ from typing import Dict, List, Set
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
-KATIKIAS_DEPLOYER = PROJECT_ROOT / "KatikiasDeployer_v5"
+REPO_ROOT = PROJECT_ROOT.parent
+KATIKIAS_DEPLOYER = REPO_ROOT / "KatikiasDeployer_v5"
 CSV_FILE = KATIKIAS_DEPLOYER / "reservations_final.csv"
 ACCESS_JSON = PROJECT_ROOT / "access_codes.json"
 ACCESS_JS = PROJECT_ROOT / "access_codes.js"

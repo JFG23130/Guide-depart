@@ -11,7 +11,7 @@ REM
 REM Prérequis:
 REM - Python 3.x installé
 REM - Git configuré
-REM - reservations_final.csv à jour dans KatikiasDeployer_v5/
+REM - reservations_final.csv à jour dans ..\KatikiasDeployer_v5\ (racine du dépôt Git)
 REM ========================================================================
 
 setlocal enabledelayedexpansion
@@ -42,7 +42,7 @@ if %ERRORLEVEL% NEQ 0 (
     echo.
     echo Vérifiez que:
     echo   - Python est installé
-    echo   - reservations_final.csv existe dans KatikiasDeployer_v5/
+    echo   - reservations_final.csv existe dans le dossier KatikiasDeployer_v5 à la racine du dépôt
     echo   - Le format du CSV est correct
     echo.
     pause

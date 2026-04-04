@@ -19,8 +19,10 @@ from typing import Dict, List, Optional
 
 
 # Chemins configurables
+# Guide-depart/ est un sous-dossier du dépôt ; le CSV et l’outil Katikias sont à la racine : ../KatikiasDeployer_v5/
 PROJECT_ROOT = Path(__file__).resolve().parent
-KATIKIAS_DEPLOYER = PROJECT_ROOT / "KatikiasDeployer_v5"
+REPO_ROOT = PROJECT_ROOT.parent
+KATIKIAS_DEPLOYER = REPO_ROOT / "KatikiasDeployer_v5"
 CSV_FILE = KATIKIAS_DEPLOYER / "reservations_final.csv"
 GUIDE_DIR = PROJECT_ROOT  # Guide-depart
 ACCESS_JSON = GUIDE_DIR / "access_codes.json"

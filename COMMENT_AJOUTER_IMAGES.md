@@ -12,7 +12,7 @@ Cela signifie que l'image doit être **dans le même dossier** que `tips_and_tri
 ## 📁 Structure actuelle
 
 ```
-C:\Users\gaecd\Dev\Airbnb\Guide-depart\
+C:\Users\jfgir\Dev\Airbnb\Guide-depart\
 ├── index.html
 ├── tips_and_tricks.html        ← Le code cherche ici
 ├── telecommande_somfy.png      ← ← ← À AJOUTER ICI (dans Guide-depart)
@@ -32,7 +32,7 @@ C:\Users\gaecd\Dev\Airbnb\Guide-depart\
 
 3. **Ouvrez le dossier** :
    ```
-   C:\Users\gaecd\Dev\Airbnb\Guide-depart
+   C:\Users\jfgir\Dev\Airbnb\Guide-depart
    ```
 
 4. **Collez le fichier** (Ctrl+V)
@@ -51,7 +51,7 @@ C:\Users\gaecd\Dev\Airbnb\Guide-depart\
 
 1. Ouvrez deux fenêtres de l'explorateur Windows :
    - **Fenêtre 1** : Votre image (source)
-   - **Fenêtre 2** : `C:\Users\gaecd\Dev\Airbnb\Guide-depart`
+   - **Fenêtre 2** : `C:\Users\jfgir\Dev\Airbnb\Guide-depart`
 
 2. **Glissez** votre image de la fenêtre 1 vers la fenêtre 2
    - L'image est copiée automatiquement
@@ -100,7 +100,7 @@ en :
 ## ✅ Vérification
 
 ### Test rapide
-1. Ouvrez `C:\Users\gaecd\Dev\Airbnb\Guide-depart\`
+1. Ouvrez `C:\Users\jfgir\Dev\Airbnb\Guide-depart\`
 2. Vérifiez que `telecommande_somfy.png` est visible dans le dossier
 3. Ouvrez `tips_and_tricks.html` dans votre navigateur
 4. L'image devrait s'afficher !
@@ -113,7 +113,7 @@ en :
 ## 🚀 Résumé en 3 étapes
 
 1. **Trouvez votre image** sur votre PC
-2. **Copiez-la** dans `C:\Users\gaecd\Dev\Airbnb\Guide-depart\`
+2. **Copiez-la** dans `C:\Users\jfgir\Dev\Airbnb\Guide-depart\`
 3. **Nommez-la** `telecommande_somfy.png`
 
 **C'est tout !** 🎉
@@ -121,7 +121,7 @@ en :
 ## 📍 Chemin complet
 
 ```
-C:\Users\gaecd\Dev\Airbnb\Guide-depart\telecommande_somfy.png
+C:\Users\jfgir\Dev\Airbnb\Guide-depart\telecommande_somfy.png
 ```
 
 C'est là que doit se trouver le fichier !

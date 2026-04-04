@@ -1,5 +1,7 @@
 # Mémo — Où et comment ajouter les traductions
 
+> **Réservations Airbnb (hors traductions)** : fichier unique `C:\Users\jfgir\Dev\Airbnb\KatikiasDeployer_v5\reservations_final.csv` — voir aussi `MEMOS_SOLUTION.md` à la racine du dépôt.
+
 ## Fichiers des langues
 
 Tout se passe dans **`Guide-depart/assets/`** :

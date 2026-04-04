@@ -358,4 +358,4 @@ L'équipe Katikias 33
 - **Script principal**: [generate_all_codes.py](generate_all_codes.py)
 - **Interface hub**: [hub.html](hub.html)
 - **Affichage codes**: [codes-acces.html](codes-acces.html)
-- **Système original**: [KatikiasDeployer_v5/generate_guest_codes.py](KatikiasDeployer_v5/generate_guest_codes.py)
+- **Système original**: [../KatikiasDeployer_v5/generate_guest_codes.py](../KatikiasDeployer_v5/generate_guest_codes.py)

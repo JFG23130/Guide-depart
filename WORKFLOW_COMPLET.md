@@ -15,7 +15,7 @@
 ### 🏠 **En LOCAL** (recommandé)
 
 ```
-C:\Users\gaecd\Dev\Airbnb\Guide-depart\
+C:\Users\jfgir\Dev\Airbnb\Guide-depart\
 ├── index.html                   ← Modifier ICI
 ├── tips_and_tricks.html         ← Modifier ICI
 ├── apartment_guide.html         ← Modifier ICI
@@ -42,7 +42,7 @@ C:\Users\gaecd\Dev\Airbnb\Guide-depart\
 ### 1️⃣ **Ouvrir le fichier**
 ```bash
 # Ouvrir dans VS Code
-code "C:\Users\gaecd\Dev\Airbnb\Guide-depart\tips_and_tricks.html"
+code "C:\Users\jfgir\Dev\Airbnb\Guide-depart\tips_and_tricks.html"
 
 # Ou double-cliquer sur le fichier
 ```
@@ -78,7 +78,7 @@ Cherchez où ajouter et copiez une card existante :
 ### 3️⃣ **Tester en local**
 ```bash
 # Ouvrir dans le navigateur
-start "C:\Users\gaecd\Dev\Airbnb\Guide-depart\index.html"
+start "C:\Users\jfgir\Dev\Airbnb\Guide-depart\index.html"
 ```
 
 ### 4️⃣ **Sauvegarder** (Ctrl+S)
@@ -127,7 +127,7 @@ pause
 ### Méthode 2 : Manuel
 
 ```bash
-cd C:\Users\gaecd\Dev\Airbnb\Guide-depart
+cd C:\Users\jfgir\Dev\Airbnb\Guide-depart
 git add .
 git commit -m "📝 Description de vos modifications"
 git push origin main
@@ -177,7 +177,7 @@ git push origin main
 2. **Copier dans Guide-depart**
    ```
    Source : C:\Users\jfgir\Images\telecommande.jpg
-   Dest : C:\Users\gaecd\Dev\Airbnb\Guide-depart\images\telecommande_somfy.png
+   Dest : C:\Users\jfgir\Dev\Airbnb\Guide-depart\images\telecommande_somfy.png
    ```
 
 3. **Mettre à jour le code** (si nécessaire)

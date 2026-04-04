@@ -466,4 +466,4 @@ python validate_system_final.py
 - **Validation**: [validate_system_final.py](validate_system_final.py)
 - **Workflow**: [update_codes_workflow.bat](update_codes_workflow.bat)
 - **Documentation**: [SYSTEME_CODES_FINAL.md](SYSTEME_CODES_FINAL.md)
-- **Système original**: [KatikiasDeployer_v5/](KatikiasDeployer_v5/)
+- **Système original** (dossier à la racine du dépôt) : [../KatikiasDeployer_v5/](../KatikiasDeployer_v5/)

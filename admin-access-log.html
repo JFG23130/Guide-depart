@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique des connexions — Guide (admin)</title>
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 24px;
+        }
+        .wrap { max-width: 960px; margin: 0 auto; }
+        h1 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(0,0,0,.2);
+        }
+        .hint {
+            color: rgba(255,255,255,.9);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.25);
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+        label { display: block; font-weight: 600; color: #333; margin-bottom: 6px; font-size: 0.9rem; }
+        input[type="url"], input[type="password"] {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover { opacity: .95; }
+        button:disabled { opacity: .5; cursor: not-allowed; }
+        .err { color: #c0392b; margin-top: 12px; font-size: 0.9rem; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background: #f8f9ff;
+            color: #444;
+            font-weight: 600;
+        }
+        tr:hover td { background: #fafbff; }
+        .outcome-ok { color: #27ae60; font-weight: 600; }
+        .outcome-fail { color: #c0392b; font-weight: 600; }
+        .muted { color: #888; font-size: 0.85rem; }
+        code { background: #f0f0f0; padding: 2px 6px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>Historique des tentatives de code (guide)</h1>
+        <p class="hint">
+            Utilisez l’URL du projet Supabase et la clé <strong>service_role</strong> (Paramètres → API).
+            Ces identifiants ne sont pas enregistrés dans cette page : fermez l’onglet après consultation.
+            Ne partagez pas la clé service et ne publiez pas cette page dans un menu public.
+        </p>
+
+        <div class="card">
+            <label for="supabase-url">URL Supabase</label>
+            <input type="url" id="supabase-url" placeholder="https://xxxx.supabase.co" autocomplete="off">
+
+            <label for="service-key">Clé secrète (service_role)</label>
+            <input type="password" id="service-key" placeholder="eyJhbGciOiJIUzI1NiIs..." autocomplete="off">
+
+            <button type="button" id="btn-load">Charger les 200 derniers enregistrements</button>
+            <div id="load-err" class="err" style="display:none;"></div>
+        </div>
+
+        <div class="card" id="result-wrap" style="display:none;">
+            <p class="muted" id="result-meta"></p>
+            <div style="overflow-x:auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date / heure (UTC)</th>
+                            <th>Code saisi</th>
+                            <th>Résultat</th>
+                            <th>Raison (échec)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var btn = document.getElementById('btn-load');
+            var errEl = document.getElementById('load-err');
+            var tbody = document.getElementById('tbody');
+            var resultWrap = document.getElementById('result-wrap');
+            var metaEl = document.getElementById('result-meta');
+
+            function esc(s) {
+                if (s == null || s === '') return '';
+                return String(s)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;');
+            }
+
+            btn.addEventListener('click', function () {
+                errEl.style.display = 'none';
+                errEl.textContent = '';
+                var base = document.getElementById('supabase-url').value.trim().replace(/\/$/, '');
+                var key = document.getElementById('service-key').value.trim();
+                if (!base || !key) {
+                    errEl.textContent = 'Renseignez l’URL et la clé service_role.';
+                    errEl.style.display = 'block';
+                    return;
+                }
+                btn.disabled = true;
+                var url = base + '/rest/v1/guide_access_attempts?select=id,code_text,outcome,reason,created_at&order=created_at.desc&limit=200';
+                fetch(url, {
+                    headers: {
+                        apikey: key,
+                        Authorization: 'Bearer ' + key,
+                        Accept: 'application/json'
+                    }
+                })
+                    .then(function (r) {
+                        if (!r.ok) {
+                            return r.text().then(function (t) {
+                                throw new Error(t || r.statusText);
+                            });
+                        }
+                        return r.json();
+                    })
+                    .then(function (rows) {
+                        tbody.innerHTML = '';
+                        if (!Array.isArray(rows) || rows.length === 0) {
+                            metaEl.textContent = 'Aucune ligne. Vérifiez que la table guide_access_attempts existe et que des tentatives ont été enregistrées.';
+                            resultWrap.style.display = 'block';
+                            btn.disabled = false;
+                            return;
+                        }
+                        metaEl.textContent = rows.length + ' ligne(s) — horodatage affiché en UTC (base Supabase).';
+                        rows.forEach(function (row) {
+                            var tr = document.createElement('tr');
+                            var dt = row.created_at ? new Date(row.created_at) : null;
+                            var dtStr = dt && !isNaN(dt.getTime()) ? dt.toISOString().replace('T', ' ').replace(/\.\d{3}Z$/, ' UTC') : esc(row.created_at);
+                            var oc = row.outcome === 'ok' ? 'outcome-ok' : 'outcome-fail';
+                            tr.innerHTML =
+                                '<td>' + esc(dtStr) + '</td>' +
+                                '<td><code>' + esc(row.code_text) + '</code></td>' +
+                                '<td class="' + oc + '">' + esc(row.outcome) + '</td>' +
+                                '<td>' + esc(row.reason) + '</td>';
+                            tbody.appendChild(tr);
+                        });
+                        resultWrap.style.display = 'block';
+                    })
+                    .catch(function (e) {
+                        errEl.textContent = 'Erreur : ' + (e.message || String(e));
+                        errEl.style.display = 'block';
+                    })
+                    .finally(function () {
+                        btn.disabled = false;
+                    });
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -4,7 +4,7 @@
 
 1. Trouvez l'image de la télécommande Somfy sur votre ordinateur
 2. Renommez-la : `telecommande_somfy.png` (ou .jpg)
-3. Copiez l'image dans le dossier : `C:\Users\gaecd\Dev\Airbnb\Guide-depart\`
+3. Copiez l'image dans le dossier : `C:\Users\jfgir\Dev\Airbnb\Guide-depart\`
 
 ## Étape 2 : Vérification
 

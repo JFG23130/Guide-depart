@@ -1,7 +1,7 @@
 /**
  * Configuration des codes d'accès (VERSION PUBLIQUE - SÉCURISÉE)
  * Générée automatiquement depuis reservations_final.csv
- * Date: 2026-03-29 11:13:52
+ * Date: 2026-04-03 11:53:52
  * 
  * ⚠️ SÉCURITÉ: Les codes WiFi et Portail sont OMIS intentionnellement
  *    Ils sont stockés dans un fichier séparé NON PUBLIÉ (.gitignore)

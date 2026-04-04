@@ -27,14 +27,14 @@ Guide-depart/
 
 ### Méthode 1 : Git Command Line
 ```bash
-cd C:\Users\gaecd\Dev\Airbnb\Guide-depart
+cd C:\Users\jfgir\Dev\Airbnb\Guide-depart
 git add .
 git commit -m "📝 Mise à jour des guides"
 git push origin main
 ```
 
 ### Méthode 2 : Script Automatique
-Lancer `deploy_guides_to_github.bat` depuis `KatikiasDeployer_v5\`
+Lancer `deploy_guides_to_github.bat` depuis le dossier `KatikiasDeployer_v5\` **à la racine du dépôt** (à côté de `Guide-depart`, pas à l’intérieur).
 
 ---
 

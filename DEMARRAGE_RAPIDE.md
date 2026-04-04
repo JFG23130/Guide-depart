@@ -1,5 +1,7 @@
 # 🚀 Guide de démarrage rapide - Katikias 33
 
+**Chemin canonique du CSV (PC jfgir)** : `C:\Users\jfgir\Dev\Airbnb\KatikiasDeployer_v5\reservations_final.csv`
+
 ## ⚡ En 3 étapes
 
 ### 1️⃣ Exporter les réservations Airbnb
@@ -8,7 +10,7 @@
 2. Allez dans **Réservations** → **Toutes les réservations**
 3. Cliquez sur **Exporter** (icône téléchargement)
 4. Sélectionnez **Format CSV**
-5. Sauvegardez le fichier: `KatikiasDeployer_v5/reservations_final.csv`
+5. Sauvegardez le fichier sous **`C:\Users\jfgir\Dev\Airbnb\KatikiasDeployer_v5\reservations_final.csv`** (dossier `KatikiasDeployer_v5` à la racine du dépôt Git, pas dans `Guide-depart`).
 
 **Format attendu:**
 

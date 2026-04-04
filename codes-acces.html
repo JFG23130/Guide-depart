@@ -296,6 +296,11 @@
     <!-- Option 2: Ou charger la config manuelle -->
     <!-- <script src="assets/codes-config.js?v=1"></script> -->
 
+    <!-- Journal des tentatives (optionnel) : copier access-log-config.example.js → access-log-config.js -->
+    <script>window.__ACCESS_LOG__ = null;</script>
+    <script src="assets/access-log-config.js?v=1" onerror="window.__ACCESS_LOG__=null"></script>
+    <script src="assets/access-log.js?v=1"></script>
+
     <script>
         // Ajouter des codes de démonstration permanents
         if (typeof CODES_DATABASE !== 'undefined') {
@@ -476,6 +481,12 @@
             const state = getCodeAccessState(code);
 
             if (!state.ok) {
+                const codeForLog = (state.normalized != null && state.normalized !== '')
+                    ? state.normalized
+                    : normalizeAccessCode(code);
+                if (typeof logGuideAccessAttempt === 'function') {
+                    logGuideAccessAttempt({ code: codeForLog, outcome: 'fail', reason: state.reason });
+                }
                 let msg = LanguageManager.get('codes.error');
                 if (state.reason === 'unknown') {
                     msg = (LanguageManager.get('codes.error_unknown') !== '[codes.error_unknown]')
@@ -501,16 +512,25 @@
 
             const normalized = state.normalized;
 
-            if (document.getElementById('remember-device').checked) {
-                localStorage.setItem(STORAGE_CODE_KEY, normalized);
-                const data = (typeof CODES_DATABASE !== 'undefined') ? CODES_DATABASE[normalized] : null;
-                localStorage.setItem(STORAGE_EXPIRY_KEY, data && data.expires ? data.expires : '');
-                localStorage.setItem(STORAGE_STATE_KEY, '1');
+            function applySuccessAndRedirect() {
+                if (document.getElementById('remember-device').checked) {
+                    localStorage.setItem(STORAGE_CODE_KEY, normalized);
+                    const data = (typeof CODES_DATABASE !== 'undefined') ? CODES_DATABASE[normalized] : null;
+                    localStorage.setItem(STORAGE_EXPIRY_KEY, data && data.expires ? data.expires : '');
+                    localStorage.setItem(STORAGE_STATE_KEY, '1');
+                }
+
+                sessionStorage.setItem(STORAGE_STATE_KEY, '1');
+                sessionStorage.setItem(STORAGE_CODE_KEY, normalized);
+                window.location.href = 'index.html';
             }
 
-            sessionStorage.setItem(STORAGE_STATE_KEY, '1');
-            sessionStorage.setItem(STORAGE_CODE_KEY, normalized);
-            window.location.href = 'index.html';
+            if (typeof logGuideAccessAttempt === 'function') {
+                Promise.resolve(logGuideAccessAttempt({ code: normalized, outcome: 'ok', reason: null }))
+                    .finally(applySuccessAndRedirect);
+            } else {
+                applySuccessAndRedirect();
+            }
         }
 
         // Validate code
