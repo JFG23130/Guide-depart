@@ -1,7 +1,7 @@
 /**
  * Configuration des codes d'accès (VERSION PUBLIQUE - SÉCURISÉE)
  * Générée automatiquement depuis reservations_final.csv
- * Date: 2026-04-03 11:53:52
+ * Date: 2026-08-30 10:34:39
  * 
  * ⚠️ SÉCURITÉ: Les codes WiFi et Portail sont OMIS intentionnellement
  *    Ils sont stockés dans un fichier séparé NON PUBLIÉ (.gitignore)
@@ -13,88 +13,70 @@
  */
 
 const CODES_DATABASE = {
-    'HMKQHWYC5H': {
-        expires: '2026-04-10',
-        guest: 'Ruth Pardon',
-        arrival: '03/04/2026',
-        departure: '10/04/2026'
-    },
-    'HMPPJXWYMX': {
-        expires: '2026-04-13',
-        guest: 'Cyrille Chambard',
-        arrival: '10/04/2026',
-        departure: '13/04/2026'
-    },
-    'HMB98W4REX': {
-        expires: '2026-04-17',
-        guest: 'Annick Le Friant',
-        arrival: '13/04/2026',
-        departure: '17/04/2026'
-    },
-    'HMCQC2YXA5': {
-        expires: '2026-04-25',
-        guest: 'Carole Burnel',
-        arrival: '17/04/2026',
-        departure: '25/04/2026'
-    },
-    'HM5Y4HAK3J': {
-        expires: '2026-04-30',
-        guest: 'Olivier Theron',
-        arrival: '27/04/2026',
-        departure: '30/04/2026'
-    },
-    'HMSNMTRKTH': {
-        expires: '2026-06-05',
-        guest: 'Paul Daniel',
-        arrival: '01/05/2026',
-        departure: '05/06/2026'
-    },
-    'HM5KJ3MTQS': {
-        expires: '2026-06-26',
-        guest: 'G Meijer',
-        arrival: '16/06/2026',
-        departure: '26/06/2026'
-    },
-    'HMEFDYCBXA': {
-        expires: '2026-07-11',
-        guest: 'Jennifer Ruhnau',
-        arrival: '27/06/2026',
-        departure: '11/07/2026'
-    },
-    'HMK8SN94PJ': {
-        expires: '2026-08-02',
-        guest: 'Mélanie Ganot',
-        arrival: '20/07/2026',
-        departure: '02/08/2026'
-    },
-    'HMRXPJ9Q5N': {
-        expires: '2026-08-15',
-        guest: 'Yann Levacher',
-        arrival: '08/08/2026',
-        departure: '15/08/2026'
-    },
-    'HMBBWM2SDJ': {
-        expires: '2026-08-29',
-        guest: 'Lyne Lad',
-        arrival: '15/08/2026',
-        departure: '29/08/2026'
-    },
     'HM3XW29QEZ': {
         expires: '2026-09-08',
         guest: 'Maxime Bogaert',
         arrival: '29/08/2026',
         departure: '08/09/2026'
     },
+    'HMTDWKS9PZ': {
+        expires: '2026-09-13',
+        guest: 'Julia Milesi',
+        arrival: '11/09/2026',
+        departure: '13/09/2026'
+    },
+    'HMAHREP4J2': {
+        expires: '2026-09-16',
+        guest: 'Reiner Harms',
+        arrival: '14/09/2026',
+        departure: '16/09/2026'
+    },
+    'HM2EQX2D8Y': {
+        expires: '2026-09-23',
+        guest: 'Elisabeth Eggers',
+        arrival: '16/09/2026',
+        departure: '23/09/2026'
+    },
+    'HMFMBBABRP': {
+        expires: '2026-09-27',
+        guest: 'Estelle Leterme',
+        arrival: '23/09/2026',
+        departure: '27/09/2026'
+    },
+    'HMMY4WQAXJ': {
+        expires: '2026-10-04',
+        guest: 'Loris Morfaux',
+        arrival: '27/09/2026',
+        departure: '04/10/2026'
+    },
+    'HM9F2QFEZ8': {
+        expires: '2026-10-10',
+        guest: 'Philippe-Alexandre Drd',
+        arrival: '04/10/2026',
+        departure: '10/10/2026'
+    },
     'HM5WJ38KQ9': {
         expires: '2026-10-17',
         guest: 'Benjamin Dickert',
-        arrival: '10/10/2026',
+        arrival: '11/10/2026',
         departure: '17/10/2026'
     },
-    'HMAXWY532X': {
-        expires: '2026-10-24',
-        guest: 'Aurélia Vallat',
-        arrival: '17/10/2026',
-        departure: '24/10/2026'
+    'HMRW5QD93T': {
+        expires: '2027-06-23',
+        guest: 'Doris Und Uli Engel',
+        arrival: '16/06/2027',
+        departure: '23/06/2027'
+    },
+    'HMKSN2TXSB': {
+        expires: '2027-07-31',
+        guest: 'Emeline Debackere',
+        arrival: '17/07/2027',
+        departure: '31/07/2027'
+    },
+    'HMPNZCJ2FN': {
+        expires: '2027-10-02',
+        guest: 'Stefanie Herrmann',
+        arrival: '18/09/2027',
+        departure: '02/10/2027'
     }
 };
