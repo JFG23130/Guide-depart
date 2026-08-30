@@ -6,6 +6,11 @@ setlocal
 set "ROOT=%~dp0"
 set "PY=%ROOT%.venv\Scripts\python.exe"
 if not exist "%PY%" set "PY=python"
+"%PY%" --version >nul 2>&1
+if errorlevel 1 set "PY=python"
+if exist "%LOCALAPPDATA%\Programs\Python\Python314\python.exe" set "PY=%LOCALAPPDATA%\Programs\Python\Python314\python.exe"
+if exist "%LOCALAPPDATA%\Programs\Python\Python313\python.exe" set "PY=%LOCALAPPDATA%\Programs\Python\Python313\python.exe"
+if exist "%LOCALAPPDATA%\Programs\Python\Python312\python.exe" set "PY=%LOCALAPPDATA%\Programs\Python\Python312\python.exe"
 set "DESKTOP_CSV=%USERPROFILE%\OneDrive\Bureau\reservations.csv"
 set "DESKTOP_CSV_FINAL=%USERPROFILE%\OneDrive\Bureau\reservations_final.csv"
 set "DESKTOP_WORKFLOW=%USERPROFILE%\OneDrive\Bureau\Katikias_Workflow.bat"
@@ -18,7 +23,7 @@ echo ╚════════════════════════
 echo.
 
 echo [1/5] 📁 Export Airbnb
-echo Placez reservations.csv uniquement dans C:\Users\jfgir\OneDrive\Documents\JFG\Appartement Katikias\Guide
+echo Placez reservations.csv uniquement dans "%GUIDE_CSV%"
 start "" "%USERPROFILE%\OneDrive\Documents\JFG\Appartement Katikias"
 start "" "%USERPROFILE%\OneDrive\Documents\JFG\Appartement Katikias\Guide"
 echo.

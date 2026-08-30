@@ -56,7 +56,7 @@ if %ERRORLEVEL% EQU 0 (
     echo.
     echo Vérifiez .gitignore:
     echo   assets/codes-config-private.js
-    echo   KatikiasDeployer_v5/reservations_final.csv
+    echo   %USERPROFILE%\Downloads\reservations_final.csv
     echo.
     del temp_status.txt
     pause
@@ -79,7 +79,7 @@ echo.
 echo 🔒 FICHIERS PROTÉGÉS (NON DÉPLOYÉS):
 echo.
 echo   🛡️  assets/codes-config-private.js (codes WiFi/Portail)
-echo   🛡️  KatikiasDeployer_v5/reservations_final.csv (données Airbnb)
+echo   🛡️  %USERPROFILE%\Downloads\reservations_final.csv (données Airbnb)
 echo.
 
 REM 4. Demander confirmation

@@ -1,4 +1,5 @@
 @echo off
+chcp 65001 >nul
 REM ========================================================================
 REM 🔄 WORKFLOW AUTOMATISÉ - MISE À JOUR DES CODES INVITÉS
 REM ========================================================================
@@ -11,10 +12,15 @@ REM
 REM Prérequis:
 REM - Python 3.x installé
 REM - Git configuré
-REM - reservations_final.csv à jour dans ..\KatikiasDeployer_v5\ (racine du dépôt Git)
+REM - reservations_final.csv à jour dans le dossier Téléchargements Windows (ex. K:\Downloads)
 REM ========================================================================
 
 setlocal enabledelayedexpansion
+
+set "PY=python"
+if exist "%LOCALAPPDATA%\Programs\Python\Python314\python.exe" set "PY=%LOCALAPPDATA%\Programs\Python\Python314\python.exe"
+if exist "%LOCALAPPDATA%\Programs\Python\Python313\python.exe" set "PY=%LOCALAPPDATA%\Programs\Python\Python313\python.exe"
+if exist "%LOCALAPPDATA%\Programs\Python\Python312\python.exe" set "PY=%LOCALAPPDATA%\Programs\Python\Python312\python.exe"
 
 echo.
 echo ========================================================================
@@ -36,13 +42,13 @@ REM ========================================================================
 echo %BLUE%[1/4] Génération des codes d'accès...%NC%
 echo.
 
-python generate_all_codes.py
+"%PY%" generate_all_codes.py
 if %ERRORLEVEL% NEQ 0 (
     echo %RED%❌ ERREUR: La génération des codes a échoué%NC%
     echo.
     echo Vérifiez que:
     echo   - Python est installé
-    echo   - reservations_final.csv existe dans le dossier KatikiasDeployer_v5 à la racine du dépôt
+    echo   - reservations_final.csv existe dans votre dossier Téléchargements Windows (ex. K:\Downloads)
     echo   - Le format du CSV est correct
     echo.
     pause
@@ -60,12 +66,12 @@ REM ========================================================================
 echo %BLUE%[2/4] Validation du système...%NC%
 echo.
 
-python validate_system_final.py
+"%PY%" validate_system_final.py
 if %ERRORLEVEL% NEQ 0 (
     echo %RED%❌ ERREUR: La validation a échoué%NC%
     echo.
     echo Des incohérences ont été détectées.
-    echo Relancez la génération: python generate_all_codes.py
+    echo Relancez la génération: "%PY%" generate_all_codes.py
     echo.
     pause
     exit /b 1

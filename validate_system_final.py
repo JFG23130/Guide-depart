@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 ✅ VALIDATION DU SYSTÈME DE CODES D'ACCÈS UNIFIÉ
@@ -8,17 +8,42 @@ Vérifie que tous les fichiers sont cohérents et fonctionnels
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 from datetime import datetime, date
 from pathlib import Path
 from typing import Dict, List, Set
 
+def _get_downloads_dir() -> Path:
+    candidates: List[Path] = []
+
+    if sys.platform == "win32":
+        try:
+            import winreg
+
+            key_path = r"Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
+            value_name = "{374DE290-123F-4565-9164-39C4925E467B}"
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, key_path) as key:
+                raw, _ = winreg.QueryValueEx(key, value_name)
+                candidates.append(Path(os.path.expandvars(raw)))
+        except OSError:
+            pass
+
+    candidates.append(Path.home() / "Downloads")
+    candidates.append(Path(r"K:\Downloads"))
+
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+
+    return candidates[0]
+
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 REPO_ROOT = PROJECT_ROOT.parent
-KATIKIAS_DEPLOYER = REPO_ROOT / "KatikiasDeployer_v5"
-CSV_FILE = KATIKIAS_DEPLOYER / "reservations_final.csv"
+DOWNLOADS_DIR = _get_downloads_dir()
+CSV_FILE = DOWNLOADS_DIR / "reservations_final.csv"
 ACCESS_JSON = PROJECT_ROOT / "access_codes.json"
 ACCESS_JS = PROJECT_ROOT / "access_codes.js"
 CODES_MD = PROJECT_ROOT / "codes_invites.md"
@@ -381,3 +406,4 @@ def main() -> int:
 if __name__ == "__main__":
     import sys
     sys.exit(main())
+
